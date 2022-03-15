@@ -7,15 +7,14 @@ import getHomeList, { getMovieInfo } from "../../dataHomeFetch";
 import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { setData, setError, setLoading } from "../../redux/homeSlice/homeSlice";
+import { setError, setLoading } from "../../redux/homeSlice/homeSlice";
 
 const Home = () => {
-  const movieData = useSelector((state) => state.homeData.data);
   const search = useSelector((state) => state.homeData.search);
   const loading = useSelector((state) => state.homeData.loading);
   const error = useSelector((state) => state.homeData.error);
   const dispatch = useDispatch();
-
+  const [homeData, setHomeData] = useState([]);
   const [featuredData, setFeaturedData] = useState([]);
 
   useEffect(() => {
@@ -24,7 +23,8 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const result = await getHomeList();
-        dispatch(setData(result));
+
+        setHomeData(result);
 
         const random = Math.floor(
           Math.random() * result[0].items.data.results.length
@@ -33,6 +33,8 @@ const Home = () => {
         const chosenInfo = await getMovieInfo(randomMovie.id, "tv");
 
         setFeaturedData(chosenInfo.data);
+
+        dispatch(setLoading(false));
       } catch (err) {
         dispatch(setError(err.message));
       }
@@ -41,9 +43,9 @@ const Home = () => {
     fetchData();
   }, [dispatch]);
 
-  const newData = movieData.filter((item) => {
+  const newData = homeData.filter((item) => {
     const filteredData = [];
-    for (let i = 0; i < movieData.length; i++) {
+    for (let i = 0; i < homeData.length; i++) {
       filteredData.push(item.items.data.results[i].title);
       filteredData.push(item.title);
     }
