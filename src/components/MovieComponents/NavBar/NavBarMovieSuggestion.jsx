@@ -6,8 +6,8 @@ import {
   setIsActive,
   setSearch,
 } from "../../../redux/movieSlice/suggestionMovieSlice";
-import NotifDropDownMovie from "./NotifDropDownMovie";
-import ProfileDropDownMovie from "./ProfileDropDownMovie";
+import NotificationDropDown from "../../HomeComponents/NavBar/NotificationDropDown";
+import ProfileDropDown from "../../HomeComponents/NavBar/ProfileDropDown";
 import SubNavBarMovieSuggestion from "./SubNavBarMovieSuggestion";
 
 const NavBarMovieSuggestion = () => {
@@ -105,7 +105,7 @@ const NavBarMovieSuggestion = () => {
 
           <div className="relative group">
             <Notifications style={{ fontSize: "36px" }} />
-            <NotifDropDownMovie />
+            <NotificationDropDown />
           </div>
 
           <div className="relative cursor-pointer group flex">
@@ -118,7 +118,7 @@ const NavBarMovieSuggestion = () => {
               <span className="group-hover:rotate-180 transiton duration-500">
                 <ArrowDropDown />
               </span>
-              <ProfileDropDownMovie />
+              <ProfileDropDown />
             </div>
           </div>
         </div>
