@@ -9,19 +9,16 @@ import NavBarKids from "../../components/KidsComponents/NavBar/NavBarKids";
 import InfoTvKids from "../../components/KidsComponents/InfoMovie/InfoTvKids";
 import TvKidsRow from "../../components/KidsComponents/TvKidsRow/TvKidsRow";
 import ErrorTvKidsPage from "../../components/KidsComponents/InfoMovie/ErrorTvKidsPage";
-import {
-  setError,
-  setKidsData,
-  setLoading,
-} from "../../redux/kidsSlice/kidsSlice";
+import { setError, setLoading } from "../../redux/kidsSlice/kidsSlice";
 
 const Kids = () => {
-  const tvKidsData = useSelector((state) => state.kidsData.kidsData);
   const loading = useSelector((state) => state.kidsData.loading);
   const error = useSelector((state) => state.kidsData.error);
   const search = useSelector((state) => state.kidsData.search);
-  const [featuredKidsData, setFeaturedKidsData] = useState([]);
   const dispatch = useDispatch();
+
+  const [tvKidsData, setTvKidsData] = useState([]);
+  const [featuredKidsData, setFeaturedKidsData] = useState([]);
 
   const newFeaturedData = tvKidsData.filter((item) => {
     const filteredTvShow = [];
@@ -43,7 +40,7 @@ const Kids = () => {
       try {
         const result = await getTvKidsList();
 
-        dispatch(setKidsData(result));
+        setTvKidsData(result);
 
         const id = Math.floor(Math.random() * result.length);
 
@@ -54,6 +51,8 @@ const Kids = () => {
         const chosenInfo = await getMovieInfo(randomMovie.id, "tv");
 
         setFeaturedKidsData(chosenInfo.data);
+
+        dispatch(setLoading(false));
       } catch (err) {
         dispatch(setError(err.message));
       }
