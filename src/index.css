@@ -1,13 +1,420 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
+
+@layer components {
+ /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NavBar >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+  .navbar {
+    @apply 
+  text-white 
+    fixed 
+    w-full 
+    top-0 
+    z-20
+    text-xl
+    bg-gradient-to-t from-transparent to-black
+    py-2
+  }
+
+  .navbarTvMovie {
+    @apply 
+  text-white 
+    relative 
+    w-full 
+    top-0 
+    z-30
+    opacity-90
+    text-xl
+  }
+
+  .ProfiledropdownContainer {
+    @apply 
+    origin-top-right 
+    absolute 
+    -right-5 
+    top-16
+    mr-8 
+    mt-2 
+    w-52 
+    z-30  
+    bg-darknet 
+    invisible 
+    group-hover:visible 
+    transform 
+    transition-all 
+    duration-100 
+    ease-in  
+    bg-opacity-90 
+    group-hover:opacity-100
+  }
+
+  .ArrowUpProfile {
+    @apply 
+    w-12 
+    h-12 
+    absolute 
+    -top-8 
+    right-2 
+    pt-1 
+  text-gray-300
+  }
+
+  .dropdownLinkProfile {
+    @apply 
+  text-white 
+    block 
+    w-full 
+    text-left 
+    px-4 
+    py-2
+    hover:underline
+    text-sm
+  }
+
+  .NotificationDropdownContainer {
+    @apply 
+    origin-top-right 
+    absolute 
+    -right-6
+    top-16
+    mr-8 
+    mt-2 
+    w-20
+    bg-darknet 
+    bg-opacity-100 
+    invisible 
+    group-hover:visible 
+    transform       
+    transition-all 
+    duration-100 
+    ease-in-out 
+    z-20  
+    opacity-0 
+    group-hover:opacity-100 
+  }
+
+  .ArrowUpNotification {
+    @apply 
+    w-10 
+    h-10 
+    absolute 
+    top-12
+    -right-1
+    pt-1 
+    invisible 
+    group-hover:visible 
+    opacity-0 
+    group-hover:opacity-100 
+    text-gray-300 
+    transform 
+    transition-all 
+    duration-100 
+    ease-in-out
+  }
+
+  .dropdownLinkNotif {
+    @apply 
+    text-gray-300  
+    w-full 
+    text-left 
+    px-4 
+    text-sm
+    border-b 
+    border-b-gray-500 
+    flex 
+    py-5
+  }
+
+  .inputSearchOpen {
+    @apply
+  bg-darknet 
+  text-gray-300 
+    outline-none 
+    border 
+    p-1 
+    pl-12 
+  border-white
+  }
+
+  .inputSearchClosed {
+    @apply
+    bg-darknet 
+    text-gray-300 
+    outline-none 
+    border 
+    p-1 
+    w-0 
+    opacity-0 
+    pl-8
+    border-white 
+    transition-all
+  }
+
+  /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Sub NavBar >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+
+
+  .subNavbar {
+    @apply 
+  text-white 
+    w-full
+    z-20
+    text-xl
+    absolute
+    bg-transparent
+    pt-2
+    px-3
+    md:px-8
+    md:pt-5
+    xl:px-10
+  }
+
+  .subNavbarScrolled {
+    @apply 
+  text-white 
+    w-full
+    z-20
+    top-0
+    text-xl
+    fixed
+    px-3
+    py-2
+    md:px-8
+    xl:px-10
+  }
+
+  .scrolledIn {
+    @apply 
+  bg-darknet 
+    transition-all 
+    duration-300 
+    ease-in-out 
+  }
+
+  .scrolledOut {
+    @apply
+    bg-transparent
+    transition-all 
+    duration-300 
+    ease-in-out 
+  }
+
+
+
+
+   /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Info Movie >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+  .infoButton {
+    @apply
+    bg-gray-400 
+    text-white 
+    px-3
+    py-1 
+    flex 
+    items-center 
+    justify-center 
+    rounded-md 
+    font-semibold 
+    bg-opacity-50 
+    hover:opacity-80
+    md:text-2xl
+    md:px-6
+    md:py-2
+    xl:px-6
+  }
+
+  .playButton {
+    @apply
+    bg-gray-100 
+    px-8
+    text-sm
+    font-semibold
+    flex 
+    items-center 
+    justify-center 
+    mr-4 
+    rounded-md 
+    hover:opacity-80
+    xl:px-14 
+    xl:py-2
+    xl:text-2xl 
+  }
+
+    .playButtonModal {
+    @apply
+    bg-gray-100 
+    px-8 
+    mt-2
+    flex 
+    items-center 
+    justify-center 
+    mr-4 
+    rounded-md 
+    text-2xl 
+    hover:opacity-80
+    font-semibold 
+  }
+
+  .movieTitle {
+    @apply
+  text-white 
+    text-xl
+    md:text-3xl
+    xl:text-7xl 
+    pb-5
+  }
+
+
+  .movieDescription {
+    @apply
+    text-white
+    text-3xl
+    mb-5
+    w-5/12
+
+  }
+
+  .fade-out {
+    @apply
+    invisible
+    opacity-0
+    transition-all
+    duration-500
+    delay-500
+    ease-in-out
+  }
+
+  /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Modal Movie Info >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+  .ModalPlayMovieButton {
+    @apply 
+  bg-gray-100 
+    hover:bg-opacity-80 
+    font-semibold 
+    px-6 
+    mt-3 
+    flex 
+    items-center 
+    rounded-md
+  }
+
+  .backDrop {
+    @apply 
+    z-20
+    absolute
+    backdrop-brightness-50 
+    w-full h-screen 
+    flex 
+    justify-center 
+    pt-24
+  }
+
+  .addToMyList {
+    @apply 
+    text-white 
+    bg-white 
+    bg-opacity-10 
+    hover:bg-opacity-20 
+    rounded-full 
+    mt-3 
+    ml-2
+  }
+
+  .modalIcons {
+    @apply 
+  bg-gray-200 
+    absolute 
+    px-10 
+    py-2 
+    rounded 
+    font-semibold 
+    text-xl 
+    invisible 
+    group-hover:visible
+  }
+
+  .iconesStyle {
+    @apply 
+  text-white 
+    bg-opacity-10 
+    hover:bg-opacity-20 
+    rounded-full 
+    mt-3
+    hover:bg-white
+  }
+
+  .borderThumbIcons {
+    @apply 
+    border-2 
+  border-gray-300 
+  hover:border-gray-200 
+    p-1
+  }
+
+ /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Movie Row Card >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+  .exploreAllStyle {
+    @apply
+    text-base 
+    text-blue-400 
+    opacity-0 
+    group-hover:opacity-100 
+    -translate-x-full 
+    group-hover:translate-x-5 
+    transition-all 
+    duration-700 
+    ease-in-out 
+  }
+
+  .arrowForwardStyle {
+    @apply
+    text-blue-400 
+    flex 
+    items-center 
+    group-hover:-right-12 
+    transition-all 
+    duration-500 
+    ease-out
+    absolute 
+    right-14 
+    opacity-0 
+    group-hover:opacity-100
+  }
+
+  .movieRowTitleStyle {
+    @apply
+  text-gray-200 
+  hover:text-white 
+    font-semibold 
+    relative
+    md:text-xl
+    lg:text-2xl
+    xl:text-3xl 
+  }
+
+  .movieNapStyle {
+    @apply
+  text-gray-200 
+  hover:text-white 
+    text-3xl 
+    font-semibold 
+    relative
+  }
+
+  .moviePosterStyle {
+    @apply
+    w-10/12
+    h-full
+    hover:scale-110 
+    transition-all 
+    hover:delay-500 
+    duration-300 
+    ease-in-out 
+    cursor-pointer
+    md:w-full
+  }
+  
+  }
