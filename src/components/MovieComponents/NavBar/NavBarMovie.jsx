@@ -3,9 +3,8 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setActive, setSearch } from "../../../redux/movieSlice/movieSlice";
-
-import NotifDropDownMovie from "./NotifDropDownMovie";
-import ProfileDropDownMovie from "./ProfileDropDownMovie";
+import NotificationDropDown from "../../HomeComponents/NavBar/NotificationDropDown";
+import ProfileDropDown from "../../HomeComponents/NavBar/ProfileDropDown";
 import SubNavBarMovie from "./SubNavBarMovie";
 
 const NavBarMovie = () => {
@@ -115,7 +114,7 @@ const NavBarMovie = () => {
 
           <div className="relative group">
             <Notifications style={{ fontSize: "36px" }} />
-            <NotifDropDownMovie />
+            <NotificationDropDown />
           </div>
 
           <div className="relative cursor-pointer group flex">
@@ -128,7 +127,7 @@ const NavBarMovie = () => {
               <span className="group-hover:rotate-180 transiton duration-500">
                 <ArrowDropDown />
               </span>
-              <ProfileDropDownMovie />
+              <ProfileDropDown />
             </div>
           </div>
         </div>
