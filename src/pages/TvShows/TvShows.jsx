@@ -8,21 +8,17 @@ import getTvShowsList from "../../dataTvShowsFetch";
 import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setError,
-  setLoading,
-  setTvShowsData,
-} from "../../redux/tvShowsSlice/tvShowsSlice";
+import { setError, setLoading } from "../../redux/tvShowsSlice/tvShowsSlice";
 
 const TvShows = () => {
-  const tvShowsData = useSelector((state) => state.tvShowsData.data);
   const loading = useSelector((state) => state.tvShowsData.loading);
   const error = useSelector((state) => state.tvShowsData.error);
   const filter = useSelector((state) => state.tvShowsData.filter);
   const search = useSelector((state) => state.tvShowsData.search);
-  const [featuredTvShowsData, setFeaturedTvShowsData] = useState([]);
-
   const dispatch = useDispatch();
+
+  const [tvShowsData, setTvShowsData] = useState([]);
+  const [featuredTvShowsData, setFeaturedTvShowsData] = useState([]);
 
   const newFeaturedData = tvShowsData.filter((item) => {
     const filteredTvShow = [];
@@ -51,7 +47,7 @@ const TvShows = () => {
       try {
         const result = await getTvShowsList();
 
-        dispatch(setTvShowsData(result));
+        setTvShowsData(result);
 
         const id = Math.floor(Math.random() * result.length);
 
@@ -62,6 +58,8 @@ const TvShows = () => {
         const chosenInfo = await getMovieInfo(randomMovie.id, "tv");
 
         setFeaturedTvShowsData(chosenInfo.data);
+
+        dispatch(setLoading(false));
       } catch (err) {
         dispatch(setError(err.message));
       }
