@@ -9,7 +9,7 @@ import {
 } from "../../../redux/tvShowsSlice/tvShowsSlice";
 import NotificationDropDown from "../../HomeComponents/NavBar/NotificationDropDown";
 import ProfileDropDown from "../../HomeComponents/NavBar/ProfileDropDown";
-import SubNavBar from "./SubNavBar";
+import SubNavBarTvShows from "./SubNavBarTvShows";
 
 const NavBarTvShows = () => {
   const isActive = useSelector((state) => state.tvShowsData.isActive);
@@ -219,7 +219,7 @@ const NavBarTvShows = () => {
           </div>
         </div>
       </div>
-      <SubNavBar />
+      <SubNavBarTvShows />
     </div>
   );
 };
