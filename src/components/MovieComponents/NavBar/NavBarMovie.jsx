@@ -75,20 +75,20 @@ const NavBarMovie = () => {
           </Link>
           {width >= 1024 ? (
             <ul className="flex">
-              <li className="mr-5 ml-12 text-sm">
+              <li className="mr-5 ml-12 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/home">Home</Link>
               </li>
-              <li className="mr-5 text-sm">
+              <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/tv-shows">TV Shows</Link>
               </li>
-              <li className="mr-5 text-sm">
+              <li className="mr-5 text-sm active">
                 <Link to="/movie">Movies</Link>
               </li>
-              <li className="mr-5 text-sm">
+              <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/latest">New and Popular</Link>
               </li>
               <div className="relative">
-                <li className="mr-5 text-sm">
+                <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                   <Link to="/my-list">My List</Link>
                 </li>
                 {quantity > 0 && (

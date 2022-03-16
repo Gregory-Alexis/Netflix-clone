@@ -2,28 +2,35 @@ import { ArrowDropDown, Notifications, Search } from "@mui/icons-material";
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setToggle, setWidth } from "../../../redux/homeSlice/homeSlice";
 import {
-  setIsActive,
+  setActive,
+  setScrolled,
   setSearch,
-} from "../../../redux/tvShowsSlice/tvShowsSlice";
+  setToggle,
+  setWidth,
+} from "../../../redux/homeSlice/homeSlice";
 import NotificationDropDown from "../../HomeComponents/NavBar/NotificationDropDown";
 import ProfileDropDown from "../../HomeComponents/NavBar/ProfileDropDown";
-import SubNavBarTvShows from "./SubNavBarTvShows";
 
-const NavBarTvShows = () => {
-  const isActive = useSelector((state) => state.tvShowsData.isActive);
-  const search = useSelector((state) => state.tvShowsData.search);
-  const quantity = useSelector((state) => state.myListData.quantity);
+const NavBarNaP = () => {
+  const search = useSelector((state) => state.homeData.search);
+  const isInputActive = useSelector((state) => state.homeData.isInputActive);
+  const isHomeScrolled = useSelector((state) => state.homeData.isHomeScrolled);
   const width = useSelector((state) => state.homeData.width);
+  const quantity = useSelector((state) => state.myListData.quantity);
   const dispatch = useDispatch();
 
   const ref = useRef();
 
+  window.onscroll = () => {
+    dispatch(setScrolled(window.pageYOffset === 0 ? false : true));
+    return () => (window.onscroll = null);
+  };
+
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
-      if (isActive && ref.current && !ref.current.contains(e.target)) {
-        dispatch(setIsActive(false));
+      if (isInputActive && ref.current && !ref.current.contains(e.target)) {
+        dispatch(setActive(false));
       }
     };
 
@@ -40,7 +47,7 @@ const NavBarTvShows = () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
       window.removeEventListener("resize", changeWidth);
     };
-  }, [isActive, dispatch]);
+  }, [isInputActive, dispatch]);
 
   const inputElement = useRef(null);
 
@@ -56,8 +63,10 @@ const NavBarTvShows = () => {
   };
 
   return (
-    <div>
-      <div className="flex items-center text-gray-100 py-2 justify-between px-3 md:px-8 xl:px-10">
+    <div
+      className={isHomeScrolled ? "navbar scrolledIn" : "navbar scrolledOut"}
+    >
+      <div className="flex items-center justify-between px-5 md:px-8 xl:px-10">
         <div className="flex items-center ">
           <Link to="/home">
             <img
@@ -68,16 +77,16 @@ const NavBarTvShows = () => {
           </Link>
           {width >= 1024 ? (
             <ul className="flex">
-              <li className="ml-12 mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
+              <li className="mr-5 ml-12 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/home">Home</Link>
               </li>
-              <li className="mr-5 text-sm active">
+              <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/tv-shows">TV Shows</Link>
               </li>
               <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/movie">Movies</Link>
               </li>
-              <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
+              <li className="mr-5 text-sm active">
                 <Link to="/latest">New and Popular</Link>
               </li>
               <div className="relative">
@@ -85,18 +94,18 @@ const NavBarTvShows = () => {
                   <Link to="/my-list">My List</Link>
                 </li>
                 {quantity > 0 && (
-                  <div className="bg-red-700 rounded-full absolute h-5 w-5 -top-1 right-2 text-sm flex justify-center items-center">
+                  <div className="bg-red-700 rounded-full absolute h-5 w-5 -top-3 right-1 text-sm flex justify-center items-center">
                     <span className="">{quantity}</span>
                   </div>
                 )}
               </div>
             </ul>
           ) : (
-            <div class="relative inline-block text-center  group">
+            <div class="relative inline-block text-center group">
               <div>
                 <button
                   type="button"
-                  className="inline-flex justify-center w-full text-sm font-medium text-gray-100 ml-4 py-2"
+                  className="inline-flex justify-center w-full text-sm font-medium text-gray-100 ml-4 py-2 md:text-2xl"
                   id="menu-button"
                   aria-expanded="true"
                   aria-haspopup="true"
@@ -119,31 +128,31 @@ const NavBarTvShows = () => {
               </div>
 
               <div
-                className="absolute right-0 -left-14 z-30 border-t border-t-gray-100 mt-2 w-56 invisible group-hover:visible transition-all duration-200 ease-in-out"
+                className="absolute right-0 -left-14 border-t border-t-gray-100 mt-2 w-56 invisible group-hover:visible transition-all duration-200 ease-in-out"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
                 tabindex="-1"
               >
                 <div
-                  className="py-1 bg-darknet text-gray-400 bg-opacity-95"
+                  className="py-1 bg-darknet text-gray-400 bg-opacity-95 "
                   role="none"
                 >
                   <ul className="flex flex-col justify-center items-center text-sm py-3">
-                    <li>
+                    <li className="hover:text-gray-100 hover:underline">
                       <Link to="/home">Home</Link>
                     </li>
-                    <li className="pt-2">
+                    <li className="pt-2 hover:text-gray-100 hover:underline">
                       <Link to="/tv-shows">TV Shows</Link>
                     </li>
-                    <li className="pt-2">
+                    <li className="pt-2 hover:text-gray-100 hover:underline">
                       <Link to="/movie">Movies</Link>
                     </li>
-                    <li className="pt-2">
+                    <li className="pt-2 hover:text-gray-100 hover:underline">
                       <Link to="/latest">New and Popular</Link>
                     </li>
                     <div className="relative">
-                      <li className="pt-2">
+                      <li className="pt-2 hover:text-gray-100 hover:underline">
                         <Link to="/my-list">My List</Link>
                       </li>
                       {quantity > 0 && (
@@ -162,7 +171,7 @@ const NavBarTvShows = () => {
         <div className="flex space-x-5 items-center justify-center">
           {width >= 768 && (
             <div className="relative" ref={ref}>
-              {isActive && (
+              {isInputActive && (
                 <input
                   type="search"
                   placeholder="Titles, people, genres"
@@ -173,7 +182,7 @@ const NavBarTvShows = () => {
                 />
               )}
 
-              {!isActive && (
+              {!isInputActive && (
                 <input
                   type="search"
                   placeholder="Titles, people, genres"
@@ -183,7 +192,7 @@ const NavBarTvShows = () => {
 
               <span
                 className="absolute  top-0 bottom-0 flex items-center pl-5"
-                onClick={() => dispatch(setIsActive(!isActive))}
+                onClick={() => dispatch(setActive(!isInputActive))}
               >
                 <Search style={{ fontSize: "18px" }} />
               </span>
@@ -219,9 +228,8 @@ const NavBarTvShows = () => {
           </div>
         </div>
       </div>
-      <SubNavBarTvShows />
     </div>
   );
 };
 
-export default NavBarTvShows;
+export default NavBarNaP;

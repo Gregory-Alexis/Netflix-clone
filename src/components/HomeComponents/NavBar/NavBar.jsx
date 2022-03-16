@@ -1,5 +1,7 @@
-import { ArrowDropDown, Notifications, Search } from "@mui/icons-material";
+import { ArrowDropDown, Notifications } from "@mui/icons-material";
 import React, { useEffect, useRef } from "react";
+import Search from "../../../images/search.svg";
+import Bell from "../../../images/bell.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -77,20 +79,20 @@ const NavBar = () => {
           </Link>
           {width >= 1024 ? (
             <ul className="flex">
-              <li className="mr-5 ml-12 text-sm">
+              <li className="mr-5 ml-12 text-sm active">
                 <Link to="/home">Home</Link>
               </li>
-              <li className="mr-5 text-sm">
+              <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/tv-shows">TV Shows</Link>
               </li>
-              <li className="mr-5 text-sm">
+              <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/movie">Movies</Link>
               </li>
-              <li className="mr-5 text-sm">
+              <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/latest">New and Popular</Link>
               </li>
               <div className="relative">
-                <li className="mr-5 text-sm">
+                <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                   <Link to="/my-list">My List</Link>
                 </li>
                 {quantity > 0 && (
@@ -194,19 +196,19 @@ const NavBar = () => {
                 className="absolute  top-0 bottom-0 flex items-center pl-5"
                 onClick={() => dispatch(setActive(!isInputActive))}
               >
-                <Search style={{ fontSize: "18px" }} />
+                <img src={Search} alt="search" className="w-5" />
               </span>
             </div>
           )}
           <div className="flex justify-center items-center">
             {width >= 768 && (
-              <Link to="/kids" className="text-sm">
+              <Link to="/kids" className="text-xl">
                 Kids
               </Link>
             )}
           </div>
           <div className="relative group flex justify-center items-center">
-            <Notifications style={{ fontSize: "18px" }} />
+            <img src={Bell} alt="notification" className="w-5" />
             <NotificationDropDown />
           </div>
 
