@@ -1,4 +1,4 @@
-import { ArrowDropDown, Notifications } from "@mui/icons-material";
+import { ArrowDropDown } from "@mui/icons-material";
 import React, { useEffect, useRef } from "react";
 import Search from "../../../images/search.svg";
 import Bell from "../../../images/bell.svg";
@@ -205,7 +205,7 @@ const NavBar = () => {
           )}
           <div className="flex justify-center items-center">
             {width >= 768 && (
-              <Link to="/kids" className="text-xl">
+              <Link to="/kids" className="text-lg">
                 Kids
               </Link>
             )}
