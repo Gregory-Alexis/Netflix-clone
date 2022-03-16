@@ -1,6 +1,7 @@
 import { ArrowDropUp } from "@mui/icons-material";
 
 const ProfileDropDown = () => {
+  // Composant qui affiche les options utilisateur
   return (
     <div
       className="ProfiledropdownContainer"
