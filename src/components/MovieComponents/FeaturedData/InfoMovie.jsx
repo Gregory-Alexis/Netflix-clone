@@ -1,4 +1,5 @@
-import { InfoOutlined, PlayArrow } from "@mui/icons-material";
+import Play from "../../../images/play.svg";
+import Info from "../../../images/info.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setDetails } from "../../../redux/movieSlice/movieSlice";
@@ -7,7 +8,7 @@ import ModalMovieInfo from "./ModalMovieInfo";
 const InfoMovie = ({ featuredMovieData }) => {
   const details = useSelector((state) => state.movieData.details);
   const dispatch = useDispatch();
-  console.log(featuredMovieData);
+
   return (
     <div
       className="h-60 relative bg-cover bg-no-repeat flex items-center justify-center md:h-96 lg:h-70 xl:h-90"
@@ -24,15 +25,15 @@ const InfoMovie = ({ featuredMovieData }) => {
 
       <ModalMovieInfo featuredMovieData={featuredMovieData} />
 
-      <div className=" w-full flex flex-col justify-center px-3 z-10 md:px-8 xl:ml-24">
-        <div className="pt-20">
-          <h1 className="movieTitle">{featuredMovieData.title}</h1>
+      <div className=" w-full flex flex-col justify-center ml-5 z-10 xl:ml-24">
+        <div>
+          <h1 className="movieTitle">{featuredMovieData.name}</h1>
           <div className="flex">
             <Link
-              to={`/tv-video/${featuredMovieData.id}`}
+              to={`/movie-video/${featuredMovieData.id}`}
               className="playButton pl-5"
             >
-              <PlayArrow style={{ fontSize: "30px" }} />
+              <img src={Play} alt="play" className="w-8 xl:w-14" />
               <span className="ml-2 md:text-2xl xl:text-4xl">Play</span>
             </Link>
 
@@ -41,7 +42,7 @@ const InfoMovie = ({ featuredMovieData }) => {
               aria-label="plus d'info"
               className="infoButton"
             >
-              <InfoOutlined style={{ fontSize: "30px" }} />
+              <img src={Info} alt="info" className="xl:w-10" />
 
               <span
                 className="pl-4 font-semibold xl:text-4xl xl:py-2"
