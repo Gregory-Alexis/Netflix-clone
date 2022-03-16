@@ -54,7 +54,7 @@ const movieSlice = createSlice({
         filter: action.payload,
       };
     },
-    setActive: (state, action) => {
+    setIsActive: (state, action) => {
       return {
         ...state,
         isActive: action.payload,
