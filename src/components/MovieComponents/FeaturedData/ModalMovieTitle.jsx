@@ -14,8 +14,12 @@ import {
 } from "../../../redux/myListSlice/myListSlice";
 
 const ModalMovieTitle = ({ featuredMovieData }) => {
-  const quantity = useSelector((state) => state.myListData.quantity);
   const dispatch = useDispatch();
+  const myList = useSelector((state) => state.myListData.myList);
+  const newList = myList.map((element) => {
+    return element.id;
+  });
+
   return (
     <div className="absolute mt-72 ml-10">
       <h1 className="text-white text-5xl w-40">{featuredMovieData.title}</h1>
@@ -30,7 +34,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
 
         <div className="group group flex items-center justify-center">
           <div className="relative">
-            {quantity > 0 ? (
+            {newList.incluides(featuredMovieData.id) ? (
               <button
                 type="button"
                 className="iconesStyle ml-1 border-2 border-gray-200"
@@ -58,7 +62,9 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
           </div>
           <div className="modalIcons top-0 left-20 ml-2">
             <span>
-              {quantity > 0 ? "Remove From My List" : "Add to My List"}
+              {newList.incluides(featuredMovieData.id)
+                ? "Remove From My List"
+                : "Add to My List"}
             </span>
             <span className="absolute text-gray-200 flex left-14 ml-3 top-4">
               <ArrowDropDown style={{ fontSize: "65px" }} />
