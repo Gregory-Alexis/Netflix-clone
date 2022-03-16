@@ -94,7 +94,7 @@ const NavBar = () => {
                   <Link to="/my-list">My List</Link>
                 </li>
                 {quantity > 0 && (
-                  <div className="bg-red-700 rounded-full absolute h-5 w-5 -top-1 right-2 text-sm flex justify-center items-center">
+                  <div className="bg-red-700 rounded-full absolute h-5 w-5 -top-3 right-1 text-sm flex justify-center items-center">
                     <span className="">{quantity}</span>
                   </div>
                 )}
@@ -135,24 +135,24 @@ const NavBar = () => {
                 tabindex="-1"
               >
                 <div
-                  className="py-1 bg-darknet text-gray-400 bg-opacity-95"
+                  className="py-1 bg-darknet text-gray-400 bg-opacity-95 "
                   role="none"
                 >
                   <ul className="flex flex-col justify-center items-center text-sm py-3">
-                    <li>
+                    <li className="hover:text-gray-100 hover:underline">
                       <Link to="/home">Home</Link>
                     </li>
-                    <li className="pt-2">
+                    <li className="pt-2 hover:text-gray-100 hover:underline">
                       <Link to="/tv-shows">TV Shows</Link>
                     </li>
-                    <li className="pt-2">
+                    <li className="pt-2 hover:text-gray-100 hover:underline">
                       <Link to="/movie">Movies</Link>
                     </li>
-                    <li className="pt-2">
+                    <li className="pt-2 hover:text-gray-100 hover:underline">
                       <Link to="/latest">New and Popular</Link>
                     </li>
                     <div className="relative">
-                      <li className="pt-2">
+                      <li className="pt-2 hover:text-gray-100 hover:underline">
                         <Link to="/my-list">My List</Link>
                       </li>
                       {quantity > 0 && (
