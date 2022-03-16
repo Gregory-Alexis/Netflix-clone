@@ -1,12 +1,19 @@
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const NapRowItem = ({ title, url }) => {
   const [index, setIndex] = useState(0);
+  const width = useSelector((state) => state.homeData.width);
 
   const indexHandler = (direction) => {
     if (direction === "left") {
-      setIndex(index > 0 ? index - 1 : 2);
+      setIndex(index > 0 && index - 1);
+    } else if (direction === "right" && width < 768) {
+      setIndex(index < 6 ? index + 1 : 0);
+    } else if (direction === "right" && width >= 768 && width < 1024) {
+      setIndex(index < 6 ? index + 1 : 0);
     } else {
       setIndex(index < 2 ? index + 1 : 0);
     }
@@ -14,9 +21,9 @@ const NapRowItem = ({ title, url }) => {
 
   return (
     <div className="overflow-hidden">
-      <div className="flex pb-5 group">
-        <h1 className="movieRowTitleStyle pl-12">
-          <a href="!#" className="flex items-center justify-center pt-12">
+      <div className="flex group">
+        <h1 className="movieRowTitleStyle pl-3 pt-3 md:pt-8 md:pl-8">
+          <a href="!#" className="flex items-center justify-center">
             {title}
             <span className="exploreAllStyle">Explore All</span>
             <button type="button" className="arrowForwardStyle">
@@ -28,16 +35,22 @@ const NapRowItem = ({ title, url }) => {
 
       <div className="relative group">
         <div
-          className="flex transition duration-500 ease-in-out pl-12"
-          style={{ transform: `translateX(${index * -58}vw )` }}
+          className="flex transition duration-500 ease-in-out pl-3 md:pt-4 md:pl-8 md:space-x-10 lg:space-x-2 xl:space-x-4"
+          style={{
+            transform: `translateX(${
+              width >= 1024 ? index * -59 : index * -98
+            }vw )`,
+          }}
         >
           {url.data.results.map((el) => (
-            <img
-              src={`https://image.tmdb.org/t/p/w300${el.poster_path}`}
-              alt={el.original_title}
-              className="moviePosterStyle flex"
-              key={el.id}
-            />
+            <Link to={`/movie-video/${el.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
+                alt={el.original_title}
+                className="moviePosterStyle mr-32 xl:mr-48"
+                key={el.id}
+              />
+            </Link>
           ))}
         </div>
 
