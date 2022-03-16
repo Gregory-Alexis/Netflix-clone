@@ -153,6 +153,9 @@ const NavBar = () => {
                     <li className="pt-2 hover:text-gray-100 hover:underline">
                       <Link to="/latest">New and Popular</Link>
                     </li>
+                    <li className="pt-2 hover:text-gray-100 hover:underline">
+                      <Link to="/kids">Kids</Link>
+                    </li>
                     <div className="relative">
                       <li className="pt-2 hover:text-gray-100 hover:underline">
                         <Link to="/my-list">My List</Link>
