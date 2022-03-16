@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import NavBar from "../HomeComponents/NavBar/NavBar";
 import MyListItem from "./MyListItem";
 import NavbarMyList from "./NavbarMyList";
 
