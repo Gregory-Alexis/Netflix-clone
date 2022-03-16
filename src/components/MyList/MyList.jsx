@@ -3,7 +3,7 @@ import NavBar from "../HomeComponents/NavBar/NavBar";
 import MyListItem from "./MyListItem";
 
 const MyList = () => {
-  const myList = useSelector((state) => state.myListData.todoList);
+  const myList = useSelector((state) => state.myListData.myList);
 
   return (
     <div className="bg-darknet">
