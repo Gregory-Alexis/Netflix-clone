@@ -26,11 +26,11 @@ const SubNavBarMovie = () => {
       }
     >
       <div className="relative flex items-center">
-        <h1 className="text-4xl font-semibold text-white">MOVIE</h1>
+        <h1 className=" font-semibold text-white xl:text-4xl">MOVIE</h1>
 
-        <div className="flex-1 ml-16">
+        <div className="flex-1 ml-10">
           <select
-            className="bg-darknet bg-opacity-90 text-white flex flex-col flex-wrap border p-2 border-white hover:bg-transparent w-32"
+            className="bg-darknet bg-opacity-90 text-white flex flex-col flex-wrap border p-2 border-white hover:bg-transparent text-xs w-24 lg:text-base xl:w-32"
             value={filter}
             onChange={(e) => dispatch(setFilter(e.target.value))}
           >
@@ -44,6 +44,7 @@ const SubNavBarMovie = () => {
             ))}
           </select>
         </div>
+
         <div className="flex">
           <a
             href="/movie"
