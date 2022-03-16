@@ -13,6 +13,8 @@ export const homeSlice = createSlice({
     isHomeScrolled: false,
     width: window.innerWidth,
     toggle: false,
+    like: false,
+    disLike: false,
   },
   reducers: {
     setData: (state, action) => {
@@ -79,6 +81,18 @@ export const homeSlice = createSlice({
         toggle: action.payload,
       };
     },
+    setLike: (state, action) => {
+      return {
+        ...state,
+        like: action.payload,
+      };
+    },
+    setDisLike: (state, action) => {
+      return {
+        ...state,
+        disLike: action.payload,
+      };
+    },
   },
 });
 
@@ -93,5 +107,7 @@ export const {
   setFeaturedDetails,
   setWidth,
   setToggle,
+  setLike,
+  setDisLike,
 } = homeSlice.actions;
 export default homeSlice.reducer;
