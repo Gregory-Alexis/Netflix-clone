@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const MovieRowItem = ({ title, url }) => {
   const width = useSelector((state) => state.homeData.width);
   const [index, setIndex] = useState(0);
-
+  // fonction qui prendre en charge le "Slide" des éléments en fonction de la taille de la fenêtre windows
   const indexHandler = (direction) => {
     if (direction === "left") {
       setIndex(index > 0 && index - 1);
@@ -34,6 +34,7 @@ const MovieRowItem = ({ title, url }) => {
       </div>
 
       <div className="relative group">
+        {/*style qui prendra en charge la largeur parcouru du slide lors du clique sur la flèche */}
         <div
           className="flex transition duration-500 ease-in-out pl-3 md:pt-4 md:pl-8 md:space-x-10 lg:space-x-2 xl:space-x-4"
           style={{
@@ -42,6 +43,7 @@ const MovieRowItem = ({ title, url }) => {
             }vw )`,
           }}
         >
+          {/*Redirige vers un lien vidéo du film sélectionné */}
           {url.data.results.map((el) => (
             <Link to={`/movie-video/${el.id}`}>
               <img
@@ -53,7 +55,7 @@ const MovieRowItem = ({ title, url }) => {
             </Link>
           ))}
         </div>
-
+        {/*La flêche pour slider vers la gauche ne sera visible que si l'index est supèrieur à 0 "Si la flêche de droite a au moins été cliqué une fois" */}
         {index > 0 && (
           <button
             type="button"
