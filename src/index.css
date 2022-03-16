@@ -19,6 +19,13 @@
     py-2
   }
 
+  .active {
+   @apply
+text-gray-100
+  font-semibold
+  scale-105
+  }
+
   .navbarTvMovie {
     @apply 
   text-white 
@@ -78,13 +85,13 @@
     @apply 
     origin-top-right 
     absolute 
-    -right-6
     top-16
+    -right-24
     mr-8 
     mt-2 
-    w-20
+    w-80
     bg-darknet 
-    bg-opacity-100 
+    bg-opacity-90 
     invisible 
     group-hover:visible 
     transform       
@@ -94,6 +101,9 @@
     z-20  
     opacity-0 
     group-hover:opacity-100 
+    xl:-right-12
+    xl:top-16
+    xl:w-20
   }
 
   .ArrowUpNotification {
@@ -102,7 +112,7 @@
     h-10 
     absolute 
     top-12
-    -right-1
+    -right-2
     pt-1 
     invisible 
     group-hover:visible 
@@ -218,8 +228,8 @@
     justify-center 
     rounded-md 
     font-semibold 
-    bg-opacity-50 
-    hover:opacity-80
+    bg-opacity-80 
+    hover:bg-opacity-70
     md:text-2xl
     md:px-6
     md:py-2
@@ -236,8 +246,8 @@
     items-center 
     justify-center 
     mr-4 
-    rounded-md 
-    hover:opacity-80
+    rounded-md
+    hover:bg-opacity-80
     xl:px-14 
     xl:py-2
     xl:text-2xl 
@@ -247,15 +257,14 @@
     @apply
     bg-gray-100 
     px-8 
-    mt-2
     flex 
     items-center 
     justify-center 
     mr-4 
     rounded-md 
-    text-2xl 
     hover:opacity-80
     font-semibold 
+    xl:text-2xl 
   }
 
   .movieTitle {
@@ -303,13 +312,22 @@
 
   .backDrop {
     @apply 
-    z-20
-    absolute
     backdrop-brightness-50 
-    w-full h-screen 
+    w-full 
+    min-h-screen 
     flex 
     justify-center 
-    pt-24
+    items-center
+    absolute
+    top-0
+  }
+
+  .modal {
+    @apply
+    z-20
+    flex
+    items-start
+    pt-16
   }
 
   .addToMyList {
@@ -327,6 +345,8 @@
     @apply 
   bg-gray-200 
     absolute 
+    flex
+    justify-center
     px-10 
     py-2 
     rounded 
@@ -338,11 +358,10 @@
 
   .iconesStyle {
     @apply 
-  text-white 
+  text-white
     bg-opacity-10 
     hover:bg-opacity-20 
     rounded-full 
-    mt-3
     hover:bg-white
   }
 
