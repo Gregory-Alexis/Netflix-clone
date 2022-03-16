@@ -1,8 +1,9 @@
-import { InfoOutlined, PlayArrow } from "@mui/icons-material";
+import { InfoOutlined } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setFeaturedDetails } from "../../../redux/homeSlice/homeSlice";
 import ModalInfo from "./ModalInfo";
+import Play from "../../../images/play.svg";
 
 const InfoMovie = ({ featuredData }) => {
   const featuredDetails = useSelector(
@@ -34,7 +35,7 @@ const InfoMovie = ({ featuredData }) => {
               to={`/tv-video/${featuredData.id}`}
               className="playButton pl-5"
             >
-              <PlayArrow style={{ fontSize: "30px" }} />
+              <img src={Play} alt="play" className="w-8 xl:w-14" />
               <span className="ml-2 md:text-2xl xl:text-4xl">Play</span>
             </Link>
 
