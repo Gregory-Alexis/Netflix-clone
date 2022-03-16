@@ -30,7 +30,7 @@ const ModelInfo = ({ featuredData }) => {
       {featuredDetails && (
         <div
           data-aos="fade-zoom-in "
-          // baisse la clarté du fond lors lors de l'ouverture de la modal en cliquant sur "More Info" ====> voir index.css
+          // baisse la clarté du fond lors lors de l'ouverture de la fenêtre modale en cliquant sur "More Info"
           className="modal backDrop"
           style={{
             background: "linear-gradient(to top, #141414 10%, transparent 20%)",
@@ -68,6 +68,7 @@ const ModelInfo = ({ featuredData }) => {
                 </p>
               </div>
               <div className="flex justify-between">
+                {/*Si le film ou la série ne contiennent pas de sypnopsis alors un message "lorem" apparaîtra à la place */}
                 <p className=" text-gray-300 pt-4 leading-6 w-3/4 text-xs md:text-lg">
                   {featuredData.overview === ""
                     ? `Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -81,9 +82,10 @@ const ModelInfo = ({ featuredData }) => {
                     Genre:
                   </span>
                   <div>
+                    {/*Affiche le genre de chaque films ou séries */}
                     {featuredData.genres.map((el) => (
                       <li className="ml-3 text-sm md:text-base" key={el.id}>
-                        {el.name.replace(" ", " ")}
+                        {el.name}
                       </li>
                     ))}
                   </div>

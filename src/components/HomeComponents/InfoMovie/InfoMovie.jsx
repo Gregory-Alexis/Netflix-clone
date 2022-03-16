@@ -12,6 +12,7 @@ const InfoMovie = ({ featuredData }) => {
   const dispatch = useDispatch();
 
   return (
+    // Composant qui affiche l'image d'un film ou d'une série de manière aléatoire
     <div
       className="h-60 relative bg-cover bg-no-repeat flex items-center justify-center md:h-96 lg:h-70 xl:h-90"
       style={{
@@ -27,7 +28,7 @@ const InfoMovie = ({ featuredData }) => {
 
       <ModalInfo featuredData={featuredData} />
 
-      <div className=" w-full flex flex-col justify-center ml-5 z-10 xl:ml-24">
+      <div className="w-full flex flex-col justify-center ml-5 z-10 xl:ml-24">
         <div>
           <h1 className="movieTitle">{featuredData.name}</h1>
           <div className="flex">

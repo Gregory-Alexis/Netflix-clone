@@ -23,6 +23,9 @@ const ModalTitle = ({ featuredData }) => {
     return element.id;
   });
 
+  /* Lors du clique sur le bouton, like passera à true ou false selon son état actuel.Si "like = true" alors le bouton dislike passera à false ce qui
+     nous empêchera d'avoir les boutons activé simultanément... Un seul d'entre eux ne peut être actif à la fois.
+  */
   const likeHandler = () => {
     dispatch(setLike(!like));
     dispatch(setDisLike(false));
@@ -41,9 +44,11 @@ const ModalTitle = ({ featuredData }) => {
       <div className="flex">
         <div className="playButtonModal mb-1 xl:py-2">
           <img src={Play} alt="play" className="w-10" />
+          {/*Redirige vers un lien vidéo correspondant au film ou à la série sélectionné */}
           <Link to={`/tv-video/${featuredData.id}`}>Play</Link>
         </div>
         <div className="group flex items-center justify-center">
+          {/*Si le tableau "newList" contient déjà l'id du film sélectionné alors, le bouton permettra de supprimer le film en question sinon il l'ajoutera  */}
           <div className="relative">
             {newList.includes(featuredData.id) ? (
               <button
@@ -73,6 +78,7 @@ const ModalTitle = ({ featuredData }) => {
           </div>
           <div className="modalIcons text-xs w-56 -top-0 ml-1 xl:text-base xl:top-3 xl:left-18">
             <span>
+              {/*Si le tableau "newList" contient déjà l'id du film sélectionné alors, le message "Remove from my list" apparaîtra sinon ce sera "Add to my list" */}
               {newList.includes(featuredData.id)
                 ? "Remove From My List"
                 : "Add to My List"}
@@ -90,6 +96,7 @@ const ModalTitle = ({ featuredData }) => {
               className="iconesStyle borderThumbIcons ml-2 mb-2"
               onClick={likeHandler}
             >
+              {/*Si un like est effectué le message "Rated" sera affiché sinon "I like this" sera affiché*/}
               <img
                 src={like ? ThumbUpWhite : ThumbUp}
                 alt="circle"
@@ -97,6 +104,7 @@ const ModalTitle = ({ featuredData }) => {
               />
             </button>
           </div>
+          {/*Si un like est effectué le pouce aura un bacnground blanc sinon il aura un background transparent*/}
           <div className="modalIcons text-xs w-36 -top-0 xl:top-3 xl:left-30 xl:ml-4 xl:w-44 xl:text-base">
             {like ? <span>Rated</span> : <span>I like this</span>}
             <span className="absolute text-gray-200 flex left-8 ml-3 top-1 xl:top-3 xl:left-10">
@@ -112,6 +120,7 @@ const ModalTitle = ({ featuredData }) => {
               className="iconesStyle borderThumbIcons ml-2 mb-2"
               onClick={disLikeHandler}
             >
+              {/*Si un like est effectué le pouce aura un background blanc sinon il aura un background transparent*/}
               <img
                 src={disLike ? ThumbDownWhite : ThumbDown}
                 alt="circle"
@@ -120,6 +129,7 @@ const ModalTitle = ({ featuredData }) => {
             </button>
           </div>
           <div className="modalIcons text-xs w-36 -top-0 left-46 ml-2 xl:top-3 xl:ml-4 xl:w-44 xl:text-base">
+            {/*Si un dislike est effectué le message "Rated" sera affiché sinon "Not for me" sera affiché*/}
             {disLike ? <span>Rated</span> : <span>Not for me</span>}
             <span className="absolute text-gray-200 flex left-8 ml-3 top-1 xl:top-3 xl:left-10">
               <ArrowDropDown style={{ fontSize: "65px" }} />
