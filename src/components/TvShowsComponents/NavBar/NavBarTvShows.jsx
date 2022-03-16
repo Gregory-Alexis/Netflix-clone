@@ -1,5 +1,7 @@
-import { ArrowDropDown, Notifications, Search } from "@mui/icons-material";
+import { ArrowDropDown } from "@mui/icons-material";
 import React, { useEffect, useRef } from "react";
+import Search from "../../../images/search.svg";
+import Bell from "../../../images/bell.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setToggle, setWidth } from "../../../redux/homeSlice/homeSlice";
@@ -189,19 +191,19 @@ const NavBarTvShows = () => {
                 className="absolute  top-0 bottom-0 flex items-center pl-5"
                 onClick={() => dispatch(setIsActive(!isActive))}
               >
-                <Search style={{ fontSize: "18px" }} />
+                <img src={Search} alt="search" className="w-5" />
               </span>
             </div>
           )}
           <div className="flex justify-center items-center">
             {width >= 768 && (
-              <Link to="/kids" className="text-sm">
+              <Link to="/kids" className="text-lg">
                 Kids
               </Link>
             )}
           </div>
           <div className="relative group flex justify-center items-center">
-            <Notifications style={{ fontSize: "18px" }} />
+            <img src={Bell} alt="notification" className="w-5" />
             <NotificationDropDown />
           </div>
 
