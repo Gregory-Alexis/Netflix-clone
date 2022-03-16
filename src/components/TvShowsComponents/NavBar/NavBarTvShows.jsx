@@ -142,10 +142,14 @@ const NavBarTvShows = () => {
                     <li className="pt-2">
                       <Link to="/latest">New and Popular</Link>
                     </li>
+                    <li className="pt-2 hover:text-gray-100 hover:underline">
+                      <Link to="/kids">Kids</Link>
+                    </li>
                     <div className="relative">
                       <li className="pt-2">
                         <Link to="/my-list">My List</Link>
                       </li>
+
                       {quantity > 0 && (
                         <div className="bg-red-700 rounded-full absolute h-4 w-4 top-1 -right-3 text-sm flex justify-center items-center text-white">
                           <span className="">{quantity}</span>
