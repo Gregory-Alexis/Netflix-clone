@@ -56,8 +56,8 @@ const NavBarTvShows = () => {
   };
 
   return (
-    <div className="navbar">
-      <div className="flex items-center justify-between px-3 md:px-8 xl:px-10">
+    <div>
+      <div className="flex items-center text-gray-100 py-2 justify-between px-3 md:px-8 xl:px-10">
         <div className="flex items-center ">
           <Link to="/home">
             <img
