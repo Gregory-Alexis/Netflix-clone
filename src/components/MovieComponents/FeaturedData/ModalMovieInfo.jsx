@@ -1,10 +1,13 @@
 import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setDetails } from "../../../redux/movieSlice/movieSlice";
 import ModalMovieTitle from "./ModalMovieTitle";
 
-const ModalMovieInfo = ({ featuredMovieData, details, dispatch }) => {
+const ModalMovieInfo = ({ featuredMovieData }) => {
+  const details = useSelector((state) => state.movieData.details);
+  const dispatch = useDispatch();
   const ref = useRef();
-
+  console.log(featuredMovieData);
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (details && ref.current && !ref.current.contains(e.target)) {
@@ -23,40 +26,48 @@ const ModalMovieInfo = ({ featuredMovieData, details, dispatch }) => {
     <>
       {details && (
         <div
-          data-aos="fade-zoom-in"
+          data-aos="fade-zoom-in "
           // baisse la clarté du fond lors lors de l'ouverture de la modal en cliquant sur "More Info" ====> voir index.css
-          className="backDrop"
+          className="modal backDrop"
           style={{
             background: "linear-gradient(to top, #141414 10%, transparent 20%)",
           }}
         >
-          <div ref={ref}>
+          <div ref={ref} className="mx-5">
             <div className="flex items-center">
               <ModalMovieTitle featuredMovieData={featuredMovieData} />
               <img
                 src={`https://image.tmdb.org/t/p/original${featuredMovieData.backdrop_path}`}
                 alt={featuredMovieData.original_title}
-                className="w-40 rounded-t-xl"
+                className="xl:w-40 rounded-t-xl"
               />
             </div>
 
-            <div className="p-10 flex bg-darknet flex-col w-40">
-              <div className="flex items-center  ">
-                <p className="text-green-400">
+            <div className="p-5 xl:p-10 flex bg-darknet flex-col xl:w-40">
+              <div className="flex items-center">
+                <p className="text-green-400 text-sm md:text-lg">
                   {featuredMovieData.vote_average} Points
                 </p>
-                <p className="text-gray-300 pl-3 pr-3">
+                <p className="text-gray-300 pl-3 pr-3 text-sm md:text-lg">
                   {featuredMovieData.release_date.slice(0, 4)}
                 </p>
-                <p className="text-gray-300  border border-gray-500 px-1 text-sm">
+                <p className="text-gray-300  border border-gray-500 px-1 text-xs md:text-lg">
                   Age+
+                </p>
+                <p className="text-gray-300 pl-3 text-sm md:text-lg">
+                  {featuredMovieData.number_of_seasons}
+                  <span className="pl-1">
+                    {featuredMovieData.number_of_seasons > 1
+                      ? "Seasons"
+                      : "Season"}
+                  </span>
                 </p>
                 <p className="border border-gray-500 text-gray-300 text-xs ml-3 px-2 rounded">
                   HD
                 </p>
               </div>
-              <div className="flex  justify-between">
-                <p className="w-20 text-gray-300 pt-4 leading-6">
+              <div className="flex justify-between">
+                <p className=" text-gray-300 pt-4 leading-6 w-3/4 text-xs md:text-lg">
                   {featuredMovieData.overview === ""
                     ? `Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sint quidem harum cupiditate a accusamus cum pariatur
@@ -65,10 +76,12 @@ const ModalMovieInfo = ({ featuredMovieData, details, dispatch }) => {
                     : featuredMovieData.overview}
                 </p>
                 <ul className="text-gray-300 pt-4 flex">
-                  <span className="text-gray-500">Genre:</span>
+                  <span className="text-gray-500 text-sm md:text-base">
+                    Genre:
+                  </span>
                   <div>
                     {featuredMovieData.genres.map((el) => (
-                      <li className="ml-3" key={el.id}>
+                      <li className="ml-3 text-sm md:text-base" key={el.id}>
                         {el.name.replace(" ", " ")}
                       </li>
                     ))}
