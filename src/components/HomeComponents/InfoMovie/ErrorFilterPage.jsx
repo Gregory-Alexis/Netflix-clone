@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 const ErrorFilterPage = () => {
   const search = useSelector((state) => state.homeData.search);
   return (
-    <div className="bg-darknet text-white flex items-center justify-center pt-48">
+    <div className="bg-darknet text-white flex items-center justify-center h-screen">
       <div>
         <p className="mb-4">
           Votre recherche pour "{search}" ne trouve aucune correspondance.
