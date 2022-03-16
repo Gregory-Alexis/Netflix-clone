@@ -1,9 +1,9 @@
-import { InfoOutlined } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setFeaturedDetails } from "../../../redux/homeSlice/homeSlice";
 import ModalInfo from "./ModalInfo";
 import Play from "../../../images/play.svg";
+import Info from "../../../images/info.svg";
 
 const InfoMovie = ({ featuredData }) => {
   const featuredDetails = useSelector(
@@ -44,7 +44,7 @@ const InfoMovie = ({ featuredData }) => {
               aria-label="plus d'info"
               className="infoButton"
             >
-              <InfoOutlined style={{ fontSize: "30px" }} />
+              <img src={Info} alt="info" className="xl:w-10" />
 
               <span
                 className="pl-4 font-semibold xl:text-4xl xl:py-2"
