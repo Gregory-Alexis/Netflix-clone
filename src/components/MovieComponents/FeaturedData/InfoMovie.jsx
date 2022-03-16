@@ -7,10 +7,10 @@ import ModalMovieInfo from "./ModalMovieInfo";
 const InfoMovie = ({ featuredMovieData }) => {
   const details = useSelector((state) => state.movieData.details);
   const dispatch = useDispatch();
-
+  console.log(featuredMovieData);
   return (
     <div
-      className="h-90 relative bg-cover bg-no-repeat flex items-center justify-center"
+      className="h-60 relative bg-cover bg-no-repeat flex items-center justify-center md:h-96 lg:h-70 xl:h-90"
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original${featuredMovieData.backdrop_path})`,
       }}
@@ -19,37 +19,38 @@ const InfoMovie = ({ featuredMovieData }) => {
         style={{
           background: "linear-gradient(to top, #141414 10%, transparent 20%)",
         }}
-        className="absolute w-full h-full mt-24"
+        className="w-full h-full mt-24 absolute"
       ></div>
-      <ModalMovieInfo
-        featuredMovieData={featuredMovieData}
-        details={details}
-        dispatch={dispatch}
-      />
-      <div className="w-full h-full flex flex-col justify-center ml-24 z-10">
-        <h1 className="movieTitle">{featuredMovieData.original_title}</h1>
-        <div className="flex">
-          <Link
-            to={`/movie-video/${featuredMovieData.id}`}
-            className="font-semibold playButton px-8"
-          >
-            <svg className="w-14 h-16">
-              <PlayArrow />
-            </svg>
-            Play
-          </Link>
 
-          <button type="button" aria-label="plus d'info" className="infoButton">
-            <svg className="w-10 h-10">
-              <InfoOutlined />
-            </svg>
-            <span
-              className="text-2xl px-4 font-semibold"
-              onClick={() => dispatch(setDetails(!details))}
+      <ModalMovieInfo featuredMovieData={featuredMovieData} />
+
+      <div className=" w-full flex flex-col justify-center px-3 z-10 md:px-8 xl:ml-24">
+        <div className="pt-20">
+          <h1 className="movieTitle">{featuredMovieData.title}</h1>
+          <div className="flex">
+            <Link
+              to={`/tv-video/${featuredMovieData.id}`}
+              className="playButton pl-5"
             >
-              More Info
-            </span>
-          </button>
+              <PlayArrow style={{ fontSize: "30px" }} />
+              <span className="ml-2 md:text-2xl xl:text-4xl">Play</span>
+            </Link>
+
+            <button
+              type="button"
+              aria-label="plus d'info"
+              className="infoButton"
+            >
+              <InfoOutlined style={{ fontSize: "30px" }} />
+
+              <span
+                className="pl-4 font-semibold xl:text-4xl xl:py-2"
+                onClick={() => dispatch(setDetails(!details))}
+              >
+                More Info
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
