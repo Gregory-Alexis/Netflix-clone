@@ -26,6 +26,7 @@ const Footer = () => {
         </div>
         <div className="flex-1 text-sm text-gray-400">
           <ul className="flex flex-wrap">
+            {/*Affiche les données du footer */}
             {footerData.map((item) => (
               <li className="w-2/4 md:w-1/4 my-2" key={item.id}>
                 <a href="!#" className="hover:underline">
@@ -36,6 +37,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+      {/*Lors d'un clique sur le bouton service code, affiche le numéro associé à chaque compte Netflix */}
       <button
         type="button"
         aria-label="service code"
