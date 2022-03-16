@@ -2,6 +2,7 @@ import { ArrowDropUp } from "@mui/icons-material";
 import { notifData } from "../../../notifData";
 
 const NotificationDropDown = () => {
+  // Composant qui affiche les notifications utilisateur
   return (
     <>
       <div className="NotificationDropdownContainer">
