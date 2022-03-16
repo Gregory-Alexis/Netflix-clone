@@ -1,4 +1,5 @@
-import { InfoOutlined, PlayArrow } from "@mui/icons-material";
+import Play from "../../../images/play.svg";
+import Info from "../../../images/info.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setDetails } from "../../../redux/tvShowsSlice/tvShowsSlice";
@@ -25,15 +26,15 @@ const InfoTvShows = ({ featuredTvShowsData }) => {
 
       <ModalTvShowsInfo featuredTvShowsData={featuredTvShowsData} />
 
-      <div className=" w-full flex flex-col justify-center px-3 z-10 md:px-8 xl:ml-24">
-        <div className="pt-20">
+      <div className="w-full flex flex-col justify-center ml-5 z-10 xl:ml-24">
+        <div>
           <h1 className="movieTitle">{featuredTvShowsData.name}</h1>
           <div className="flex">
             <Link
               to={`/tv-video/${featuredTvShowsData.id}`}
               className="playButton pl-5"
             >
-              <PlayArrow style={{ fontSize: "30px" }} />
+              <img src={Play} alt="play" className="w-8 xl:w-14" />
               <span className="ml-2 md:text-2xl xl:text-4xl">Play</span>
             </Link>
 
@@ -42,7 +43,7 @@ const InfoTvShows = ({ featuredTvShowsData }) => {
               aria-label="plus d'info"
               className="infoButton"
             >
-              <InfoOutlined style={{ fontSize: "30px" }} />
+              <img src={Info} alt="info" className="xl:w-10" />
 
               <span
                 className="pl-4 font-semibold xl:text-4xl xl:py-2"
