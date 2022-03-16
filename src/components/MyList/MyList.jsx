@@ -6,10 +6,10 @@ const MyList = () => {
   const myList = useSelector((state) => state.myListData.myList);
 
   return (
-    <div className="bg-darknet">
+    <div className="bg-darknet min-h-screen">
       <NavBar />
-      <h1 className="text-white pl-10 text-4xl pt-24">My List</h1>
-      <div className="h-screen flex flex-wrap pl-10">
+      <h1 className="text-white pl-10  pt-24 text-3xl xl:text-4xl">My List</h1>
+      <div className="flex pl-10 flex-wrap">
         {myList.map((item) => (
           <MyListItem
             id={item.id}
