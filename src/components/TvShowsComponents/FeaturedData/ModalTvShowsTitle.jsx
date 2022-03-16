@@ -2,7 +2,9 @@ import { ArrowDropDown } from "@mui/icons-material";
 import Circle from "../../../images/circle.svg";
 import Check from "../../../images/check.svg";
 import ThumbUp from "../../../images/thumbs-up.svg";
+import ThumbUpWhite from "../../../images/thumbs-up-white.svg";
 import ThumbDown from "../../../images/thumbs-down.svg";
+import ThumbDownWhite from "../../../images/thumbs-down-white.svg";
 import Play from "../../../images/play.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -10,13 +12,26 @@ import {
   addToList,
   removeToList,
 } from "../../../redux/myListSlice/myListSlice";
+import { setDisLike, setLike } from "../../../redux/homeSlice/homeSlice";
 
 const ModalTvShowsTitle = ({ featuredTvShowsData }) => {
   const dispatch = useDispatch();
+  const like = useSelector((state) => state.homeData.like);
+  const disLike = useSelector((state) => state.homeData.disLike);
   const myList = useSelector((state) => state.myListData.myList);
   const newList = myList.map((element) => {
     return element.id;
   });
+
+  const likeHandler = () => {
+    dispatch(setLike(!like));
+    dispatch(setDisLike(false));
+  };
+
+  const disLikeHandler = () => {
+    dispatch(setDisLike(!disLike));
+    dispatch(setLike(false));
+  };
 
   return (
     <div className="absolute mt-24 ml-5 xl:ml-10 xl:mt-56">
@@ -73,12 +88,17 @@ const ModalTvShowsTitle = ({ featuredTvShowsData }) => {
             <button
               type="button"
               className="iconesStyle borderThumbIcons ml-2 mb-2"
+              onClick={likeHandler}
             >
-              <img src={ThumbUp} alt="circle" className="w-7" />
+              <img
+                src={like ? ThumbUpWhite : ThumbUp}
+                alt="circle"
+                className="w-7"
+              />
             </button>
           </div>
           <div className="modalIcons text-xs w-36 -top-0 xl:top-3 xl:left-30 xl:ml-4 xl:w-44 xl:text-base">
-            <span>I like this</span>
+            {like ? <span>Rated</span> : <span>I like this</span>}
             <span className="absolute text-gray-200 flex left-8 ml-3 top-1 xl:top-3 xl:left-10">
               <ArrowDropDown style={{ fontSize: "65px" }} />
             </span>
@@ -90,12 +110,17 @@ const ModalTvShowsTitle = ({ featuredTvShowsData }) => {
             <button
               type="button"
               className="iconesStyle borderThumbIcons ml-2 mb-2"
+              onClick={disLikeHandler}
             >
-              <img src={ThumbDown} alt="circle" className="w-7" />
+              <img
+                src={disLike ? ThumbDownWhite : ThumbDown}
+                alt="circle"
+                className="w-7"
+              />
             </button>
           </div>
           <div className="modalIcons text-xs w-36 -top-0 left-46 ml-2 xl:top-3 xl:ml-4 xl:w-44 xl:text-base">
-            <span>Not for me</span>
+            {disLike ? <span>Rated</span> : <span>Not for me</span>}
             <span className="absolute text-gray-200 flex left-8 ml-3 top-1 xl:top-3 xl:left-10">
               <ArrowDropDown style={{ fontSize: "65px" }} />
             </span>
