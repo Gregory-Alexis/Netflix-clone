@@ -29,7 +29,7 @@ const SubNavBarTvShows = () => {
       <div className="relative flex items-center">
         <h1 className=" font-semibold text-white xl:text-4xl">TV SHOWS</h1>
 
-        <div className="flex-1 ml-16">
+        <div className="flex-1 ml-10">
           <select
             className="bg-darknet bg-opacity-90 text-white flex flex-col flex-wrap border p-2 border-white hover:bg-transparent text-xs w-24 lg:text-base xl:w-32"
             value={filter}
