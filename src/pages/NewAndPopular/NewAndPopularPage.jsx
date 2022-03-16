@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/Footer/Footer";
-import NavBar from "../../components/HomeComponents/NavBar/NavBar";
 import Loading from "../../components/Loading/Loading";
 import ErrorFilterMoviePage from "../../components/MovieComponents/FeaturedData/ErrorMovieFilterPage";
 import NapRow from "../../components/NewAndPoPularComponents/NapRow/NapRow";
+import NavBarNaP from "../../components/NewAndPoPularComponents/NavBarNaP/NavBarNaP";
 import getTopRatedList from "../../newAndPopular";
+import { setError, setLoading } from "../../redux/homeSlice/homeSlice";
 
 const NewAndPopularPage = () => {
-  const [active, setActive] = useState(false);
-  const [filter, setFilter] = useState("all");
-  const [NaPdata, setNaPdata] = useState([]);
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const search = useSelector((state) => state.homeData.search);
+  const loading = useSelector((state) => state.homeData.loading);
+  const error = useSelector((state) => state.homeData.error);
+  const dispatch = useDispatch();
 
-  const activeHandler = () => {
-    setActive(!active);
-  };
+  const [NaPdata, setNaPdata] = useState([]);
 
   const newFeaturedData = NaPdata.filter((item) => {
     const filteredMovie = [];
@@ -34,7 +31,7 @@ const NewAndPopularPage = () => {
   });
 
   useEffect(() => {
-    setLoading(true);
+    dispatch(setLoading(true));
 
     const fetchData = async () => {
       try {
@@ -42,14 +39,14 @@ const NewAndPopularPage = () => {
 
         setNaPdata(result);
 
-        setLoading(false);
+        dispatch(setLoading(false));
       } catch (err) {
-        setError(err.message);
+        dispatch(setError(err.message));
       }
     };
 
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   const filterMovie = newFeaturedData.toString().toLocaleLowerCase();
 
@@ -57,15 +54,7 @@ const NewAndPopularPage = () => {
     <div className="bg-darknet min-h-screen">
       {loading && <Loading />}
       {error && <p>{error}</p>}
-      <NavBar
-        activeHandler={activeHandler}
-        active={active}
-        setActive={setActive}
-        filter={filter}
-        setFilter={setFilter}
-        search={search}
-        setSearch={setSearch}
-      />
+      <NavBarNaP />
       {!filterMovie ? (
         <ErrorFilterMoviePage search={search} />
       ) : (
