@@ -126,7 +126,7 @@ const NavBarMovie = () => {
               </div>
 
               <div
-                className="absolute right-0 -left-14 border-t border-t-gray-100 mt-2 w-56 invisible group-hover:visible transition-all duration-200 ease-in-out"
+                className="absolute z-30 right-0 -left-14 border-t border-t-gray-100 mt-2 w-56 invisible group-hover:visible transition-all duration-200 ease-in-out"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
@@ -152,6 +152,9 @@ const NavBarMovie = () => {
                     <div className="relative">
                       <li className="pt-2">
                         <Link to="/my-list">My List</Link>
+                      </li>
+                      <li className="pt-2 hover:text-gray-100 hover:underline">
+                        <Link to="/kids">Kids</Link>
                       </li>
                       {quantity > 0 && (
                         <div className="bg-red-700 rounded-full absolute h-4 w-4 top-1 -right-3 text-sm flex justify-center items-center text-white">
