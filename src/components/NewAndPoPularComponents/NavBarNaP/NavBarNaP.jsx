@@ -134,7 +134,7 @@ const NavBarNaP = () => {
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
-                tabindex="-1"
+                tabIndex="-1"
               >
                 <div
                   className="py-1 bg-darknet text-gray-400 bg-opacity-95 "
