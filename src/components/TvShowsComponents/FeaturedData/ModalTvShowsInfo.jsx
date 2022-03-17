@@ -21,7 +21,7 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
   }, [details, dispatch]);
-  console.log(featuredTvShowsData);
+
   return (
     <>
       {details && (

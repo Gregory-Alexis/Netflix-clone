@@ -26,7 +26,6 @@ const KidsVideo = () => {
           `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${process.env.REACT_APP_MOVIE_API}&language=fr-Fr`
         );
         dispatch(setKidsData(result.data.results.slice(0, 1)));
-        console.log(result);
       } catch (err) {
         dispatch(setError(err.message));
       }

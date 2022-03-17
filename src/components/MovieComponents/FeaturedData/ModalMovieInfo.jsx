@@ -7,7 +7,7 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
   const details = useSelector((state) => state.movieData.details);
   const dispatch = useDispatch();
   const ref = useRef();
-  console.log(featuredMovieData);
+
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (details && ref.current && !ref.current.contains(e.target)) {
@@ -21,7 +21,7 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
   }, [details, dispatch]);
-  console.log(featuredMovieData);
+
   return (
     <>
       {details && (
