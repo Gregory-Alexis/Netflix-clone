@@ -64,7 +64,7 @@ const NavBarKids = () => {
       className={isHomeScrolled ? "navbar scrolledIn" : "navbar scrolledOut"}
     >
       <div className="flex items-center justify-between px-5 md:px-8 xl:px-10">
-        <div className="flex items-center ">
+        <div className="flex items-center relative">
           <Link to="/home">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
@@ -87,16 +87,15 @@ const NavBarKids = () => {
               <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
                 <Link to="/latest">New and Popular</Link>
               </li>
-              <div className="relative">
-                <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
-                  <Link to="/my-list">My List</Link>
-                </li>
-                {quantity > 0 && (
-                  <div className="bg-red-700 rounded-full absolute h-5 w-5 -top-3 right-1 text-sm flex justify-center items-center">
-                    <span className="">{quantity}</span>
-                  </div>
-                )}
-              </div>
+
+              <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
+                <Link to="/my-list">My List</Link>
+              </li>
+              {quantity > 0 && (
+                <div className="bg-red-700 rounded-full absolute h-5 w-5 -top-3 right-1 text-sm flex justify-center items-center">
+                  <span className="">{quantity}</span>
+                </div>
+              )}
             </ul>
           ) : (
             <div class="relative inline-block text-center group">
