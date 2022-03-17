@@ -427,7 +427,6 @@ text-gray-100
 
   .moviePosterStyle {
     @apply
-    w-10/12
     h-full
     hover:scale-110 
     transition-all 
