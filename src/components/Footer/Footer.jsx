@@ -8,21 +8,28 @@ const Footer = () => {
     <div className="mx-5">
       <div className="pt-24 flex flex-col md:mx-8 xl:mx-96 xl:pt-48">
         <div className="text-white pb-4">
-          <a href="https://www.facebook.com/netflixfrance" className="mr-6">
-            <Facebook />
-          </a>
-
-          <a href="https://www.instagram.com/NetflixFR/" className="mr-6">
-            <Instagram />
-          </a>
-
-          <a href="https://twitter.com/NetflixFR" className="mr-6">
-            <Twitter />
-          </a>
-
-          <a href="https://www.youtube.com/user/netflixfrance" className="mr-6">
-            <YouTube />
-          </a>
+          <ul className="flex">
+            <li className="mr-6">
+              <a href="https://www.facebook.com/netflixfrance">
+                <Facebook />
+              </a>
+            </li>
+            <li className="mr-6">
+              <a href="https://www.instagram.com/NetflixFR/">
+                <Instagram />
+              </a>
+            </li>
+            <li className="mr-6">
+              <a href="https://twitter.com/NetflixFR">
+                <Twitter />
+              </a>
+            </li>
+            <li className="mr-6">
+              <a href="https://www.youtube.com/user/netflixfrance">
+                <YouTube />
+              </a>
+            </li>
+          </ul>
         </div>
         <div className="flex-1 text-sm text-gray-400">
           <ul className="flex flex-wrap">
