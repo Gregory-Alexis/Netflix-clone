@@ -43,8 +43,8 @@ const ModalTitle = ({ featuredData }) => {
       </h1>
       <div className="flex">
         <div className="playButtonModal mb-1 xl:py-2">
-          <img src={Play} alt="play" className="w-10" />
-          {/*Redirige vers un lien vidéo correspondant au film ou à la série sélectionné */}
+          <img src={Play} alt="play" width="28" height="28" />
+          {/*Redirige vers un lien vidéo correspondant au film ou à la série sélectionné, si la vidéo n'existe pas, un message apparaîtra */}
           <Link to={`/tv-video/${featuredData.id}`}>Play</Link>
         </div>
         <div className="group flex items-center justify-center">
@@ -56,7 +56,7 @@ const ModalTitle = ({ featuredData }) => {
                 className="iconesStyle ml-1  border-gray-200"
                 onClick={() => dispatch(removeToList(featuredData.id))}
               >
-                <img src={Check} alt="check" className="w-10 " />
+                <img src={Check} alt="check" width="36" height="36" />
               </button>
             ) : (
               <button
@@ -72,7 +72,7 @@ const ModalTitle = ({ featuredData }) => {
                   )
                 }
               >
-                <img src={Circle} alt="circle" className="w-10 " />
+                <img src={Circle} alt="circle" width="36" height="36" />
               </button>
             )}
           </div>
@@ -100,7 +100,7 @@ const ModalTitle = ({ featuredData }) => {
               <img
                 src={like ? ThumbUpWhite : ThumbUp}
                 alt="circle"
-                className="w-7"
+                width="24"
               />
             </button>
           </div>
@@ -124,7 +124,7 @@ const ModalTitle = ({ featuredData }) => {
               <img
                 src={disLike ? ThumbDownWhite : ThumbDown}
                 alt="circle"
-                className="w-7"
+                width="24"
               />
             </button>
           </div>

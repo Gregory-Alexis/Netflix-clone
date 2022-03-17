@@ -33,7 +33,7 @@ const InfoTvKids = ({ featuredKidsData }) => {
               to={`/tv-video/${featuredKidsData.id}`}
               className="playButton pl-5"
             >
-              <img src={Play} alt="play" className="w-8 xl:w-14" />
+              <img src={Play} alt="play" className="xl:w-14" width="28" />
               <span className="ml-2 md:text-2xl xl:text-4xl">Play</span>
             </Link>
 
@@ -42,7 +42,7 @@ const InfoTvKids = ({ featuredKidsData }) => {
               aria-label="plus d'info"
               className="infoButton"
             >
-              <img src={Info} alt="info" className="xl:w-10" />
+              <img src={Info} alt="info" className="xl:w-10" width="20" />
 
               <span
                 className="pl-4 font-semibold xl:text-4xl xl:py-2"

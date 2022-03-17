@@ -35,12 +35,12 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
 
   return (
     <div className="absolute mt-24 ml-5 xl:ml-10 xl:mt-56">
-      <h1 className="text-white mb-5 text-xl md:text-2xl lg:text-3xl xl:w-40 xl:text-5xl xl:mb-5">
-        {featuredMovieData.original_title}
+      <h1 className=" text-white mb-5 text-lg md:text-2xl lg:text-3xl xl:w-40 xl:text-5xl xl:mb-5">
+        {featuredMovieData.title}
       </h1>
       <div className="flex">
         <div className="playButtonModal mb-1 xl:py-2">
-          <img src={Play} alt="play" className="w-10" />
+          <img src={Play} alt="play" width="28" />
           <Link to={`/tv-video/${featuredMovieData.id}`}>Play</Link>
         </div>
         <div className="group flex items-center justify-center">
@@ -51,7 +51,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
                 className="iconesStyle ml-1  border-gray-200"
                 onClick={() => dispatch(removeToList(featuredMovieData.id))}
               >
-                <img src={Check} alt="check" className="w-10 " />
+                <img src={Check} alt="check" width="36" />
               </button>
             ) : (
               <button
@@ -67,7 +67,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
                   )
                 }
               >
-                <img src={Circle} alt="circle" className="w-10 " />
+                <img src={Circle} alt="circle" width="36" />
               </button>
             )}
           </div>
@@ -93,7 +93,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
               <img
                 src={like ? ThumbUpWhite : ThumbUp}
                 alt="circle"
-                className="w-7"
+                width="24"
               />
             </button>
           </div>
@@ -115,7 +115,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
               <img
                 src={disLike ? ThumbDownWhite : ThumbDown}
                 alt="circle"
-                className="w-7"
+                width="24"
               />
             </button>
           </div>

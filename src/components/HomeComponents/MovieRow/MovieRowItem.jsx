@@ -36,7 +36,7 @@ const MovieRowItem = ({ title, url }) => {
       <div className="relative group">
         {/*style qui prendra en charge la largeur parcouru du slide lors du clique sur la flèche */}
         <div
-          className="flex transition duration-500 ease-in-out pl-3 md:pt-4 md:pl-8 md:space-x-10 lg:space-x-2 xl:space-x-4"
+          className="flex transition duration-500 ease-in-out pl-3 space-x-2 md:pt-4 md:pl-8 md:space-x-10 lg:space-x-2 xl:space-x-4"
           style={{
             transform: `translateX(${
               width >= 1024 ? index * -59 : index * -98
@@ -50,6 +50,7 @@ const MovieRowItem = ({ title, url }) => {
                 src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
                 alt={el.original_title}
                 className="moviePosterStyle mr-32 xl:mr-48"
+                width="120"
                 key={el.id}
               />
             </Link>

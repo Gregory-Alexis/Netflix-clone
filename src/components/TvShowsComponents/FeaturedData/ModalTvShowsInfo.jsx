@@ -40,6 +40,7 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
                 src={`https://image.tmdb.org/t/p/original${featuredTvShowsData.backdrop_path}`}
                 alt={featuredTvShowsData.original_title}
                 className="xl:w-40 rounded-t-xl"
+                width="400"
               />
             </div>
 

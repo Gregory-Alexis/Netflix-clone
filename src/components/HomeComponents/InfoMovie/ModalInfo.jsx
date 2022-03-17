@@ -43,6 +43,8 @@ const ModelInfo = ({ featuredData }) => {
                 src={`https://image.tmdb.org/t/p/original${featuredData.backdrop_path}`}
                 alt={featuredData.original_title}
                 className="xl:w-40 rounded-t-xl"
+                width="400"
+                height="100"
               />
             </div>
 

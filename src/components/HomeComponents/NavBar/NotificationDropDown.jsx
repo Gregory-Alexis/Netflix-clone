@@ -15,7 +15,7 @@ const NotificationDropDown = () => {
           <ul className="overflow-auto h-70 cursor-pointer">
             {notifData.map((el) => (
               <li className="dropdownLinkNotif" key={el.subtitle}>
-                <img src={el.img} alt="notifications" className="h-16" />
+                <img src={el.img} alt="notifications" width="100" />
                 <div className="ml-5 hover:text-white w-full h-full">
                   <h1>{el.title}</h1>
                   <p>{el.subtitle}</p>

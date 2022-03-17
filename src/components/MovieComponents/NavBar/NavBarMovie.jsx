@@ -72,7 +72,8 @@ const NavBarMovie = () => {
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
               alt="Netflix"
-              className="w-12 md:w-24"
+              className="md:w-24"
+              width="48"
             />
           </Link>
           {width >= 1024 ? (
@@ -197,7 +198,7 @@ const NavBarMovie = () => {
                 className="absolute  top-0 bottom-0 flex items-center pl-5"
                 onClick={() => dispatch(setActive(!isActive))}
               >
-                <img src={Search} alt="search" className="w-5" />
+                <img src={Search} alt="search" width="24" />
               </span>
             </div>
           )}
@@ -209,7 +210,7 @@ const NavBarMovie = () => {
             )}
           </div>
           <div className="relative group flex justify-center items-center">
-            <img src={Bell} alt="notification" className="w-5" />
+            <img src={Bell} alt="notification" width="20" />
             <NotificationDropDown />
           </div>
 
@@ -218,7 +219,8 @@ const NavBarMovie = () => {
               <img
                 src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
                 alt="profile"
-                className="w-10 h-10 rounded object-cover"
+                className="h-10 rounded object-cover"
+                width="40"
               />
               {width >= 1024 && (
                 <span className="group-hover:rotate-180 transiton duration-500">

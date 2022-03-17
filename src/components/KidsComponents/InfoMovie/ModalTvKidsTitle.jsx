@@ -40,7 +40,7 @@ const ModalTvKidsTitle = ({ featuredKidsData }) => {
       </h1>
       <div className="flex">
         <div className="playButtonModal mb-1 xl:py-2">
-          <img src={Play} alt="play" className="w-10" />
+          <img src={Play} alt="play" width="28" />
           <Link to={`/tv-video/${featuredKidsData.id}`}>Play</Link>
         </div>
         <div className="group flex items-center justify-center">
@@ -51,7 +51,7 @@ const ModalTvKidsTitle = ({ featuredKidsData }) => {
                 className="iconesStyle ml-1  border-gray-200"
                 onClick={() => dispatch(removeToList(featuredKidsData.id))}
               >
-                <img src={Check} alt="check" className="w-10 " />
+                <img src={Check} alt="check" width="36" />
               </button>
             ) : (
               <button
@@ -67,7 +67,7 @@ const ModalTvKidsTitle = ({ featuredKidsData }) => {
                   )
                 }
               >
-                <img src={Circle} alt="circle" className="w-10 " />
+                <img src={Circle} alt="circle" width="36" />
               </button>
             )}
           </div>
@@ -93,7 +93,7 @@ const ModalTvKidsTitle = ({ featuredKidsData }) => {
               <img
                 src={like ? ThumbUpWhite : ThumbUp}
                 alt="circle"
-                className="w-7"
+                width="24"
               />
             </button>
           </div>
@@ -115,7 +115,7 @@ const ModalTvKidsTitle = ({ featuredKidsData }) => {
               <img
                 src={disLike ? ThumbDownWhite : ThumbDown}
                 alt="circle"
-                className="w-7"
+                width="24"
               />
             </button>
           </div>

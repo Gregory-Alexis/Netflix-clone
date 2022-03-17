@@ -80,7 +80,8 @@ const NavBar = () => {
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
               alt="Netflix"
-              className="w-12 md:w-24"
+              className="md:w-24"
+              width="48"
             />
           </Link>
           {/*Ici, "width" prend en charge l'apparence de la navbar selon la taille de la page */}
@@ -209,7 +210,7 @@ const NavBar = () => {
                 className="absolute  top-0 bottom-0 flex items-center pl-5"
                 onClick={() => dispatch(setActive(!isInputActive))}
               >
-                <img src={Search} alt="search" className="w-5" />
+                <img src={Search} alt="search" width="24" />
               </span>
             </div>
           )}
@@ -227,7 +228,7 @@ const NavBar = () => {
           voir composant "NotificationDropDown"
            */}
           <div className="relative group flex justify-center items-center">
-            <img src={Bell} alt="notification" className="w-5" />
+            <img src={Bell} alt="notification" width="20" />
             <NotificationDropDown />
           </div>
 
@@ -236,7 +237,8 @@ const NavBar = () => {
               <img
                 src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
                 alt="profile"
-                className="w-10 h-10 rounded object-cover"
+                className="h-9 rounded object-cover"
+                width="40"
               />
               {/*En dessous de 1024px, la petite flêche situé à coté de la photo de profil ne sera pas visible */}
               {width >= 1024 && (

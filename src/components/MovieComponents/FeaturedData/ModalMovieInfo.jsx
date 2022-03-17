@@ -40,6 +40,7 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
                 src={`https://image.tmdb.org/t/p/original${featuredMovieData.backdrop_path}`}
                 alt={featuredMovieData.original_title}
                 className="xl:w-40 rounded-t-xl"
+                width="400"
               />
             </div>
 

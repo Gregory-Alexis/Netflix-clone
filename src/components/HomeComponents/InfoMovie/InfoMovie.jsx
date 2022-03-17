@@ -36,7 +36,13 @@ const InfoMovie = ({ featuredData }) => {
               to={`/tv-video/${featuredData.id}`}
               className="playButton pl-5"
             >
-              <img src={Play} alt="play" className="w-8 xl:w-14" />
+              <img
+                src={Play}
+                alt="play"
+                className="xl:w-14"
+                width="24"
+                height="24"
+              />
               <span className="ml-2 md:text-2xl xl:text-4xl">Play</span>
             </Link>
 
@@ -45,7 +51,13 @@ const InfoMovie = ({ featuredData }) => {
               aria-label="plus d'info"
               className="infoButton"
             >
-              <img src={Info} alt="info" className="xl:w-10" />
+              <img
+                src={Info}
+                alt="info"
+                className="xl:w-10"
+                width="16"
+                height="16"
+              />
 
               <span
                 className="pl-4 font-semibold xl:text-4xl xl:py-2"

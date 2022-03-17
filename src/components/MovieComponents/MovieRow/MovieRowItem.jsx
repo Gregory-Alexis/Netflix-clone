@@ -35,7 +35,7 @@ const MovieRowItem = ({ title, url }) => {
 
       <div className="relative group">
         <div
-          className="flex transition duration-500 ease-in-out pl-3 md:pt-4 md:pl-8 md:space-x-10 lg:space-x-2 xl:space-x-4"
+          className="flex transition duration-500 space-x-2 ease-in-out pl-3 md:pt-4 md:pl-8 md:space-x-10 lg:space-x-2 xl:space-x-4"
           style={{
             transform: `translateX(${
               width >= 1024 ? index * -59 : index * -98
@@ -49,6 +49,7 @@ const MovieRowItem = ({ title, url }) => {
                 alt={el.original_title}
                 className="moviePosterStyle mr-32 xl:mr-48"
                 key={el.id}
+                width="120"
               />
             </Link>
           ))}
