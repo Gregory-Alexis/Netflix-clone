@@ -52,7 +52,7 @@ const MovieRowItem = ({ title, url }) => {
             <Link to={`/movie-video/${el.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
-                alt={el.original_title}
+                alt={el.title}
                 className="moviePosterStyle mr-32 xl:mr-48"
                 width="120"
                 key={el.id}

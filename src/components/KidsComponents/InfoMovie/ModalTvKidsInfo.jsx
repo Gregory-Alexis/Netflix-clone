@@ -38,7 +38,7 @@ const ModalTvKidsInfo = ({ featuredKidsData }) => {
               <ModalTvKidsTitle featuredKidsData={featuredKidsData} />
               <img
                 src={`https://image.tmdb.org/t/p/original${featuredKidsData.backdrop_path}`}
-                alt={featuredKidsData.original_title}
+                alt={featuredKidsData.name}
                 className="xl:w-40 rounded-t-xl"
                 width="400"
               />

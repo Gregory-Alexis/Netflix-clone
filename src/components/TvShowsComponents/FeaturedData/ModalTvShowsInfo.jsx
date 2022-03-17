@@ -21,7 +21,7 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
   }, [details, dispatch]);
-
+  console.log(featuredTvShowsData);
   return (
     <>
       {details && (
@@ -38,7 +38,7 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
               <ModalTvShowsTitle featuredTvShowsData={featuredTvShowsData} />
               <img
                 src={`https://image.tmdb.org/t/p/original${featuredTvShowsData.backdrop_path}`}
-                alt={featuredTvShowsData.original_title}
+                alt={featuredTvShowsData.name}
                 className="xl:w-40 rounded-t-xl"
                 width="400"
               />
@@ -83,7 +83,7 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
                   <div>
                     {featuredTvShowsData.genres.map((el) => (
                       <li className="ml-3 text-sm md:text-base" key={el.id}>
-                        {el.name.replace(" ", " ")}
+                        {el.name}
                       </li>
                     ))}
                   </div>

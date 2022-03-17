@@ -21,7 +21,7 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
   }, [details, dispatch]);
-
+  console.log(featuredMovieData);
   return (
     <>
       {details && (
@@ -38,7 +38,7 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
               <ModalMovieTitle featuredMovieData={featuredMovieData} />
               <img
                 src={`https://image.tmdb.org/t/p/original${featuredMovieData.backdrop_path}`}
-                alt={featuredMovieData.original_title}
+                alt={featuredMovieData.title}
                 className="xl:w-40 rounded-t-xl"
                 width="400"
               />

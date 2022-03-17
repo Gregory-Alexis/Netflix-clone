@@ -41,7 +41,7 @@ const ModelInfo = ({ featuredData }) => {
               <ModalTitle featuredData={featuredData} />
               <img
                 src={`https://image.tmdb.org/t/p/original${featuredData.backdrop_path}`}
-                alt={featuredData.original_title}
+                alt={featuredData.name}
                 className="xl:w-40 rounded-t-xl"
                 width="400"
                 height="100"
