@@ -83,7 +83,7 @@ const ModalTvKidsInfo = ({ featuredKidsData }) => {
                   <div>
                     {featuredKidsData.genres.map((el) => (
                       <li className="ml-3 text-sm md:text-base" key={el.id}>
-                        {el.name.replace(" ", " ")}
+                        {el.name}
                       </li>
                     ))}
                   </div>
