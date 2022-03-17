@@ -37,11 +37,7 @@ const InfoMovie = ({ featuredMovieData }) => {
               <span className="ml-2 md:text-2xl xl:text-4xl">Play</span>
             </Link>
 
-            <button
-              type="button"
-              aria-label="plus d'info"
-              className="infoButton"
-            >
+            <button type="button" aria-label="more info" className="infoButton">
               <img src={Info} alt="info" className="xl:w-10" width="20" />
 
               <span

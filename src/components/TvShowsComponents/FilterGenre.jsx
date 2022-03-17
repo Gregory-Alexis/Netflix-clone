@@ -37,6 +37,7 @@ const FilterGenre = ({
         <div className="flex-1 ml-16" ref={ref}>
           <button
             type="button"
+            aria-label="show all genres"
             className="bg-darknet text-white border border-white w-32 py-1 text-xl font-medium mr-4 flex items-center justify-center hover:bg-button"
             onClick={activeHandler}
           >

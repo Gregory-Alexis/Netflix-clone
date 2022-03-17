@@ -54,6 +54,7 @@ const SubNavBarTvShowsSuggestion = () => {
                 >
                   <button
                     type="button"
+                    aria-label="grid view"
                     className="inline-flex justify-center w-full text-sm font-medium text-gray-100"
                     id="menu-button"
                     aria-expanded="true"

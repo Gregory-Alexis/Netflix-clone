@@ -48,6 +48,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
             {newList.includes(featuredMovieData.id) ? (
               <button
                 type="button"
+                aria-label="remove to my list"
                 className="iconesStyle ml-1  border-gray-200"
                 onClick={() => dispatch(removeToList(featuredMovieData.id))}
               >
@@ -56,6 +57,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
             ) : (
               <button
                 type="button"
+                aria-label="add to my list"
                 className="iconesStyle ml-1"
                 onClick={() =>
                   dispatch(
@@ -87,6 +89,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
           <div className="relative">
             <button
               type="button"
+              aria-label="like"
               className="iconesStyle borderThumbIcons ml-2 mb-2"
               onClick={likeHandler}
             >
@@ -109,6 +112,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
           <div className="relative">
             <button
               type="button"
+              aria-label="dislike"
               className="iconesStyle borderThumbIcons ml-2 mb-2"
               onClick={disLikeHandler}
             >

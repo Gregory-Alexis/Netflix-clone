@@ -99,6 +99,7 @@ const NavBarTvShows = () => {
               <div>
                 <button
                   type="button"
+                  aria-label="browse pages"
                   className="inline-flex justify-center w-full text-sm font-medium text-gray-100 ml-4 py-2"
                   id="menu-button"
                   aria-expanded="true"

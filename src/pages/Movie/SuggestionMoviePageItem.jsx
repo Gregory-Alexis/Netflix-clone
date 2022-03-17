@@ -45,7 +45,7 @@ const SuggestionMoviePageItem = ({ url, title }) => {
         {index > 0 && (
           <button
             type="button"
-            aria-label="clique gauche"
+            aria-label="left slide"
             className="absolute top-0 bottom-0 flex items-center justify-center text-white hover:scale-125 backdrop-brightness-75 opacity-0 group-hover:opacity-100 transition duration-100 ease-in-out"
             onClick={() => indexHandler("left")}
           >
@@ -55,7 +55,7 @@ const SuggestionMoviePageItem = ({ url, title }) => {
 
         <button
           type="button"
-          aria-label="clique droit"
+          aria-label="right slide"
           className="absolute top-0 bottom-0 right-0 flex items-center justify-center text-white hover:scale-125 bg-darknet bg-opacity-60 opacity-0 group-hover:opacity-100 transition duration-100 ease-in-out"
           onClick={() => indexHandler("right")}
         >

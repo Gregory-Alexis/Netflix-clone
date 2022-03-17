@@ -5,7 +5,11 @@ const MyListItem = ({ id, poster, name }) => {
   const dispatch = useDispatch();
   return (
     <div className="mt-5 h-full mr-5 relative xl:w-48">
-      <button type="button" onClick={() => dispatch(removeToList(id))}>
+      <button
+        type="button"
+        aria-label="remove to my list"
+        onClick={() => dispatch(removeToList(id))}
+      >
         <img
           src={`https://image.tmdb.org/t/p/original${poster}`}
           alt={name}
