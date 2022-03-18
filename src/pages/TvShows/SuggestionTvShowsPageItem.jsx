@@ -32,7 +32,7 @@ const SuggestionTvShowsPageItem = ({ url, title }) => {
           {url.data.results.map((el) => (
             <Link to={`/tv-video/${el.id}`}>
               <img
-                src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
+                src={`https://image.tmdb.org/t/p/original/${el.poster_path}`}
                 alt={el.name}
                 className="moviePosterStyle mr-32 xl:mr-48"
                 key={el.id}
