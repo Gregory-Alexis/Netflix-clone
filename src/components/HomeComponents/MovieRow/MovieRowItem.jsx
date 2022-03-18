@@ -49,7 +49,7 @@ const MovieRowItem = ({ title, url }) => {
         >
           {/*Redirige vers un lien vidéo du film sélectionné */}
           {url.data.results.map((el) => (
-            <Link to={`/movie-video/${el.id}`} key={el.id}>
+            <Link to={`/movie-details/${el.id}`} key={el.id}>
               <img
                 src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
                 alt={el.poster_path}
