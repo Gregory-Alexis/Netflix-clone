@@ -42,11 +42,11 @@ const Video = () => {
       )}
       <div className="bg-darknet min-h-screen">
         {movieData.map((el) => (
-          <div className="bg-darknet min-h-screen text-white">
+          <div className="bg-darknet text-white">
             <iframe
               src={`https://www.youtube.com/embed/${el.key}`}
               title="video"
-              className="w-full h-screen"
+              className="w-full min-h-screen"
             ></iframe>
           </div>
         ))}
