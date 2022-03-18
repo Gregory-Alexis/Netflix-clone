@@ -37,7 +37,7 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
             <div className="flex items-center">
               <ModalTvShowsTitle featuredTvShowsData={featuredTvShowsData} />
               <img
-                src={`https://image.tmdb.org/t/p/original${featuredTvShowsData.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/original/${featuredTvShowsData.backdrop_path}`}
                 alt={featuredTvShowsData.name}
                 className="xl:w-40 rounded-t-xl"
                 width="400"
