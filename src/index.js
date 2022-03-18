@@ -18,6 +18,7 @@ import TvShowsVideo from "./pages/Video/TvShowsVideo";
 import Home from "./pages/Home/Home";
 import KidsVideo from "./pages/Video/KidsVideo";
 import MovieDetails from "./pages/MovieDetails/MovieDetails";
+import TvDetails from "./pages/TvDetails/TvDetails";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -36,6 +37,7 @@ ReactDOM.render(
         <Route path="/tv-video/:id" element={<TvShowsVideo />} />
         <Route path="/tv-kids/:id" element={<KidsVideo />} />
         <Route path="/movie-details/:id" element={<MovieDetails />} />
+        <Route path="/tv-details/:id" element={<TvDetails />} />
       </Routes>
     </Provider>
   </BrowserRouter>,
