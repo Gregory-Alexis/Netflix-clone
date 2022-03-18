@@ -40,13 +40,14 @@ const Video = () => {
           Désolé, nous n'avons pas encore cette vidéo dans notre catalogue.
         </p>
       )}
-      <div className="bg-darknet min-h-screen">
+      <div className="bg-darknet h-screen max-w-96">
         {movieData.map((el) => (
           <div className="bg-darknet text-white">
             <iframe
               src={`https://www.youtube.com/embed/${el.key}`}
               title="video"
-              className="w-full min-h-screen"
+              className="absolute left-0 right-0 top-0 bottom-0 w-full h-96 m-auto lg:h-3/4 xl:h-screen"
+              allowFullScreen
             ></iframe>
           </div>
         ))}
