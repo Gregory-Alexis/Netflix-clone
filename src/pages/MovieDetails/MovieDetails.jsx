@@ -6,6 +6,7 @@ import Loading from "../../components/Loading/Loading";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/HomeComponents/NavBar/NavBar";
 import { Link } from "react-router-dom";
+import { addToList } from "../../redux/myListSlice/myListSlice";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -67,6 +68,20 @@ const MovieDetails = () => {
             Watch Trailer
           </button>
         </Link>
+        <button
+          className="border hover:bg-gray-500 text-gray-100 px-11 py-2 mb-2 rounded-md text-lg"
+          onClick={() =>
+            dispatch(
+              addToList({
+                poster: movieDetails.poster_path,
+                name: movieDetails.original_name,
+                id: movieDetails.id,
+              })
+            )
+          }
+        >
+          Add to my List
+        </button>
       </div>
     </>
   );
