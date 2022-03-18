@@ -41,7 +41,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
       <div className="flex">
         <div className="playButtonModal mb-1 xl:py-2">
           <img src={Play} alt="play" width="28" />
-          <Link to={`/tv-video/${featuredMovieData.id}`}>Play</Link>
+          <Link to={`/movie-video/${featuredMovieData.id}`}>Play</Link>
         </div>
         <div className="group flex items-center justify-center">
           <div className="relative">
