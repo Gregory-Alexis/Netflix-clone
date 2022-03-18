@@ -13,7 +13,7 @@ const TvShowsRowItem = ({ title, url }) => {
     } else if (direction === "right" && width < 768) {
       setIndex(index < 6 ? index + 1 : 0);
     } else if (direction === "right" && width >= 768 && width < 1024) {
-      setIndex(index < 6 ? index + 1 : 0);
+      setIndex(index < 3 ? index + 1 : 0);
     } else {
       setIndex(index < 2 ? index + 1 : 0);
     }
@@ -39,15 +39,15 @@ const TvShowsRowItem = ({ title, url }) => {
 
       <div className="relative group">
         <div
-          className="flex transition duration-500 ease-in-out space-x-2 pl-3 md:pt-4 md:pl-8 md:space-x-10 lg:space-x-2 xl:space-x-4"
+          className="flex transition duration-500 ease-in-out pl-3 space-x-2 md:pt-4 md:pl-8 md:space-x-5 lg:space-x-2 xl:space-x-7"
           style={{
             transform: `translateX(${
-              width >= 1024 ? index * -59 : index * -98
+              width >= 1024 ? index * -100 : index * -98
             }vw )`,
           }}
         >
           {url.data.results.map((el) => (
-            <Link to={`/tv-video/${el.id}`} key={el.id}>
+            <Link to={`/tv-details/${el.id}`} key={el.id} className="relative">
               <img
                 src={`https://image.tmdb.org/t/p/original/${el.poster_path}`}
                 alt={el.name}
@@ -55,6 +55,9 @@ const TvShowsRowItem = ({ title, url }) => {
                 key={el.id}
                 width="120"
               />
+              <div className="text-2xl absolute w-full h-full top-0 transition-all duration-500 ease-in-out flex justify-center items-center opacity-0 text-gray-100 hover:opacity-100 hover:bg-gray-500 hover:bg-opacity-70">
+                View More
+              </div>
             </Link>
           ))}
         </div>
