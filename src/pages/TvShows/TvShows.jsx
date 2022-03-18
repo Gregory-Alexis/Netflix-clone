@@ -8,17 +8,23 @@ import getTvShowsList from "../../dataTvShowsFetch";
 import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { setError, setLoading } from "../../redux/tvShowsSlice/tvShowsSlice";
+import {
+  setError,
+  setFeaturedTvShowsData,
+  setLoading,
+} from "../../redux/tvShowsSlice/tvShowsSlice";
 
 const TvShows = () => {
   const loading = useSelector((state) => state.tvShowsData.loading);
   const error = useSelector((state) => state.tvShowsData.error);
   const filter = useSelector((state) => state.tvShowsData.filter);
   const search = useSelector((state) => state.tvShowsData.search);
+  const featuredTvShowsData = useSelector(
+    (state) => state.tvShowsData.featuredTvShowsData
+  );
   const dispatch = useDispatch();
 
   const [tvShowsData, setTvShowsData] = useState([]);
-  const [featuredTvShowsData, setFeaturedTvShowsData] = useState([]);
 
   const newFeaturedData = tvShowsData.filter((item) => {
     const filteredTvShow = [];
@@ -57,7 +63,7 @@ const TvShows = () => {
         const randomMovie = result[id].items.data.results[random];
         const chosenInfo = await getMovieInfo(randomMovie.id, "tv");
 
-        setFeaturedTvShowsData(chosenInfo.data);
+        dispatch(setFeaturedTvShowsData(chosenInfo.data));
 
         dispatch(setLoading(false));
       } catch (err) {
@@ -77,6 +83,11 @@ const TvShows = () => {
         <p className="text-white flex justify-center items-center">{error}</p>
       )}
       <NavBarTvShows />
+      {featuredTvShowsData.backdrop_path === null && (
+        <p className="text-white flex justify-center p-3 mt-24 text-sm md:text-lg lg:text-2xl xl:mt-54 xl:text-4xl">
+          Désolé, nous n'avons pas encore cette image dans notre catalogue.
+        </p>
+      )}
       {!filterMovie ? (
         <ErrorFilterTvShowsPage />
       ) : (
