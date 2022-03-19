@@ -16,19 +16,19 @@ const ProfileDropDown = () => {
 
       <ul method="POST" role="none">
         <li className="dropdownLinkProfile border-b border-b-gray-500">
-          <a href="!#">Manage Profiles</a>
+          <a href="#top">Manage Profiles</a>
         </li>
 
         <li className="dropdownLinkProfile">
-          <a href="!#">Account</a>
+          <a href="#top">Account</a>
         </li>
 
         <li className="dropdownLinkProfile">
-          <a href="!#">Help Center</a>
+          <a href="#top">Help Center</a>
         </li>
 
         <li className="dropdownLinkProfile">
-          <a href="!#">Sign out of Netflix</a>
+          <a href="#top">Sign out of Netflix</a>
         </li>
       </ul>
     </div>

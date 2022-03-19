@@ -73,6 +73,7 @@ const NavBar = () => {
     */
     <div
       className={isHomeScrolled ? "navbar scrolledIn" : "navbar scrolledOut"}
+      id="#top"
     >
       <div className="flex items-center justify-between px-5 md:px-8 xl:px-10">
         <div className="flex items-center relative">

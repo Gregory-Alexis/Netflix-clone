@@ -38,7 +38,7 @@ const Footer = () => {
             {/*Affiche les données du footer */}
             {footerData.map((item) => (
               <li className="w-2/4 md:w-1/4 my-2" key={item.id}>
-                <a href="!#" className="hover:underline">
+                <a href="#top" className="hover:underline">
                   {item.title}
                 </a>
               </li>

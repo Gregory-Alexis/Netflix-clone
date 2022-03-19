@@ -23,7 +23,7 @@ const NapRowItem = ({ title, url }) => {
     <div className="overflow-hidden">
       <div className="flex group">
         <h1 className="movieRowTitleStyle pl-3 pt-3 md:pt-8 md:pl-8">
-          <a href="!#" className="flex items-center justify-center">
+          <a href="#top" className="flex items-center justify-center">
             {title}
             <span className="exploreAllStyle">Explore All</span>
             <button
