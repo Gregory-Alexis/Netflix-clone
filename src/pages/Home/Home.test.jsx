@@ -1,9 +1,4 @@
-import {
-  fireEvent,
-  getByPlaceholderText,
-  render,
-  screen,
-} from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import Home from "./Home";
 import "@testing-library/jest-dom";
