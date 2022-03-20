@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { removeToList } from "../../redux/myListSlice/myListSlice";
 import Close from "../../images/close.svg";
-import { ArrowDropDown } from "@mui/icons-material";
 
 const MyListItem = ({ id, poster, name }) => {
   const dispatch = useDispatch();
