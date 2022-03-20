@@ -66,4 +66,15 @@ describe("Home page test suits", () => {
     fireEvent.change(input, { target: { value: "drame" } });
     expect(input.value).toBe("drame");
   });
+
+  it("Should be redirect correctly", async () => {
+    const link = screen.getByText("Kids");
+    expect(link).toBeInTheDocument();
+    fireEvent.click(link);
+    const loading = await screen.findByTestId("loading");
+    expect(loading).toBeInTheDocument();
+    await waitForElementToBeRemoved(loading);
+    expect(loading).not.toBeInTheDocument();
+    expect(link.href).toBe("http://localhost/kids");
+  });
 });
