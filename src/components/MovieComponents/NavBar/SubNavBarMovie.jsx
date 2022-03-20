@@ -34,7 +34,7 @@ const SubNavBarMovie = () => {
             value={filter}
             onChange={(e) => dispatch(setFilter(e.target.value))}
           >
-            <option value="all" className="bg-darknet">
+            <option value="all" className="bg-darknet" data-testid="option">
               Genres
             </option>
             {tvShowsId.map((el) => (
@@ -50,6 +50,7 @@ const SubNavBarMovie = () => {
             href="/movie"
             className="border py-1 px-3 text-white flex items-center justify-center"
             onClick={() => dispatch(setIsLinkActive(!isLinkActive))}
+            data-testid="movie"
           >
             <MenuOpenRounded style={{ fontSize: "20px" }} />
           </a>
@@ -57,6 +58,7 @@ const SubNavBarMovie = () => {
             to="/movie-suggestion"
             className="border px-3 text-gray-500 border-gray-500 flex items-center justify-center"
             onClick={() => dispatch(setIsLinkActive(!isLinkActive))}
+            data-testid="movie-suggestion"
           >
             <GridViewRounded style={{ fontSize: "18px" }} />
           </Link>
