@@ -1,4 +1,9 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import Home from "./Home";
 import "@testing-library/jest-dom";
@@ -20,6 +25,13 @@ afterEach(() => {
 });
 
 describe("Home page test suits", () => {
+  it("should loading page before display data", async () => {
+    const loading = await screen.findByTestId("loading");
+    expect(loading).toBeInTheDocument();
+    await waitForElementToBeRemoved(loading);
+    expect(loading).not.toBeInTheDocument();
+  });
+
   it("should display netflix logo", () => {
     const img = screen.getByAltText("Netflix");
     expect(img).toBeInTheDocument();
