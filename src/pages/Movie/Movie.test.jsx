@@ -77,4 +77,6 @@ describe("Movie page test suits", () => {
     expect(loading).not.toBeInTheDocument();
     expect(link.href).toBe("http://localhost/tv-shows");
   });
+
+
 });
