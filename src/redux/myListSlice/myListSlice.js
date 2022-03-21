@@ -8,9 +8,10 @@ const myListSlice = createSlice({
   },
   reducers: {
     addToList: (state, action) => {
-      state.quantity += 1;
       state.myList.push(action.payload);
+      state.quantity += 1;
     },
+
     removeToList: (state, action) => {
       return {
         myList: state.myList.filter((movie) => movie.id !== action.payload),
