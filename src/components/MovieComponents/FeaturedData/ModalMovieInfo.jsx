@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDetails } from "../../../redux/movieSlice/movieSlice";
 import ModalMovieTitle from "./ModalMovieTitle";
@@ -26,7 +26,6 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
     <>
       {details && (
         <div
-          data-aos="fade-zoom-in "
           // baisse la clarté du fond lors lors de l'ouverture de la modal en cliquant sur "More Info" ====> voir index.css
           className="modal backDrop"
           style={{
@@ -97,4 +96,4 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
   );
 };
 
-export default ModalMovieInfo;
+export default memo(ModalMovieInfo);
