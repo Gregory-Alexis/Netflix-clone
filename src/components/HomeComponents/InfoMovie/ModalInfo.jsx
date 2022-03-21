@@ -29,7 +29,6 @@ const ModelInfo = ({ featuredData }) => {
     <>
       {featuredDetails && (
         <div
-          data-aos="fade-zoom-in "
           // baisse la clarté du fond lors lors de l'ouverture de la fenêtre modale en cliquant sur "More Info"
           className="modal backDrop"
           style={{
