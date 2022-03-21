@@ -4,6 +4,7 @@ const movieSlice = createSlice({
   name: "movieData",
   initialState: {
     movieData: [],
+    featuredMovieData: [],
     loading: false,
     error: "",
     search: "",
@@ -20,6 +21,12 @@ const movieSlice = createSlice({
         movieData: action.payload,
         loading: false,
         error: "",
+      };
+    },
+    setFeaturedMovieData: (state, action) => {
+      return {
+        ...state,
+        featuredMovieData: action.payload,
       };
     },
     setLoading: (state, action) => {
@@ -77,6 +84,7 @@ const movieSlice = createSlice({
 
 export const {
   setMovieData,
+  setFeaturedMovieData,
   setLoading,
   setError,
   setSearch,
