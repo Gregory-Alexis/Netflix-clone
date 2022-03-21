@@ -16,4 +16,4 @@ Reproduction du site Netflix (https://www.netflix.com/browse)
 
 ## Information sur le code
 
-Vous pourrez retrouver le code commenté dans le code source.
+Pour toute information sur le code, vous pourrez le trouver commenté dans le code source.
