@@ -44,14 +44,6 @@ const NavBarTvShows = () => {
     };
   }, [isActive, dispatch]);
 
-  const inputElement = useRef(null);
-
-  useEffect(() => {
-    if (inputElement.current) {
-      inputElement.current.focus();
-    }
-  }, []);
-
   const handleFilter = (e) => {
     e.preventDefault();
     dispatch(setSearch(e.target.value));
