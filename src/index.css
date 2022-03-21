@@ -275,7 +275,8 @@ text-gray-100
     text-xl
     md:text-3xl
     xl:text-7xl 
-    pb-5
+    pb-2
+    xl:pb-4
   }
 
 
