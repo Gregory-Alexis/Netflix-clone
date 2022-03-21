@@ -1,4 +1,5 @@
 import {
+  cleanup,
   fireEvent,
   render,
   screen,
@@ -21,7 +22,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  render("");
+  render(cleanup);
 });
 
 describe("Home page test suits", () => {
