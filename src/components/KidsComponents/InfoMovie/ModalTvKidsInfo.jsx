@@ -26,7 +26,6 @@ const ModalTvKidsInfo = ({ featuredKidsData }) => {
     <>
       {details && (
         <div
-          data-aos="fade-zoom-in "
           // baisse la clarté du fond lors lors de l'ouverture de la modal en cliquant sur "More Info" ====> voir index.css
           className="modal backDrop"
           style={{
