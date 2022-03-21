@@ -26,9 +26,10 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
     <>
       {details && (
         <div
-          data-aos="fade-zoom-in "
           // baisse la clarté du fond lors lors de l'ouverture de la modal en cliquant sur "More Info" ====> voir index.css
-          className="modal backDrop"
+          className={
+            details ? "modal backDrop visible" : `modal backDrop invisible`
+          }
           style={{
             background: "linear-gradient(to top, #141414 10%, transparent 20%)",
           }}
