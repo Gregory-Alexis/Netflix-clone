@@ -8,16 +8,22 @@ import ErrorFilterMoviePage from "../../components/MovieComponents/FeaturedData/
 import getMovieList from "../../dataMovieFetch";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { setError, setLoading } from "../../redux/movieSlice/movieSlice";
+import {
+  setError,
+  setFeaturedMovieData,
+  setLoading,
+} from "../../redux/movieSlice/movieSlice";
 
 const Movie = () => {
   const loading = useSelector((state) => state.movieData.loading);
   const error = useSelector((state) => state.movieData.error);
   const search = useSelector((state) => state.movieData.search);
   const filter = useSelector((state) => state.movieData.filter);
+  const featuredMovieData = useSelector(
+    (state) => state.movieData.featuredMovieData
+  );
   const dispatch = useDispatch();
   const [movieData, setMovieData] = useState([]);
-  const [featuredMovieData, setFeaturedMovieData] = useState([]);
 
   const newFeaturedData = movieData.filter((item) => {
     const filteredMovie = [];
@@ -57,7 +63,7 @@ const Movie = () => {
         const randomMovie = result[id].items.data.results[random];
         const chosenInfo = await getMovieInfo(randomMovie.id, "movie");
 
-        setFeaturedMovieData(chosenInfo.data);
+        dispatch(setFeaturedMovieData(chosenInfo.data));
 
         dispatch(setLoading(false));
       } catch (err) {

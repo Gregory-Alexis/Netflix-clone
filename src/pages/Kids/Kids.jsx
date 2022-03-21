@@ -3,22 +3,26 @@ import { getMovieInfo } from "../../dataHomeFetch";
 import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-
 import getTvKidsList from "../../kidsData";
 import NavBarKids from "../../components/KidsComponents/NavBar/NavBarKids";
 import InfoTvKids from "../../components/KidsComponents/InfoMovie/InfoTvKids";
 import TvKidsRow from "../../components/KidsComponents/TvKidsRow/TvKidsRow";
 import ErrorTvKidsPage from "../../components/KidsComponents/InfoMovie/ErrorTvKidsPage";
-import { setError, setLoading } from "../../redux/kidsSlice/kidsSlice";
+import {
+  setError,
+  setFeaturedData,
+  setLoading,
+} from "../../redux/kidsSlice/kidsSlice";
 
 const Kids = () => {
   const loading = useSelector((state) => state.kidsData.loading);
   const error = useSelector((state) => state.kidsData.error);
   const search = useSelector((state) => state.kidsData.search);
   const dispatch = useDispatch();
-
+  const featuredKidsData = useSelector(
+    (state) => state.kidsData.featuredKidsData
+  );
   const [tvKidsData, setTvKidsData] = useState([]);
-  const [featuredKidsData, setFeaturedKidsData] = useState([]);
 
   const newFeaturedData = tvKidsData.filter((item) => {
     const filteredTvShow = [];
@@ -50,7 +54,7 @@ const Kids = () => {
         const randomMovie = result[id].items.data.results[random];
         const chosenInfo = await getMovieInfo(randomMovie.id, "tv");
 
-        setFeaturedKidsData(chosenInfo.data);
+        dispatch(setFeaturedData(chosenInfo.data));
 
         dispatch(setLoading(false));
       } catch (err) {
