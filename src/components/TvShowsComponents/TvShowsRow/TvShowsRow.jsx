@@ -1,6 +1,7 @@
 import TvShowsRowItem from "./TvShowsRowItem";
 
 const TvShowsRow = ({ dataFilter }) => {
+  // Composant qui affiche les film et série en rangé
   return (
     <div>
       {dataFilter.map((el) => (

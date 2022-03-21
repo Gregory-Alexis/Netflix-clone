@@ -10,7 +10,9 @@ const ModelInfo = ({ featuredData }) => {
 
   const dispatch = useDispatch();
   const ref = useRef();
-
+  /*Le useEffect détecte si un clique a été effectué en dehors de la fenêtre modale
+  <<Lorsqu'on clique sur More Info>> pour qu'elle puisse se fermer 
+  */
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (featuredDetails && ref.current && !ref.current.contains(e.target)) {
@@ -37,11 +39,12 @@ const ModelInfo = ({ featuredData }) => {
         >
           <div ref={ref} className="mx-5">
             <div className="flex items-center">
+              {/*Composant qui prend en charge le titre est les boutton de la fenêtre modale */}
               <ModalTitle featuredData={featuredData} />
               <img
                 src={`https://image.tmdb.org/t/p/original${featuredData.backdrop_path}`}
                 alt={featuredData.name}
-                className="xl:w-40 rounded-t-xl"
+                className="w-full rounded-t-xl xl:w-40"
                 width="400"
                 height="100"
               />
@@ -50,15 +53,18 @@ const ModelInfo = ({ featuredData }) => {
             <div className="p-5 xl:p-10 flex bg-darknet flex-col xl:w-40">
               <div className="flex items-center">
                 <p className="text-green-400 text-sm md:text-lg">
+                  {/*La note associé au film ou série */}
                   {featuredData.vote_average} Points
                 </p>
                 <p className="text-gray-300 pl-3 pr-3 text-sm md:text-lg">
+                  {/*L'année de sortie du film ou série. << Le slice permet d'afficher uniquement l'année de sortie >> */}
                   {featuredData.first_air_date.slice(0, 4)}
                 </p>
-                <p className="text-gray-300  border border-gray-500 px-1 text-xs md:text-lg">
+                <p className="text-gray-300 border border-gray-500 px-1 text-xs md:text-lg">
                   Age+
                 </p>
                 <p className="text-gray-300 pl-3 text-sm md:text-lg">
+                  {/*Le nombre de saison si c'est un série */}
                   {featuredData.number_of_seasons}
                   <span className="pl-1">
                     {featuredData.number_of_seasons > 1 ? "Seasons" : "Season"}
@@ -69,7 +75,7 @@ const ModelInfo = ({ featuredData }) => {
                 </p>
               </div>
               <div className="flex justify-between">
-                {/*Si le film ou la série ne contiennent pas de sypnopsis alors un message "lorem" apparaîtra à la place */}
+                {/*Si le film ou la série ne contiennent pas de sypnopsis alors un texte "lorem" apparaîtra à la place */}
                 <p className=" text-gray-300 pt-4 leading-6 w-3/4 text-xs md:text-lg">
                   {featuredData.overview === ""
                     ? `Lorem ipsum dolor sit amet consectetur adipisicing elit.

@@ -14,7 +14,7 @@ const InfoMovie = ({ featuredData }) => {
   return (
     // Composant qui affiche l'image d'un film ou d'une série de manière aléatoire
     <div
-      className="h-60 relative bg-cover bg-no-repeat flex items-center justify-center md:h-96 lg:h-70 xl:h-90"
+      className="h-60 relative bg-cover bg-no-repeat flex items-center justify-center  md:h-96 lg:h-70 xl:h-90"
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original${featuredData.backdrop_path})`,
       }}
@@ -25,13 +25,14 @@ const InfoMovie = ({ featuredData }) => {
         }}
         className="w-full h-full mt-24 absolute"
       ></div>
-
+      {/*Le Component Modal ouvre une fenêtre qui affiche les informations du film ou série lorsque le bouton "More Info" est cliqué */}
       <ModalInfo featuredData={featuredData} />
 
-      <div className="w-full flex flex-col justify-center ml-5 z-10 xl:ml-24">
+      <div className="w-full flex flex-col justify-center ml-5 z-10 mt-24 md:mt-48 lg:mt-72 xl:ml-24">
         <div>
           <h1 className="movieTitle">{featuredData.name}</h1>
           <div className="flex">
+            {/*Redirige vers un lien vidéo du poster cliqué */}
             <Link
               to={`/tv-video/${featuredData.id}`}
               className="playButton pl-5"

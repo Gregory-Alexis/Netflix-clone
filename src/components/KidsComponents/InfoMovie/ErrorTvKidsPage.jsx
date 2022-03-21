@@ -4,6 +4,7 @@ const ErrorTvKidsPage = () => {
   const search = useSelector((state) => state.kidsData.search);
   return (
     <div className="bg-darknet text-white flex items-center justify-center pt-48">
+      {/*Affichera ce que l'utilisateur à écrit en plus du message d'erreur */}
       <div>
         <p className="mb-4">
           Votre recherche pour "{search}" ne trouve aucune correspondance.

@@ -1,6 +1,6 @@
 import MovieRowItem from "./MovieRowItem";
 
-// Composant qui affiche les film et série en ligne
+// Composant qui affiche les film et série en rangé
 
 const MovieRow = ({ newData }) => {
   return newData.map((el) => (

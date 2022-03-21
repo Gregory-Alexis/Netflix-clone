@@ -24,18 +24,23 @@ const NavbarMyList = () => {
 
   const ref = useRef();
 
+  // Dès lors qu'un scroll à été effectué sur la page, setScrolled retournera "true" ce qui nous permettra de prendre en charge des animations
   window.onscroll = () => {
     dispatch(setScrolled(window.pageYOffset === 0 ? false : true));
     return () => (window.onscroll = null);
   };
 
+  /* 
+  useEffect prend en charge la fermeture d'un fenêtre modale en cliquant à l'extèrieur de celle ci.
+  Il prend aussi en charge la largeur de la page.
+  */
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (isInputActive && ref.current && !ref.current.contains(e.target)) {
         dispatch(setActive(false));
       }
     };
-
+    /* Si la largeur de la page est inférieur à 1024px alors une nouvelle navbar créé pour petit écrans sera affiché */
     const changeWidth = () => {
       dispatch(setWidth(window.innerWidth));
       if (window.innerWidth >= 1024) {
@@ -51,19 +56,15 @@ const NavbarMyList = () => {
     };
   }, [isInputActive, dispatch]);
 
-  const inputElement = useRef(null);
-
-  useEffect(() => {
-    if (inputElement.current) {
-      inputElement.current.focus();
-    }
-  }, []);
-
+  /* Fonction qui gère l'affichage du texte saisie dans la barre de recherche */
   const handleFilter = (e) => {
     e.preventDefault();
     dispatch(setSearch(e.target.value));
   };
   return (
+    /* Sur la page Movie, la navbar de base à un background color noir. 
+       Une fois qu'un scroll aura été effectué vers le bas, la sous navbar prendra la place de la navbar.
+    */
     <div
       className={isHomeScrolled ? "navbar scrolledIn" : "navbar scrolledOut"}
     >
@@ -77,6 +78,9 @@ const NavbarMyList = () => {
               width="48"
             />
           </Link>
+          {/*Ici, "width" prend en charge l'apparence du modal de la navbar selon la taille de la page */}
+
+          {/*nabar pour grands écrans */}
           {width >= 1024 ? (
             <ul className="flex">
               <li className="mr-5 ml-12 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
@@ -101,6 +105,7 @@ const NavbarMyList = () => {
               )}
             </ul>
           ) : (
+            /*nabar pour petits écrans */
             <div class="relative inline-block text-center group">
               <div>
                 <button
@@ -172,6 +177,10 @@ const NavbarMyList = () => {
           )}
         </div>
 
+        {/*
+        Le bouton search de la navbar est de base "une icone de loupe", lorsqu'on cliquera dessus une barre de recherche apparaîtra.
+        La barre de recherche ne sera affiché que si la taille de la page est supèrieur ou égale à 768px
+        */}
         <div className="flex space-x-5 items-center justify-center">
           {width >= 768 && (
             <div className="relative" ref={ref}>
@@ -202,6 +211,7 @@ const NavbarMyList = () => {
               </span>
             </div>
           )}
+          {/*Lien qui redirige vers la page "Kids" */}
           <div className="flex justify-center items-center">
             {width >= 768 && (
               <Link to="/kids" className="text-lg">
@@ -209,6 +219,12 @@ const NavbarMyList = () => {
               </Link>
             )}
           </div>
+
+          {/*Icone d'une cloche qui gère les notifications utilisateur, lorsqu'on passera la souris sur l'icône,
+          une fenêtre apparaîtra avec toute les récentes notifications <<< Le comportement à juste été simulé >>>
+
+          voir composant "NotificationDropDown"
+           */}
           <div className="relative group flex justify-center items-center">
             <img src={Bell} alt="notification" width="20" />
             <NotificationDropDown />
@@ -222,12 +238,17 @@ const NavbarMyList = () => {
                 className="h-10 rounded object-cover"
                 width="40"
               />
+              {/*En dessous de 1024px, la petite flêche animée situé à droite de la photo de profil ne sera pas visible */}
               {width >= 1024 && (
                 <span className="group-hover:rotate-180 transiton duration-500">
                   <ArrowDropDown />
                 </span>
               )}
-
+              {/* Icone de profil qui gère les options utilisateur, lorsqu'on passera la souris sur l'icône,
+                  une fenêtre apparaîtra avec toute les options disponible <<< Le comportement à juste été simulé >>>
+                  
+                  voir composant "ProfileDropDown"
+              */}
               <ProfileDropDown />
             </div>
           </div>

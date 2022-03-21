@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const MovieRowItem = ({ title, url }) => {
   const width = useSelector((state) => state.homeData.width);
   const [index, setIndex] = useState(0);
+
   // fonction qui prendre en charge le "Slide" des éléments en fonction de la taille de la fenêtre windows
   const indexHandler = (direction) => {
     if (direction === "left") {
@@ -47,7 +48,7 @@ const MovieRowItem = ({ title, url }) => {
             }vw )`,
           }}
         >
-          {/*Redirige vers un lien vidéo du film sélectionné */}
+          {/*Redirige vers les détails du film sélectionné */}
           {url.data.results.map((el) => (
             <>
               <Link
@@ -55,6 +56,7 @@ const MovieRowItem = ({ title, url }) => {
                 key={el.id}
                 className=" relative"
               >
+                {/*affiche les poster des films */}
                 <img
                   src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
                   alt={el.poster_path}
@@ -62,6 +64,7 @@ const MovieRowItem = ({ title, url }) => {
                   width="120"
                   key={el.id}
                 />
+                {/*View more, redirigera vers une nouvelle page ou vous aurez plus en détails les informations du poster sélectionné */}
                 <div className="text-2xl absolute w-full h-full top-0 transition-all duration-500 ease-in-out flex justify-center items-center opacity-0 text-gray-100 hover:opacity-100 hover:bg-gray-500 hover:bg-opacity-70">
                   View More
                 </div>

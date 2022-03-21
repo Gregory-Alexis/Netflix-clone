@@ -7,6 +7,7 @@ const TvKidsRowItem = ({ title, url }) => {
   const width = useSelector((state) => state.homeData.width);
   const [index, setIndex] = useState(0);
 
+  // fonction qui prendre en charge le "Slide" des éléments en fonction de la taille de la fenêtre windows
   const indexHandler = (direction) => {
     if (direction === "left") {
       setIndex(index > 0 && index - 1);
@@ -38,6 +39,7 @@ const TvKidsRowItem = ({ title, url }) => {
       </div>
 
       <div className="relative group">
+        {/*style qui prendra en charge la largeur parcouru du slide lors du clique sur la flèche */}
         <div
           className="flex transition duration-500 ease-in-out pl-3 space-x-2 md:pt-4 md:pl-8 md:space-x-5 lg:space-x-2 xl:space-x-7"
           style={{
@@ -46,8 +48,10 @@ const TvKidsRowItem = ({ title, url }) => {
             }vw )`,
           }}
         >
+          {/*Redirige vers les details de la série sélectionné */}
           {url.data.results.map((el) => (
             <Link to={`/tv-details/${el.id}`} className="relative">
+              {/*affiche les poster des films */}
               <img
                 src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
                 alt={el.name}
@@ -55,13 +59,14 @@ const TvKidsRowItem = ({ title, url }) => {
                 key={el.id}
                 width="120"
               />
+              {/*View more, redirigera vers une nouvelle page ou vous aurez plus en détails les informations du poster sélectionné */}
               <div className="text-2xl absolute w-full h-full top-0 transition-all duration-500 ease-in-out flex justify-center items-center opacity-0 text-gray-100 hover:opacity-100 hover:bg-gray-500 hover:bg-opacity-70">
                 View More
               </div>
             </Link>
           ))}
         </div>
-
+        {/*La flêche pour slider vers la gauche ne sera visible que si l'index est supèrieur à 0 "Si la flêche de droite a au moins été cliqué une fois" */}
         {index > 0 && (
           <button
             type="button"

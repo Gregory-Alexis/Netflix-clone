@@ -10,6 +10,7 @@ const InfoMovie = ({ featuredMovieData }) => {
   const dispatch = useDispatch();
 
   return (
+    // Composant qui affiche l'image d'un film de manière aléatoire
     <div
       className="h-60 relative bg-cover bg-no-repeat flex items-center justify-center md:h-96 lg:h-70 xl:h-90"
       style={{
@@ -22,13 +23,14 @@ const InfoMovie = ({ featuredMovieData }) => {
         }}
         className="w-full h-full mt-24 absolute"
       ></div>
-
+      {/*Le Component Modal ouvre une fenêtre qui affiche les informations du film  lorsque le bouton "More Info" est cliqué */}
       <ModalMovieInfo featuredMovieData={featuredMovieData} />
 
-      <div className=" w-full flex flex-col justify-center ml-5 z-10 xl:ml-24">
+      <div className="w-full flex flex-col justify-center ml-5 z-10 mt-24 md:mt-48 lg:mt-72 xl:ml-24">
         <div>
           <h1 className="movieTitle">{featuredMovieData.title}</h1>
           <div className="flex">
+            {/*Redirige vers un lien vidéo du poster cliqué */}
             <Link
               to={`/movie-video/${featuredMovieData.id}`}
               className="playButton pl-5"

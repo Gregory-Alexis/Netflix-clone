@@ -1,4 +1,4 @@
-import { Search } from "@mui/icons-material";
+import Search from "../../../images/search.svg";
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -19,11 +19,16 @@ const NavBarKids = () => {
 
   const ref = useRef();
 
+  // Dès lors qu'un scroll à été effectué sur la page, setScrolled retournera "true" ce qui nous permettra de prendre en charge des animations
   window.onscroll = () => {
     dispatch(setScrolled(window.pageYOffset === 0 ? false : true));
     return () => (window.onscroll = null);
   };
 
+  /* 
+  useEffect prend en charge la fermeture d'un fenêtre modale en cliquant à l'extèrieur de celle ci.
+  Il prend aussi en charge la largeur de la page.
+  */
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (isInputActive && ref.current && !ref.current.contains(e.target)) {
@@ -31,6 +36,7 @@ const NavBarKids = () => {
       }
     };
 
+    /* Si la largeur de la page est inférieur à 1024px alors une nouvelle navbar créé pour petit écrans sera affiché */
     const changeWidth = () => {
       dispatch(setWidth(window.innerWidth));
       if (window.innerWidth >= 1024) {
@@ -46,20 +52,16 @@ const NavBarKids = () => {
     };
   }, [isInputActive, dispatch]);
 
-  const inputElement = useRef(null);
-
-  useEffect(() => {
-    if (inputElement.current) {
-      inputElement.current.focus();
-    }
-  }, []);
-
+  /* Fonction qui gère l'affichage du texte saisie dans la barre de recherche */
   const handleFilter = (e) => {
     e.preventDefault();
     dispatch(setSearch(e.target.value));
   };
 
   return (
+    /* Sur la page Kids, la navbar de base à un dégradé transparent vers noir. 
+       Une fois qu'un scroll aura été effectué vers le bas, elle aura un background noir et sera fixé en haut de la page.
+    */
     <div
       className={isHomeScrolled ? "navbar scrolledIn" : "navbar scrolledOut"}
     >
@@ -73,6 +75,9 @@ const NavBarKids = () => {
               width="48"
             />
           </Link>
+          {/*Ici, "width" prend en charge l'apparence du modal de la navbar selon la taille de la page */}
+
+          {/*nabar pour grands écrans */}
           {width >= 1024 ? (
             <ul className="flex">
               <li className="mr-5 ml-12 text-sm active">
@@ -98,6 +103,7 @@ const NavBarKids = () => {
               )}
             </ul>
           ) : (
+            /*nabar pour petits écrans */
             <div class="relative inline-block text-center group">
               <div>
                 <button
@@ -168,7 +174,10 @@ const NavBarKids = () => {
             </div>
           )}
         </div>
-
+        {/*
+        Le bouton search de la navbar est de base "une icone de loupe", lorsqu'on cliquera dessus une barre de recherche apparaîtra.
+        La barre de recherche ne sera affiché que si la taille de la page est supèrieur ou égale à 768px
+        */}
         <div className="flex space-x-5 items-center">
           {width >= 768 && (
             <div className="relative" ref={ref}>
@@ -194,7 +203,7 @@ const NavBarKids = () => {
                 className="absolute left-0 top-0 bottom-0 flex items-center pl-2"
                 onClick={() => dispatch(setIsActive(!isInputActive))}
               >
-                <Search style={{ fontSize: "34px" }} />
+                <img src={Search} alt="search" width="24" />
               </span>
             </div>
           )}
@@ -209,6 +218,7 @@ const NavBarKids = () => {
               />
             </div>
           </div>
+          {/*Lien qui redirige vers le page d'acceuil */}
           <Link to="/home" className="bg-red-600 text-sm px-8 py-1 rounded">
             Exit Kids
           </Link>

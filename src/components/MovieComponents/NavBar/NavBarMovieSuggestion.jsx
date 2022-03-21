@@ -31,12 +31,6 @@ const NavBarMovieSuggestion = () => {
     };
   }, [isActive, dispatch]);
 
-  const inputElement = useRef(null);
-  useEffect(() => {
-    if (inputElement.current) {
-      inputElement.current.focus();
-    }
-  }, []);
 
   const handleFilter = (e) => {
     e.preventDefault();

@@ -23,6 +23,9 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
     return element.id;
   });
 
+  /* Lors du clique sur le bouton, like passera à true ou false selon son état actuel.Si "like = true" alors le bouton dislike passera à false ce qui
+     nous empêchera d'avoir les boutons activé simultanément... Un seul d'entre eux ne peut être actif à la fois.
+  */
   const likeHandler = () => {
     dispatch(setLike(!like));
     dispatch(setDisLike(false));
@@ -35,7 +38,8 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
 
   return (
     <div className="absolute mt-24 ml-5 xl:ml-10 xl:mt-56">
-      <h1 className=" text-white mb-5 text-lg md:text-2xl lg:text-3xl xl:w-40 xl:text-5xl xl:mb-5">
+      <h1 className="text-white mb-5 text-xl md:text-2xl lg:text-3xl xl:w-40 xl:text-5xl xl:mb-5">
+        {/*Titre du film */}
         {featuredMovieData.title}
       </h1>
       <div className="flex">
@@ -46,6 +50,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
         <div className="group flex items-center justify-center">
           <div className="relative">
             {newList.includes(featuredMovieData.id) ? (
+              /*Bouton qui supprime votre film ou série du tableau "My List", si l'id est déjà présent dans le tableau un bouton suprimé s'affichera sinon un bouton ajouter */
               <button
                 type="button"
                 aria-label="remove to my list"
@@ -55,6 +60,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
                 <img src={Check} alt="check" width="36" />
               </button>
             ) : (
+              /*Bouton qui ajoute votre film ou série dans le tableau "My List" */
               <button
                 type="button"
                 aria-label="add to my list"
@@ -73,13 +79,14 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
               </button>
             )}
           </div>
-          <div className="modalIcons text-xs w-56 -top-0 ml-1 xl:text-base xl:top-3 xl:left-18">
+          <div className="modalIcons text-xs w-56 -top-0 ml-1 xl:text-base xl:top-3 xl:left-18 xl:w-64">
             <span>
+              {/*Si l'id et déjà présent, le texte "Remove from my list" sera affiché, sinon "Add to my list" */}
               {newList.includes(featuredMovieData.id)
                 ? "Remove From My List"
                 : "Add to My List"}
             </span>
-            <span className="absolute left-20 top-1  text-gray-200 flex xl:top-3 xl:left-18">
+            <span className="absolute left-20 top-1  text-gray-200 flex xl:top-3 xl:left-24">
               <ArrowDropDown style={{ fontSize: "65px" }} />
             </span>
           </div>
@@ -93,6 +100,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
               className="iconesStyle borderThumbIcons ml-2 mb-2"
               onClick={likeHandler}
             >
+              {/*Si le film ou série est liké, alors le pouce aura un background color blanc sinon son background sera transparent */}
               <img
                 src={like ? ThumbUpWhite : ThumbUp}
                 alt="circle"
@@ -100,6 +108,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
               />
             </button>
           </div>
+          {/*Si le film ou série est liké, alors le texte "rated" sera affiché sinon ce sera "I like this" */}
           <div className="modalIcons text-xs w-36 -top-0 xl:top-3 xl:left-30 xl:ml-4 xl:w-44 xl:text-base">
             {like ? <span>Rated</span> : <span>I like this</span>}
             <span className="absolute text-gray-200 flex left-8 ml-3 top-1 xl:top-3 xl:left-10">
@@ -116,6 +125,7 @@ const ModalMovieTitle = ({ featuredMovieData }) => {
               className="iconesStyle borderThumbIcons ml-2 mb-2"
               onClick={disLikeHandler}
             >
+              {/*Si le film ou série est disliké, alors le pouce aura un background color blanc sinon son background sera transparent */}
               <img
                 src={disLike ? ThumbDownWhite : ThumbDown}
                 alt="circle"

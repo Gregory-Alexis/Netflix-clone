@@ -8,6 +8,9 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
   const dispatch = useDispatch();
   const ref = useRef();
 
+  /*Le useEffect détecte si un clique a été effectué en dehors de la fenêtre modale
+  <<Lorsqu'on clique sur More Info>> pour qu'elle puisse se fermer 
+  */
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (details && ref.current && !ref.current.contains(e.target)) {
@@ -34,11 +37,12 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
         >
           <div ref={ref} className="mx-5">
             <div className="flex items-center">
+              {/*Composant qui prend en charge le titre est les boutton de la fenêtre modale */}
               <ModalMovieTitle featuredMovieData={featuredMovieData} />
               <img
                 src={`https://image.tmdb.org/t/p/original${featuredMovieData.backdrop_path}`}
                 alt={featuredMovieData.title}
-                className="xl:w-40 rounded-t-xl"
+                className="w-full rounded-t-xl xl:w-40"
                 width="400"
               />
             </div>
@@ -46,9 +50,11 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
             <div className="p-5 xl:p-10 flex bg-darknet flex-col xl:w-40">
               <div className="flex items-center">
                 <p className="text-green-400 text-sm md:text-lg">
+                  {/*La note associé au film */}
                   {featuredMovieData.vote_average} Points
                 </p>
                 <p className="text-gray-300 pl-3 pr-3 text-sm md:text-lg">
+                  {/*L'année de sortie du film ou série. << Le slice permet d'afficher uniquement l'année de sortie >> */}
                   {featuredMovieData.release_date.slice(0, 4)}
                 </p>
                 <p className="text-gray-300  border border-gray-500 px-1 text-xs md:text-lg">
@@ -68,6 +74,7 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
               </div>
               <div className="flex justify-between">
                 <p className=" text-gray-300 pt-4 leading-6 w-3/4 text-xs md:text-lg">
+                  {/*Si le film ou la série ne contiennent pas de sypnopsis alors un texte "lorem" apparaîtra à la place */}
                   {featuredMovieData.overview === ""
                     ? `Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sint quidem harum cupiditate a accusamus cum pariatur
@@ -80,6 +87,7 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
                     Genre:
                   </span>
                   <div>
+                    {/*Affiche le genre de chaque films ou séries */}
                     {featuredMovieData.genres.map((el) => (
                       <li className="ml-3 text-sm md:text-base" key={el.id}>
                         {el.name}
@@ -96,4 +104,4 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
   );
 };
 
-export default memo(ModalMovieInfo);
+export default ModalMovieInfo;

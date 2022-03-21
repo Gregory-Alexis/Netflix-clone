@@ -3,6 +3,7 @@ import MyListItem from "./MyListItem";
 import NavbarMyList from "./NavbarMyList";
 
 const MyList = () => {
+  // Composant qui permet d'afficher les fils ou séries désirez
   const myList = useSelector((state) => state.myListData.myList);
 
   return (

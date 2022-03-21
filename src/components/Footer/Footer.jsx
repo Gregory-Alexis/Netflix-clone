@@ -46,7 +46,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      {/*Lors d'un clique sur le bouton service code, affiche le numéro associé à chaque compte Netflix */}
+      {/*Lors d'un clique sur le bouton service code, affiche le numéro associé à chaque compte Netflix << Le comportement a été simulé>>*/}
       <button
         type="button"
         aria-label="service code"

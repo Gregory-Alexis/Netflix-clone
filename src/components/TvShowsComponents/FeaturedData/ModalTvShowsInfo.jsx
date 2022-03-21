@@ -8,6 +8,9 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
   const dispatch = useDispatch();
   const ref = useRef();
 
+  /*Le useEffect détecte si un clique a été effectué en dehors de la fenêtre modale
+  <<Lorsqu'on clique sur More Info>> pour qu'elle puisse se fermer 
+  */
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (details && ref.current && !ref.current.contains(e.target)) {
@@ -36,11 +39,12 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
         >
           <div ref={ref} className="mx-5">
             <div className="flex items-center">
+              {/*Composant qui prend en charge le titre est les boutton de la fenêtre modale */}
               <ModalTvShowsTitle featuredTvShowsData={featuredTvShowsData} />
               <img
                 src={`https://image.tmdb.org/t/p/original/${featuredTvShowsData.backdrop_path}`}
                 alt={featuredTvShowsData.name}
-                className="xl:w-40 rounded-t-xl"
+                className="w-full rounded-t-xl xl:w-40"
                 width="400"
               />
             </div>
@@ -48,15 +52,18 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
             <div className="p-5 xl:p-10 flex bg-darknet flex-col xl:w-40">
               <div className="flex items-center">
                 <p className="text-green-400 text-sm md:text-lg">
+                  {/*La note associé à la série */}
                   {featuredTvShowsData.vote_average} Points
                 </p>
                 <p className="text-gray-300 pl-3 pr-3 text-sm md:text-lg">
+                  {/*L'année de sortie du film ou série. << Le slice permet d'afficher uniquement l'année de sortie >> */}
                   {featuredTvShowsData.first_air_date.slice(0, 4)}
                 </p>
                 <p className="text-gray-300  border border-gray-500 px-1 text-xs md:text-lg">
                   Age+
                 </p>
                 <p className="text-gray-300 pl-3 text-sm md:text-lg">
+                  {/*Le nombre de saison  */}
                   {featuredTvShowsData.number_of_seasons}
                   <span className="pl-1">
                     {featuredTvShowsData.number_of_seasons > 1
@@ -69,6 +76,7 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
                 </p>
               </div>
               <div className="flex justify-between">
+                {/*Si le film ou la série ne contiennent pas de sypnopsis alors un texte "lorem" apparaîtra à la place */}
                 <p className=" text-gray-300 pt-4 leading-6 w-3/4 text-xs md:text-lg">
                   {featuredTvShowsData.overview === ""
                     ? `Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -82,6 +90,7 @@ const ModalTvShowsInfo = ({ featuredTvShowsData }) => {
                     Genre:
                   </span>
                   <div>
+                    {/*Affiche le genre de chaque  séries */}
                     {featuredTvShowsData.genres.map((el) => (
                       <li className="ml-3 text-sm md:text-base" key={el.id}>
                         {el.name}

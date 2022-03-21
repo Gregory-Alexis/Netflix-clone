@@ -2,6 +2,7 @@ const ErrorFilterMoviePage = ({ search }) => {
   return (
     <div className="bg-darknet text-white flex items-center justify-center pt-48">
       <div>
+        {/*Affichera ce que l'utilisateur à écrit en plus du message d'erreur */}
         <p className="mb-4">
           Votre recherche pour "{search}" ne trouve aucune correspondance.
         </p>
