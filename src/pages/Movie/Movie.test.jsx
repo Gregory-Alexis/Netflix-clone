@@ -1,5 +1,4 @@
 import {
-  fireEvent,
   render,
   screen,
   waitForElementToBeRemoved,
@@ -30,16 +29,5 @@ describe("Movie page test suits", () => {
     expect(loading).toBeInTheDocument();
     await waitForElementToBeRemoved(loading);
     expect(loading).not.toBeInTheDocument();
-  });
-
-  it("Should be redirect correctly", async () => {
-    const link = screen.getByText("TV Shows");
-    expect(link).toBeInTheDocument();
-    fireEvent.click(link);
-    const loading = await screen.findByTestId("loading");
-    expect(loading).toBeInTheDocument();
-    await waitForElementToBeRemoved(loading);
-    expect(loading).not.toBeInTheDocument();
-    expect(link.href).toBe("http://localhost/tv-shows");
   });
 });
