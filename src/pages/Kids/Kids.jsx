@@ -6,22 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import getTvKidsList from "../../kidsData";
 import NavBarKids from "../../components/KidsComponents/NavBar/NavBarKids";
 import TvKidsRow from "../../components/KidsComponents/TvKidsRow/TvKidsRow";
+
+import KidsFeaturedData from "../../components/KidsComponents/KidsFeaturedData/KidsFeaturedData";
+import ErrorFilterTvKidsPage from "../../components/KidsComponents/KidsFeaturedData/ErrorFilterTvKidsPage";
 import {
   setError,
   setFeaturedData,
   setLoading,
-} from "../../redux/kidsSlice/kidsSlice";
-import KidsFeaturedData from "../../components/KidsComponents/KidsFeaturedData/KidsFeaturedData";
-import ErrorFilterTvKidsPage from "../../components/KidsComponents/KidsFeaturedData/ErrorFilterTvKidsPage";
+} from "../../redux/homeSlice/homeSlice";
 
 const Kids = () => {
-  const loading = useSelector((state) => state.kidsData.loading);
-  const error = useSelector((state) => state.kidsData.error);
-  const search = useSelector((state) => state.kidsData.search);
+  const loading = useSelector((state) => state.homeData.loading);
+  const error = useSelector((state) => state.homeData.error);
+  const search = useSelector((state) => state.homeData.search);
   const dispatch = useDispatch();
-  const featuredKidsData = useSelector(
-    (state) => state.kidsData.featuredKidsData
-  );
+  const featuredKidsData = useSelector((state) => state.homeData.featuredData);
   const [tvKidsData, setTvKidsData] = useState([]);
 
   const newFeaturedData = tvKidsData.filter((item) => {
