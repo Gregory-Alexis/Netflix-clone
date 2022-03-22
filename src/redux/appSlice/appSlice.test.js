@@ -12,7 +12,7 @@ import homeSlice, {
   setSearch,
   setToggle,
   setWidth,
-} from "./homeSlice";
+} from "./appSlice";
 import "@testing-library/jest-dom";
 
 describe("Home slice test suits", () => {
