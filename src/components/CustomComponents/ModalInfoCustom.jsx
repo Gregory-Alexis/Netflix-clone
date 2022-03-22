@@ -1,12 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFeaturedDetails } from "../../redux/homeSlice/homeSlice";
+import { setFeaturedDetails } from "../../redux/appSlice/appSlice";
 import ModalTitle from "./ModalTitleCustom";
 
 const ModalInfoCustom = ({ props, link }) => {
-  const featuredDetails = useSelector(
-    (state) => state.homeData.featuredDetails
-  );
+  const featuredDetails = useSelector((state) => state.appData.featuredDetails);
 
   const dispatch = useDispatch();
   const ref = useRef();

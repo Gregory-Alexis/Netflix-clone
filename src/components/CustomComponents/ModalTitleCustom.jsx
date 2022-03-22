@@ -9,12 +9,12 @@ import ThumbDown from "../../images/thumbs-down.svg";
 import ThumbDownWhite from "../../images/thumbs-down-white.svg";
 import Play from "../../images/play.svg";
 import { addToList, removeToList } from "../../redux/myListSlice/myListSlice";
-import { setDisLike, setLike } from "../../redux/homeSlice/homeSlice";
+import { setDisLike, setLike } from "../../redux/appSlice/appSlice";
 
 const ModalTitleCustom = ({ props, link }) => {
   const dispatch = useDispatch();
-  const like = useSelector((state) => state.homeData.like);
-  const disLike = useSelector((state) => state.homeData.disLike);
+  const like = useSelector((state) => state.appData.like);
+  const disLike = useSelector((state) => state.appData.disLike);
   const myList = useSelector((state) => state.myListData.myList);
 
   /*Récupération des id des films et séries dans le tablau "MyList" */

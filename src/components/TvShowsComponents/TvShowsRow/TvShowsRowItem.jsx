@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const TvShowsRowItem = ({ title, url }) => {
   const [index, setIndex] = useState(0);
-  const width = useSelector((state) => state.homeData.width);
+  const width = useSelector((state) => state.appData.width);
 
   // fonction qui prendre en charge le "Slide" des éléments en fonction de la taille de la fenêtre windows
   const indexHandler = (direction) => {

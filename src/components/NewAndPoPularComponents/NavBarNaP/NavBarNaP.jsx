@@ -15,10 +15,10 @@ import NotificationDropDown from "../../HomeComponents/NavBar/NotificationDropDo
 import ProfileDropDown from "../../HomeComponents/NavBar/ProfileDropDown";
 
 const NavBarNaP = () => {
-  const search = useSelector((state) => state.homeData.search);
-  const isInputActive = useSelector((state) => state.homeData.isInputActive);
-  const isHomeScrolled = useSelector((state) => state.homeData.isHomeScrolled);
-  const width = useSelector((state) => state.homeData.width);
+  const search = useSelector((state) => state.appData.search);
+  const isInputActive = useSelector((state) => state.appData.isInputActive);
+  const isHomeScrolled = useSelector((state) => state.appData.isHomeScrolled);
+  const width = useSelector((state) => state.appData.width);
   const quantity = useSelector((state) => state.myListData.quantity);
   const dispatch = useDispatch();
 

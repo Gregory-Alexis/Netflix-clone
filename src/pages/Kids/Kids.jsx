@@ -13,14 +13,14 @@ import {
   setError,
   setFeaturedData,
   setLoading,
-} from "../../redux/homeSlice/homeSlice";
+} from "../../redux/appSlice/appSlice";
 
 const Kids = () => {
-  const loading = useSelector((state) => state.homeData.loading);
-  const error = useSelector((state) => state.homeData.error);
-  const search = useSelector((state) => state.homeData.search);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
+  const search = useSelector((state) => state.appData.search);
   const dispatch = useDispatch();
-  const featuredKidsData = useSelector((state) => state.homeData.featuredData);
+  const featuredKidsData = useSelector((state) => state.appData.featuredData);
   const [tvKidsData, setTvKidsData] = useState([]);
 
   const newFeaturedData = tvKidsData.filter((item) => {

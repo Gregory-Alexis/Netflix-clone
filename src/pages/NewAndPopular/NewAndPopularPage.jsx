@@ -6,12 +6,12 @@ import Loading from "../../components/Loading/Loading";
 import ErrorFilterMoviePage from "../../components/MovieComponents/FeaturedData/ErrorMovieFilterPage";
 import NapRow from "../../components/NewAndPoPularComponents/NapRow/NapRow";
 import getTopRatedList from "../../newAndPopular";
-import { setError, setLoading } from "../../redux/homeSlice/homeSlice";
+import { setError, setLoading } from "../../redux/appSlice/appSlice";
 
 const NewAndPopularPage = () => {
-  const search = useSelector((state) => state.homeData.search);
-  const loading = useSelector((state) => state.homeData.loading);
-  const error = useSelector((state) => state.homeData.error);
+  const search = useSelector((state) => state.appData.search);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
   const dispatch = useDispatch();
 
   const [NaPdata, setNaPdata] = useState([]);

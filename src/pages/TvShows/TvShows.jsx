@@ -13,15 +13,15 @@ import {
   setError,
   setFeaturedData,
   setLoading,
-} from "../../redux/homeSlice/homeSlice";
+} from "../../redux/appSlice/appSlice";
 
 const TvShows = () => {
-  const loading = useSelector((state) => state.homeData.loading);
-  const error = useSelector((state) => state.homeData.error);
-  const filter = useSelector((state) => state.homeData.filter);
-  const search = useSelector((state) => state.homeData.search);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
+  const filter = useSelector((state) => state.appData.filter);
+  const search = useSelector((state) => state.appData.search);
   const featuredTvShowsData = useSelector(
-    (state) => state.homeData.featuredData
+    (state) => state.appData.featuredData
   );
   const dispatch = useDispatch();
 

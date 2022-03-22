@@ -12,12 +12,12 @@ import {
   addToList,
   removeToList,
 } from "../../../redux/myListSlice/myListSlice";
-import { setDisLike, setLike } from "../../../redux/homeSlice/homeSlice";
+import { setDisLike, setLike } from "../../../redux/appSlice/appSlice";
 
 const ModalMovieTitle = ({ featuredMovieData }) => {
   const dispatch = useDispatch();
-  const like = useSelector((state) => state.homeData.like);
-  const disLike = useSelector((state) => state.homeData.disLike);
+  const like = useSelector((state) => state.appData.like);
+  const disLike = useSelector((state) => state.appData.disLike);
   const myList = useSelector((state) => state.myListData.myList);
   const newList = myList.map((element) => {
     return element.id;

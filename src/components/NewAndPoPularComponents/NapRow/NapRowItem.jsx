@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NapRowItem = ({ title, url }) => {
   const [index, setIndex] = useState(0);
-  const width = useSelector((state) => state.homeData.width);
+  const width = useSelector((state) => state.appData.width);
 
   const indexHandler = (direction) => {
     if (direction === "left") {

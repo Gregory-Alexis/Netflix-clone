@@ -1,14 +1,11 @@
 import { GridViewRounded, MenuOpenRounded } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setIsLinkActive,
-  setScrolled,
-} from "../../../redux/homeSlice/homeSlice";
+import { setIsLinkActive, setScrolled } from "../../../redux/appSlice/appSlice";
 
 const SubNavBarMovieSuggestion = () => {
-  const isScrolled = useSelector((state) => state.homeData.isScrolled);
-  const isLinkActive = useSelector((state) => state.homeData.isLinkActive);
-  const width = useSelector((state) => state.homeData.width);
+  const isScrolled = useSelector((state) => state.appData.isScrolled);
+  const isLinkActive = useSelector((state) => state.appData.isLinkActive);
+  const width = useSelector((state) => state.appData.width);
   const dispatch = useDispatch();
 
   window.onscroll = () => {

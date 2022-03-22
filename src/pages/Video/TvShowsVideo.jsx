@@ -5,15 +5,15 @@ import { useParams } from "react-router";
 import axios from "axios";
 import {
   setError,
+  setFeaturedData,
   setLoading,
-  setTvShowsData,
-} from "../../redux/tvShowsSlice/tvShowsSlice";
+} from "../../redux/appSlice/appSlice";
 
 const TvShowsVideo = () => {
   const { id } = useParams();
-  const tvShowsData = useSelector((state) => state.tvShowsData.data);
-  const loading = useSelector((state) => state.tvShowsData.loading);
-  const error = useSelector((state) => state.tvShowsData.error);
+  const tvShowsData = useSelector((state) => state.appData.data);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const TvShowsVideo = () => {
         const result = await axios.get(
           `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${process.env.REACT_APP_MOVIE_API}&language=fr-Fr`
         );
-        dispatch(setTvShowsData(result.data.results.slice(0, 1)));
+        dispatch(setFeaturedData(result.data.results.slice(0, 1)));
       } catch (err) {
         dispatch(setError(err.message));
       }

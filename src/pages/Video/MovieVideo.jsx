@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import Loading from "../../components/Loading/Loading";
 import { useDispatch, useSelector } from "react-redux";
-import { setData, setError, setLoading } from "../../redux/homeSlice/homeSlice";
+import { setData, setError, setLoading } from "../../redux/appSlice/appSlice";
 import { useParams } from "react-router";
 import axios from "axios";
 
 const Video = () => {
   const { id } = useParams();
-  const movieData = useSelector((state) => state.homeData.data);
-  const loading = useSelector((state) => state.homeData.loading);
-  const error = useSelector((state) => state.homeData.error);
+  const movieData = useSelector((state) => state.appData.data);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
   const dispatch = useDispatch();
 
   useEffect(() => {

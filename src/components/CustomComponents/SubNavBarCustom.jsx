@@ -5,14 +5,14 @@ import {
   setScrolled,
   setIsLinkActive,
   setFilter,
-} from "../../redux/homeSlice/homeSlice";
+} from "../../redux/appSlice/appSlice";
 
 import { tvShowsId } from "../../TvShowsIdData";
 
 const SubNavBarCustom = ({ title, suggestion }) => {
-  const filter = useSelector((state) => state.homeData.filter);
-  const isScrolled = useSelector((state) => state.homeData.isScrolled);
-  const isLinkActive = useSelector((state) => state.homeData.isLinkActive);
+  const filter = useSelector((state) => state.appData.filter);
+  const isScrolled = useSelector((state) => state.appData.isScrolled);
+  const isLinkActive = useSelector((state) => state.appData.isLinkActive);
   const dispatch = useDispatch();
 
   /* Détecte si un scrolle est effectué, ce qui permettra de prendre en charge des animations */

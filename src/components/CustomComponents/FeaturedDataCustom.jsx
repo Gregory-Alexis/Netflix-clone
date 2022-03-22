@@ -1,15 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setFeaturedDetails } from "../../redux/homeSlice/homeSlice";
+import { setFeaturedDetails } from "../../redux/appSlice/appSlice";
 import Play from "../../images/play.svg";
 import Info from "../../images/info.svg";
 import ModalInfo from "./ModalInfoCustom";
 
 const FeaturedDataCustom = ({ props, link }) => {
   const dispatch = useDispatch();
-  const featuredDetails = useSelector(
-    (state) => state.homeData.featuredDetails
-  );
+  const featuredDetails = useSelector((state) => state.appData.featuredDetails);
 
   return (
     <div

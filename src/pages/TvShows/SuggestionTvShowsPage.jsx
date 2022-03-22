@@ -5,13 +5,13 @@ import Footer from "../../components/Footer/Footer";
 import Loading from "../../components/Loading/Loading";
 import getTvShowsList from "../../dataTvShowsFetch";
 import SuggestionTvShowsPageItem from "./SuggestionTvShowsPageItem";
-import { setError, setLoading } from "../../redux/homeSlice/homeSlice";
+import { setError, setLoading } from "../../redux/appSlice/appSlice";
 import SubNavBarTvShowsSuggestion from "../../components/TvShowsComponents/NavBar/SubNavBarTvShowsSuggestion";
 
 const SuggestionTvShowsPage = () => {
   const [suggestionTvShowsData, setSuggestionTvShowsData] = useState([]);
-  const loading = useSelector((state) => state.homeData.loading);
-  const error = useSelector((state) => state.homeData.error);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
   const dispatch = useDispatch();
 
   useEffect(() => {

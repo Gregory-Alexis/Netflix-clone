@@ -9,15 +9,15 @@ import {
   setSearch,
   setToggle,
   setWidth,
-} from "../../redux/homeSlice/homeSlice";
+} from "../../redux/appSlice/appSlice";
 
 import NotificationDropDown from "../HomeComponents/NavBar/NotificationDropDown";
 import ProfileDropDown from "../HomeComponents/NavBar/ProfileDropDown";
 
 const NavBarCustom = ({ active }) => {
-  const isActive = useSelector((state) => state.homeData.isInputActive);
-  const search = useSelector((state) => state.homeData.search);
-  const width = useSelector((state) => state.homeData.width);
+  const isActive = useSelector((state) => state.appData.isInputActive);
+  const search = useSelector((state) => state.appData.search);
+  const width = useSelector((state) => state.appData.width);
   const quantity = useSelector((state) => state.myListData.quantity);
   const dispatch = useDispatch();
 

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setError, setLoading } from "../../redux/homeSlice/homeSlice";
+import { setError, setLoading } from "../../redux/appSlice/appSlice";
 import { useParams } from "react-router";
 import axios from "axios";
 import Loading from "../../components/Loading/Loading";
@@ -10,8 +10,8 @@ import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 
 const MovieDetails = () => {
   const { id } = useParams();
-  const loading = useSelector((state) => state.homeData.loading);
-  const error = useSelector((state) => state.homeData.error);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
   const myList = useSelector((state) => state.myListData.myList);
   const [movieDetails, setMovieDetails] = useState([]);
   const dispatch = useDispatch();

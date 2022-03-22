@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import ModalMovieInfo from "./ModalMovieInfo";
-import { setFeaturedDetails } from "../../../redux/homeSlice/homeSlice";
+import { setFeaturedDetails } from "../../../redux/appSlice/appSlice";
 
 const InfoMovie = ({ featuredMovieData }) => {
-  const featuredDetails = useSelector(
-    (state) => state.homeData.FeaturedDetails
-  );
+  const featuredDetails = useSelector((state) => state.appData.FeaturedDetails);
   const dispatch = useDispatch();
 
   return (

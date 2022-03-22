@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const TvKidsRowItem = ({ title, url }) => {
-  const width = useSelector((state) => state.homeData.width);
+  const width = useSelector((state) => state.appData.width);
   const [index, setIndex] = useState(0);
 
   // fonction qui prendre en charge le "Slide" des éléments en fonction de la taille de la fenêtre windows

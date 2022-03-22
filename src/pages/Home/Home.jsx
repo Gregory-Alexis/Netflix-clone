@@ -8,18 +8,18 @@ import {
   setError,
   setFeaturedData,
   setLoading,
-} from "../../redux/homeSlice/homeSlice";
+} from "../../redux/appSlice/appSlice";
 import HomeFeaturedData from "../../components/HomeComponents/HomeFeaturedData/HomeFeaturedData";
 import ErrorFilterPage from "../../components/HomeComponents/HomeFeaturedData/ErrorFilterPage";
 import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 
 const Home = () => {
-  const search = useSelector((state) => state.homeData.search);
-  const loading = useSelector((state) => state.homeData.loading);
-  const error = useSelector((state) => state.homeData.error);
-  const featuredData = useSelector((state) => state.homeData.featuredData);
+  const search = useSelector((state) => state.appData.search);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
+  const featuredData = useSelector((state) => state.appData.featuredData);
   const dispatch = useDispatch();
-  const [homeData, setHomeData] = useState([]);
+  const [appData, setAppData] = useState([]);
 
   useEffect(() => {
     dispatch(setLoading(true));
@@ -28,7 +28,7 @@ const Home = () => {
       try {
         const result = await getHomeList();
 
-        setHomeData(result);
+        setAppData(result);
 
         const random = Math.floor(
           Math.random() * result[0].items.data.results.length
@@ -47,9 +47,9 @@ const Home = () => {
     fetchData();
   }, [dispatch]);
 
-  const newData = homeData.filter((item) => {
+  const newData = appData.filter((item) => {
     const filteredData = [];
-    for (let i = 0; i < homeData.length; i++) {
+    for (let i = 0; i < appData.length; i++) {
       filteredData.push(item.items.data.results[i].title);
       filteredData.push(item.title);
     }

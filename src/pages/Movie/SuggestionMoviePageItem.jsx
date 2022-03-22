@@ -2,9 +2,9 @@ import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-const SuggestionMoviePageItem = ({ url, title }) => {
+const SuggestionMoviePageItem = ({ url }) => {
   const [index, setIndex] = useState(0);
-  const width = useSelector((state) => state.homeData.width);
+  const width = useSelector((state) => state.appData.width);
 
   const indexHandler = (direction) => {
     if (direction === "left") {

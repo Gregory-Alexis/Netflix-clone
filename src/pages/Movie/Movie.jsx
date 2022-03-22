@@ -13,14 +13,14 @@ import {
   setError,
   setFeaturedData,
   setLoading,
-} from "../../redux/homeSlice/homeSlice";
+} from "../../redux/appSlice/appSlice";
 
 const Movie = () => {
-  const loading = useSelector((state) => state.homeData.loading);
-  const error = useSelector((state) => state.homeData.error);
-  const search = useSelector((state) => state.homeData.search);
-  const filter = useSelector((state) => state.homeData.filter);
-  const featuredMovieData = useSelector((state) => state.homeData.featuredData);
+  const loading = useSelector((state) => state.appData.loading);
+  const error = useSelector((state) => state.appData.error);
+  const search = useSelector((state) => state.appData.search);
+  const filter = useSelector((state) => state.appData.filter);
+  const featuredMovieData = useSelector((state) => state.appData.featuredData);
 
   const dispatch = useDispatch();
   const [movieData, setMovieData] = useState([]);
