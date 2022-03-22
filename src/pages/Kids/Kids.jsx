@@ -5,14 +5,14 @@ import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import getTvKidsList from "../../kidsData";
 import NavBarKids from "../../components/KidsComponents/NavBar/NavBarKids";
-import InfoTvKids from "../../components/KidsComponents/InfoMovie/InfoTvKids";
 import TvKidsRow from "../../components/KidsComponents/TvKidsRow/TvKidsRow";
-import ErrorTvKidsPage from "../../components/KidsComponents/InfoMovie/ErrorTvKidsPage";
 import {
   setError,
   setFeaturedData,
   setLoading,
 } from "../../redux/kidsSlice/kidsSlice";
+import KidsFeaturedData from "../../components/KidsComponents/KidsFeaturedData/KidsFeaturedData";
+import ErrorFilterTvKidsPage from "../../components/KidsComponents/KidsFeaturedData/ErrorFilterTvKidsPage";
 
 const Kids = () => {
   const loading = useSelector((state) => state.kidsData.loading);
@@ -68,23 +68,30 @@ const Kids = () => {
   const filterMovie = newFeaturedData.toString().toLocaleLowerCase();
 
   return (
-    <div className="bg-darknet min-h-screen">
-      {loading && <Loading />}
-      {error && (
-        <p className="text-white flex justify-center items-center">{error}</p>
-      )}
-      <NavBarKids />
-      {!filterMovie ? (
-        <ErrorTvKidsPage />
+    <>
+      {loading ? (
+        <Loading />
       ) : (
-        <>
-          <InfoTvKids featuredKidsData={featuredKidsData} />
-          <TvKidsRow newFeaturedData={newFeaturedData} />
-        </>
-      )}
+        <div className="bg-darknet min-h-screen">
+          {error && (
+            <p className="text-white flex justify-center items-center">
+              {error}
+            </p>
+          )}
+          <NavBarKids />
+          {!filterMovie ? (
+            <ErrorFilterTvKidsPage />
+          ) : (
+            <>
+              <KidsFeaturedData featuredKidsData={featuredKidsData} />
+              <TvKidsRow newFeaturedData={newFeaturedData} />
+            </>
+          )}
 
-      <Footer />
-    </div>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 
