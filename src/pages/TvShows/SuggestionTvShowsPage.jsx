@@ -1,23 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 import Footer from "../../components/Footer/Footer";
 import Loading from "../../components/Loading/Loading";
-import NavBarTvShowsSuggestion from "../../components/TvShowsComponents/NavBar/NavBarTvShowsSuggestion";
 import getTvShowsList from "../../dataTvShowsFetch";
-import {
-  setError,
-  setLoading,
-  setSuggestionTvShowsData,
-} from "../../redux/tvShowsSlice/suggestionTvShowsSlice";
 import SuggestionTvShowsPageItem from "./SuggestionTvShowsPageItem";
+import { setError, setLoading } from "../../redux/homeSlice/homeSlice";
+import SubNavBarTvShowsSuggestion from "../../components/TvShowsComponents/NavBar/SubNavBarTvShowsSuggestion";
 
 const SuggestionTvShowsPage = () => {
-  const suggestionTvShowsData = useSelector(
-    (state) => state.suggestionTvShowsData.suggestionTvShowsData
-  );
-
-  const loading = useSelector((state) => state.suggestionTvShowsData.loading);
-  const error = useSelector((state) => state.suggestionTvShowsData.error);
+  const [suggestionTvShowsData, setSuggestionTvShowsData] = useState([]);
+  const loading = useSelector((state) => state.homeData.loading);
+  const error = useSelector((state) => state.homeData.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +20,9 @@ const SuggestionTvShowsPage = () => {
       try {
         const result = await getTvShowsList();
 
-        dispatch(setSuggestionTvShowsData(result));
+        setSuggestionTvShowsData(result);
+
+        dispatch(setLoading(false));
       } catch (err) {
         setError(err.message);
       }
@@ -39,7 +35,8 @@ const SuggestionTvShowsPage = () => {
     <div className="bg-darknet min-h-screen">
       {loading && <Loading />}
       {error && <p>{error}</p>}
-      <NavBarTvShowsSuggestion />
+      <NavBarCustom active="tv" />
+      <SubNavBarTvShowsSuggestion />
       <div className="pt-20">
         {suggestionTvShowsData.map((el) => (
           <SuggestionTvShowsPageItem
