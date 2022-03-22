@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 import Footer from "../../components/Footer/Footer";
 import Loading from "../../components/Loading/Loading";
 import ErrorFilterMoviePage from "../../components/MovieComponents/FeaturedData/ErrorMovieFilterPage";
 import NapRow from "../../components/NewAndPoPularComponents/NapRow/NapRow";
-import NavBarNaP from "../../components/NewAndPoPularComponents/NavBarNaP/NavBarNaP";
 import getTopRatedList from "../../newAndPopular";
 import { setError, setLoading } from "../../redux/homeSlice/homeSlice";
 
@@ -51,19 +51,24 @@ const NewAndPopularPage = () => {
   const filterMovie = newFeaturedData.toString().toLocaleLowerCase();
 
   return (
-    <div className="bg-darknet min-h-screen">
-      {loading && <Loading />}
-      {error && <p>{error}</p>}
-      <NavBarNaP />
-      {!filterMovie ? (
-        <ErrorFilterMoviePage search={search} />
+    <>
+      {loading ? (
+        <Loading />
       ) : (
-        <>
-          <NapRow newFeaturedData={newFeaturedData} />
-        </>
+        <div className="bg-darknet min-h-screen">
+          {error && <p>{error}</p>}
+          <NavBarCustom active="Nap" />
+          {!filterMovie ? (
+            <ErrorFilterMoviePage search={search} />
+          ) : (
+            <>
+              <NapRow newFeaturedData={newFeaturedData} />
+            </>
+          )}
+          <Footer />
+        </div>
       )}
-      <Footer />
-    </div>
+    </>
   );
 };
 
