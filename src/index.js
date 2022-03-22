@@ -16,7 +16,6 @@ import Kids from "./pages/Kids/Kids";
 import MovieVideo from "./pages/Video/MovieVideo";
 import TvShowsVideo from "./pages/Video/TvShowsVideo";
 import Home from "./pages/Home/Home";
-import KidsVideo from "./pages/Video/KidsVideo";
 import MovieDetails from "./pages/MovieDetails/MovieDetails";
 import TvDetails from "./pages/TvDetails/TvDetails";
 
@@ -35,7 +34,6 @@ ReactDOM.render(
         <Route path="/kids" element={<Kids />} />
         <Route path="/movie-video/:id" element={<MovieVideo />} />
         <Route path="/tv-video/:id" element={<TvShowsVideo />} />
-        <Route path="/tv-kids/:id" element={<KidsVideo />} />
         <Route path="/movie-details/:id" element={<MovieDetails />} />
         <Route path="/tv-details/:id" element={<TvDetails />} />
       </Routes>
