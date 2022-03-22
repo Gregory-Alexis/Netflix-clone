@@ -5,7 +5,7 @@ import axios from "axios";
 import Loading from "../../components/Loading/Loading";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { addToList } from "../../redux/myListSlice/myListSlice";
+import { addToList, removeToList } from "../../redux/myListSlice/myListSlice";
 import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 
 const TvDetails = () => {
@@ -14,6 +14,11 @@ const TvDetails = () => {
   const error = useSelector((state) => state.homeData.error);
   const [tvDetails, setTvDetails] = useState([]);
   const dispatch = useDispatch();
+  const myList = useSelector((state) => state.myListData.myList);
+
+  const newList = myList.map((element) => {
+    return element.id;
+  });
 
   useEffect(() => {
     dispatch(setLoading(true));
@@ -25,7 +30,7 @@ const TvDetails = () => {
         );
 
         setTvDetails(result.data);
-
+        console.log(result.data);
         dispatch(setLoading(false));
       } catch (err) {
         dispatch(setError(err.message));
@@ -57,7 +62,7 @@ const TvDetails = () => {
             <div className="flex justify-center w-full">
               <h1 className=" text-2xl pt-5">{tvDetails.title}</h1>
             </div>
-            <div className="flex flex-col items-center w-full">
+            <div className="flex flex-col items-center w-full xl:text-lg">
               <h2 className="text-center mt-5 text-lg">Synopsis:</h2>
               <p className="py-2 leading-7 lg:w-3/4 xl:w-2/4">
                 {tvDetails.overview}
@@ -72,20 +77,29 @@ const TvDetails = () => {
                 Watch Trailer
               </button>
             </Link>
-            <button
-              className="border hover:bg-gray-500 text-gray-100 px-11 py-2 mb-2 rounded-md text-lg"
-              onClick={() =>
-                dispatch(
-                  addToList({
-                    poster: tvDetails.poster_path,
-                    name: tvDetails.original_name,
-                    id: tvDetails.id,
-                  })
-                )
-              }
-            >
-              Add to my List
-            </button>
+            {newList.includes(tvDetails.id) ? (
+              <button
+                className="border hover:bg-gray-500 text-gray-100 px-11 py-2 mb-2 rounded-md text-lg "
+                onClick={() => dispatch(removeToList(tvDetails.id))}
+              >
+                Remove to my List
+              </button>
+            ) : (
+              <button
+                className="border hover:bg-gray-500 text-gray-100 px-11 py-2 mb-2 rounded-md text-lg"
+                onClick={() =>
+                  dispatch(
+                    addToList({
+                      poster: tvDetails.poster_path,
+                      name: tvDetails.original_name,
+                      id: tvDetails.id,
+                    })
+                  )
+                }
+              >
+                Add to my List
+              </button>
+            )}
           </div>
         </>
       )}
