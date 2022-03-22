@@ -46,7 +46,7 @@ const TvShowsVideo = () => {
       )}
       <div className="bg-darknet min-h-screen">
         {tvShowsData.map((el) => (
-          <div className="bg-darknet min-h-screen text-white">
+          <div className="bg-darknet min-h-screen text-white" key={el.id}>
             <iframe
               src={`https://www.youtube.com/embed/${el.key}`}
               title="video"
