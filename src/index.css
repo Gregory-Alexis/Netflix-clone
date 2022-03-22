@@ -191,19 +191,20 @@ text-gray-100
     z-20
     top-0
     text-xl
-    fixed
+    sticky
     px-3
     py-2
     md:px-8
     xl:px-10
+    
   }
 
   .scrolledIn {
     @apply 
-  bg-darknet 
     transition-all 
     duration-300 
     ease-in-out 
+    bg-darknet
   }
 
   .scrolledOut {
@@ -323,6 +324,7 @@ text-gray-100
     items-center
     absolute
     top-0
+    left-0
   }
 
   .modal {
