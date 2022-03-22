@@ -5,15 +5,20 @@ import axios from "axios";
 import Loading from "../../components/Loading/Loading";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { addToList } from "../../redux/myListSlice/myListSlice";
+import { addToList, removeToList } from "../../redux/myListSlice/myListSlice";
 import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 
 const MovieDetails = () => {
   const { id } = useParams();
   const loading = useSelector((state) => state.homeData.loading);
   const error = useSelector((state) => state.homeData.error);
+  const myList = useSelector((state) => state.myListData.myList);
   const [movieDetails, setMovieDetails] = useState([]);
   const dispatch = useDispatch();
+
+  const newList = myList.map((element) => {
+    return element.id;
+  });
 
   useEffect(() => {
     dispatch(setLoading(true));
@@ -58,7 +63,7 @@ const MovieDetails = () => {
             </div>
             <div className="flex flex-col items-center w-full">
               <h2 className="text-center mt-5 text-lg">Synopsis:</h2>
-              <p className="py-2 leading-7 lg:w-3/4 xl:w-2/4">
+              <p className="py-2 leading-7 lg:w-3/4 xl:w-2/4 xl:text-lg">
                 {movieDetails.overview}
               </p>
             </div>
@@ -71,20 +76,29 @@ const MovieDetails = () => {
                 Watch Trailer
               </button>
             </Link>
-            <button
-              className="border hover:bg-gray-500 text-gray-100 px-11 py-2 mb-2 rounded-md text-lg"
-              onClick={() =>
-                dispatch(
-                  addToList({
-                    poster: movieDetails.poster_path,
-                    name: movieDetails.original_name,
-                    id: movieDetails.id,
-                  })
-                )
-              }
-            >
-              Add to my List
-            </button>
+            {newList.includes(movieDetails.id) ? (
+              <button
+                className="border hover:bg-gray-500 text-gray-100 px-11 py-2 mb-2 rounded-md text-lg "
+                onClick={() => dispatch(removeToList(movieDetails.id))}
+              >
+                Remove to my List
+              </button>
+            ) : (
+              <button
+                className="border hover:bg-gray-500 text-gray-100 px-11 py-2 mb-2 rounded-md text-lg"
+                onClick={() =>
+                  dispatch(
+                    addToList({
+                      poster: movieDetails.poster_path,
+                      name: movieDetails.original_name,
+                      id: movieDetails.id,
+                    })
+                  )
+                }
+              >
+                Add to my List
+              </button>
+            )}
           </div>
         </>
       )}
