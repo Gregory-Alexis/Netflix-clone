@@ -2,17 +2,18 @@ import Search from "../../../images/search.svg";
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setToggle, setWidth } from "../../../redux/homeSlice/homeSlice";
 import {
-  setIsActive,
+  setActive,
   setScrolled,
   setSearch,
-} from "../../../redux/kidsSlice/kidsSlice";
+  setToggle,
+  setWidth,
+} from "../../../redux/homeSlice/homeSlice";
 
 const NavBarKids = () => {
-  const search = useSelector((state) => state.kidsData.search);
-  const isInputActive = useSelector((state) => state.kidsData.isInputActive);
-  const isHomeScrolled = useSelector((state) => state.kidsData.isHomeScrolled);
+  const search = useSelector((state) => state.homeData.search);
+  const isInputActive = useSelector((state) => state.homeData.isInputActive);
+  const isHomeScrolled = useSelector((state) => state.homeData.isHomeScrolled);
   const width = useSelector((state) => state.homeData.width);
   const quantity = useSelector((state) => state.myListData.quantity);
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const NavBarKids = () => {
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (isInputActive && ref.current && !ref.current.contains(e.target)) {
-        dispatch(setIsActive(false));
+        dispatch(setActive(false));
       }
     };
 
@@ -104,7 +105,7 @@ const NavBarKids = () => {
             </ul>
           ) : (
             /*nabar pour petits écrans */
-            <div class="relative inline-block text-center group">
+            <div className="relative inline-block text-center group">
               <div>
                 <button
                   type="button"
@@ -201,7 +202,7 @@ const NavBarKids = () => {
               )}
               <span
                 className="absolute left-0 top-0 bottom-0 flex items-center pl-2"
-                onClick={() => dispatch(setIsActive(!isInputActive))}
+                onClick={() => dispatch(setActive(!isInputActive))}
               >
                 <img src={Search} alt="search" width="24" />
               </span>
