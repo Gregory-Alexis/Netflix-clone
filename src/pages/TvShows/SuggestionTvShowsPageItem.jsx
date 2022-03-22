@@ -31,12 +31,11 @@ const SuggestionTvShowsPageItem = ({ url }) => {
           }}
         >
           {url.data.results.map((el) => (
-            <Link to={`/tv-details/${el.id}`} className="relative">
+            <Link to={`/tv-details/${el.id}`} className="relative" key={el.id}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${el.poster_path}`}
                 alt={el.name}
                 className="moviePosterStyle mr-32 lg:mr-48 xl:mr-52 "
-                key={el.id}
                 width="120"
               />
               <div className="text-2xl absolute w-full h-full top-0 transition-all duration-500 ease-in-out flex justify-center items-center opacity-0 text-gray-100 hover:opacity-100 hover:bg-gray-500 hover:bg-opacity-70">

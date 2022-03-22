@@ -50,26 +50,23 @@ const MovieRowItem = ({ title, url }) => {
         >
           {/*Redirige vers les détails du film sélectionné */}
           {url.data.results.map((el) => (
-            <>
-              <Link
-                to={`/movie-details/${el.id}`}
-                key={el.id}
-                className=" relative"
-              >
-                {/*affiche les poster des films */}
-                <img
-                  src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
-                  alt={el.poster_path}
-                  className="moviePosterStyle mr-32 lg:mr-48 xl:mr-52 "
-                  width="120"
-                  key={el.id}
-                />
-                {/*View more, redirigera vers une nouvelle page ou vous aurez plus en détails les informations du poster sélectionné */}
-                <div className="text-2xl absolute w-full h-full top-0 transition-all duration-500 ease-in-out flex justify-center items-center opacity-0 text-gray-100 hover:opacity-100 hover:bg-gray-500 hover:bg-opacity-70">
-                  View More
-                </div>
-              </Link>
-            </>
+            <Link
+              to={`/movie-details/${el.id}`}
+              className="relative"
+              key={el.id}
+            >
+              {/*affiche les poster des films */}
+              <img
+                src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
+                alt={el.poster_path}
+                className="moviePosterStyle mr-32 lg:mr-48 xl:mr-52 "
+                width="120"
+              />
+              {/*View more, redirigera vers une nouvelle page ou vous aurez plus en détails les informations du poster sélectionné */}
+              <div className="text-2xl absolute w-full h-full top-0 transition-all duration-500 ease-in-out flex justify-center items-center opacity-0 text-gray-100 hover:opacity-100 hover:bg-gray-500 hover:bg-opacity-70">
+                View More
+              </div>
+            </Link>
           ))}
         </div>
         {/*La flêche pour slider vers la gauche ne sera visible que si l'index est supèrieur à 0 "Si la flêche de droite a au moins été cliqué une fois" */}

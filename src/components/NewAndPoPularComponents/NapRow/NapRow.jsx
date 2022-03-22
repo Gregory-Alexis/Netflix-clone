@@ -5,7 +5,7 @@ const NapRow = ({ newFeaturedData }) => {
   return (
     <div className="pt-24">
       {newFeaturedData.map((item) => (
-        <NapRowItem title={item.title} url={item.items} />
+        <NapRowItem title={item.title} url={item.items} key={item.title} />
       ))}
     </div>
   );

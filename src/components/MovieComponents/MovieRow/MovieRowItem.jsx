@@ -50,13 +50,16 @@ const MovieRowItem = ({ title, url }) => {
         >
           {/*Redirige vers le lien des détails du film sélectionné */}
           {url.data.results.map((el) => (
-            <Link to={`/movie-details/${el.id}`} className="relative">
+            <Link
+              to={`/movie-details/${el.id}`}
+              className="relative"
+              key={el.id}
+            >
               {/*affiche les poster des films */}
               <img
                 src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
                 alt={el.title}
                 className="moviePosterStyle mr-32 lg:mr-48 xl:mr-52 "
-                key={el.id}
                 width="120"
               />
               {/*View more, redirigera vers une nouvelle page ou vous aurez plus en détails les informations du poster sélectionné */}

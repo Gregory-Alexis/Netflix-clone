@@ -50,7 +50,7 @@ const TvKidsRowItem = ({ title, url }) => {
         >
           {/*Redirige vers les details de la série sélectionné */}
           {url.data.results.map((el) => (
-            <Link to={`/tv-details/${el.id}`} className="relative">
+            <Link to={`/tv-details/${el.id}`} className="relative" key={el.id}>
               {/*affiche les poster des films */}
               <img
                 src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
