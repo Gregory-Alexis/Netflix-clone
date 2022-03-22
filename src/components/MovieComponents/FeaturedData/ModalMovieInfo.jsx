@@ -1,20 +1,23 @@
-import { memo, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setDetails } from "../../../redux/movieSlice/movieSlice";
+import { setFeaturedDetails } from "../../../redux/homeSlice/homeSlice";
+
 import ModalMovieTitle from "./ModalMovieTitle";
 
 const ModalMovieInfo = ({ featuredMovieData }) => {
-  const details = useSelector((state) => state.movieData.details);
+  const featuredDetails = useSelector(
+    (state) => state.homeData.featuredDetails
+  );
+
   const dispatch = useDispatch();
   const ref = useRef();
-
   /*Le useEffect détecte si un clique a été effectué en dehors de la fenêtre modale
   <<Lorsqu'on clique sur More Info>> pour qu'elle puisse se fermer 
   */
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
-      if (details && ref.current && !ref.current.contains(e.target)) {
-        dispatch(setDetails(false));
+      if (featuredDetails && ref.current && !ref.current.contains(e.target)) {
+        dispatch(setFeaturedDetails(false));
       }
     };
 
@@ -23,11 +26,11 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
-  }, [details, dispatch]);
+  }, [featuredDetails, dispatch]);
 
   return (
     <>
-      {details && (
+      {featuredDetails && (
         <div
           // baisse la clarté du fond lors lors de l'ouverture de la modal en cliquant sur "More Info" ====> voir index.css
           className="modal backDrop"
