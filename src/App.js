@@ -3,7 +3,7 @@ import Home from "./pages/Home/Home";
 function App() {
   return (
     <>
-      <div className="bg-darknet min-h-screen">
+      <div data-testid="app">
         <Home />
       </div>
     </>
