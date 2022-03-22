@@ -4,6 +4,8 @@ import homeSlice, {
   setError,
   setFeaturedData,
   setFeaturedDetails,
+  setFilter,
+  setIsLinkActive,
   setLike,
   setLoading,
   setScrolled,
@@ -23,11 +25,13 @@ describe("Home slice test suits", () => {
       search: "",
       isInputActive: false,
       featuredDetails: false,
-      isHomeScrolled: false,
+      isScrolled: false,
       width: window.innerWidth,
       toggle: false,
       like: false,
       disLike: false,
+      filter: "all",
+      isLinkActive: false,
     });
   });
 
@@ -86,7 +90,7 @@ describe("Home slice test suits", () => {
   it("should handle isHomeScrolled", () => {
     const previousState = false;
     expect(homeSlice(previousState, setScrolled(true))).toEqual({
-      isHomeScrolled: true,
+      isScrolled: true,
     });
   });
   it("should handle isInputActive", () => {
@@ -118,6 +122,18 @@ describe("Home slice test suits", () => {
     const previousState = false;
     expect(homeSlice(previousState, setDisLike(true))).toEqual({
       disLike: true,
+    });
+  });
+  it("should handle filter", () => {
+    const previousState = "";
+    expect(homeSlice(previousState, setFilter("Animation"))).toEqual({
+      filter: "Animation",
+    });
+  });
+  it("should handle isLinActive", () => {
+    const previousState = false;
+    expect(homeSlice(previousState, setIsLinkActive(true))).toEqual({
+      isLinkActive: true,
     });
   });
 });
