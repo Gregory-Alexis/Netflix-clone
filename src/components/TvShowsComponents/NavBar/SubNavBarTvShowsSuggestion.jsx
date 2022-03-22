@@ -1,22 +1,20 @@
 import { GridViewRounded, MenuOpenRounded } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setIsLinkActive,
-  setIsScrolled,
-} from "../../../redux/tvShowsSlice/suggestionTvShowsSlice";
+import { setIsLinkActive, setScrolled } from "../../../redux/homeSlice/homeSlice";
+
 
 const SubNavBarTvShowsSuggestion = () => {
   const isScrolled = useSelector(
-    (state) => state.suggestionTvShowsData.isScrolled
+    (state) => state.homeData.isScrolled
   );
   const isLinkActive = useSelector(
-    (state) => state.suggestionTvShowsData.isLinkActive
+    (state) => state.homeData.isLinkActive
   );
   const width = useSelector((state) => state.homeData.width);
   const dispatch = useDispatch();
 
   window.onscroll = () => {
-    dispatch(setIsScrolled(window.pageYOffset === 0 ? false : true));
+    dispatch(setScrolled(window.pageYOffset === 0 ? false : true));
     return () => (window.onscroll = null);
   };
 
