@@ -33,7 +33,7 @@ const SubNavBarMovieSuggestion = () => {
           </select>
         </div>
         {width < 768 ? (
-          <div class="relative inline-block text-center  group">
+          <div className="relative inline-block text-center  group">
             <div className="flex">
               <a
                 href="/movie"

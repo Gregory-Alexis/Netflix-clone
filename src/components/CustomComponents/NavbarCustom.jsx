@@ -129,7 +129,7 @@ const NavBarCustom = ({ active }) => {
           </ul>
         ) : (
           /*nabar pour petits écrans */
-          <div class="relative inline-block text-center group">
+          <div className="relative inline-block text-center group">
             <div>
               <button
                 type="button"
