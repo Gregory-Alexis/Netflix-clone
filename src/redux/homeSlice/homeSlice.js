@@ -10,11 +10,13 @@ export const homeSlice = createSlice({
     search: "",
     isInputActive: false,
     featuredDetails: false,
-    isHomeScrolled: false,
+    isScrolled: false,
     width: window.innerWidth,
     toggle: false,
     like: false,
     disLike: false,
+    filter: "all",
+    isLinkActive: false,
   },
   reducers: {
     setData: (state, action) => {
@@ -60,7 +62,7 @@ export const homeSlice = createSlice({
     setScrolled: (state, action) => {
       return {
         ...state,
-        isHomeScrolled: action.payload,
+        isScrolled: action.payload,
       };
     },
     setFeaturedDetails: (state, action) => {
@@ -93,6 +95,18 @@ export const homeSlice = createSlice({
         disLike: action.payload,
       };
     },
+    setFilter: (state, action) => {
+      return {
+        ...state,
+        filter: action.payload,
+      };
+    },
+    setIsLinkActive: (state, action) => {
+      return {
+        ...state,
+        isLinkActive: action.payload,
+      };
+    },
   },
 });
 
@@ -109,5 +123,7 @@ export const {
   setToggle,
   setLike,
   setDisLike,
+  setFilter,
+  setIsLinkActive,
 } = homeSlice.actions;
 export default homeSlice.reducer;
