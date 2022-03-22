@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import { getMovieInfo } from "../../dataMovieFetch";
 import Loading from "../../components/Loading/Loading";
-import NavBarMovie from "../../components/MovieComponents/NavBar/NavBarMovie";
-import InfoMovie from "../../components/MovieComponents/FeaturedData/InfoMovie";
 import MovieRow from "../../components/MovieComponents/MovieRow/MovieRow";
 import ErrorFilterMoviePage from "../../components/MovieComponents/FeaturedData/ErrorMovieFilterPage";
 import getMovieList from "../../dataMovieFetch";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
+import MovieFeaturedData from "../../components/MovieComponents/FeaturedData/MovieFeaturedData";
+import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
+import SubNavBarCustom from "../../components/CustomComponents/SubNavBarCustom";
 import {
   setError,
-  setFeaturedMovieData,
+  setFeaturedData,
   setLoading,
-} from "../../redux/movieSlice/movieSlice";
+} from "../../redux/homeSlice/homeSlice";
 
 const Movie = () => {
-  const loading = useSelector((state) => state.movieData.loading);
-  const error = useSelector((state) => state.movieData.error);
-  const search = useSelector((state) => state.movieData.search);
-  const filter = useSelector((state) => state.movieData.filter);
-  const featuredMovieData = useSelector(
-    (state) => state.movieData.featuredMovieData
-  );
+  const loading = useSelector((state) => state.homeData.loading);
+  const error = useSelector((state) => state.homeData.error);
+  const search = useSelector((state) => state.homeData.search);
+  const filter = useSelector((state) => state.homeData.filter);
+  const featuredMovieData = useSelector((state) => state.homeData.featuredData);
+
   const dispatch = useDispatch();
   const [movieData, setMovieData] = useState([]);
 
@@ -63,7 +63,7 @@ const Movie = () => {
         const randomMovie = result[id].items.data.results[random];
         const chosenInfo = await getMovieInfo(randomMovie.id, "movie");
 
-        dispatch(setFeaturedMovieData(chosenInfo.data));
+        dispatch(setFeaturedData(chosenInfo.data));
 
         dispatch(setLoading(false));
       } catch (err) {
@@ -77,22 +77,30 @@ const Movie = () => {
   const filterMovie = newFeaturedData.toString().toLocaleLowerCase();
 
   return (
-    <div className="bg-darknet min-h-screen">
-      {loading && <Loading />}
-      {error && (
-        <p className="text-white flex justify-center items-center">{error}</p>
-      )}
-      <NavBarMovie />
-      {!filterMovie ? (
-        <ErrorFilterMoviePage search={search} />
+    <>
+      {loading ? (
+        <Loading />
       ) : (
-        <>
-          <InfoMovie featuredMovieData={featuredMovieData} />
-          <MovieRow dataFilter={dataFilter} />
-        </>
+        <div className="bg-darknet min-h-screen">
+          {error && (
+            <p className="text-white flex justify-center items-center">
+              {error}
+            </p>
+          )}
+          <NavBarCustom active="movies" />
+          <SubNavBarCustom title="MOVIE" suggestion="movie-suggestion" />
+          {!filterMovie ? (
+            <ErrorFilterMoviePage search={search} />
+          ) : (
+            <>
+              <MovieFeaturedData featuredMovieData={featuredMovieData} />
+              <MovieRow dataFilter={dataFilter} />
+            </>
+          )}
+          <Footer />
+        </div>
       )}
-      <Footer />
-    </div>
+    </>
   );
 };
 
