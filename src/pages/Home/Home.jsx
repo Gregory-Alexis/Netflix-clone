@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import ErrorFilterPage from "../../components/HomeComponents/InfoMovie/ErrorFilterPage";
-import InfoMovie from "../../components/HomeComponents/InfoMovie/InfoMovie";
 import MovieRow from "../../components/HomeComponents/MovieRow/MovieRow";
-import NavBar from "../../components/HomeComponents/NavBar/NavBar";
 import getHomeList, { getMovieInfo } from "../../dataHomeFetch";
 import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
@@ -12,6 +9,9 @@ import {
   setFeaturedData,
   setLoading,
 } from "../../redux/homeSlice/homeSlice";
+import HomeFeaturedData from "../../components/HomeComponents/HomeFeaturedData/HomeFeaturedData";
+import ErrorFilterPage from "../../components/HomeComponents/HomeFeaturedData/ErrorFilterPage";
+import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 
 const Home = () => {
   const search = useSelector((state) => state.homeData.search);
@@ -63,22 +63,29 @@ const Home = () => {
   const filterMovie = newData.toString().toLocaleLowerCase();
 
   return (
-    <div className="bg-darknet">
-      <NavBar />
-      {loading && <Loading />}
-      {error && (
-        <p className="text-white flex justify-center items-center">{error}</p>
-      )}
-      {!filterMovie ? (
-        <ErrorFilterPage />
+    <>
+      {loading ? (
+        <Loading />
       ) : (
-        <>
-          <InfoMovie featuredData={featuredData} />
-          <MovieRow newData={newData} />
-        </>
+        <div className="bg-darknet">
+          {error && (
+            <p className="text-white flex justify-center items-center">
+              {error}
+            </p>
+          )}
+          <NavBarCustom active="home" />
+          {!filterMovie ? (
+            <ErrorFilterPage />
+          ) : (
+            <>
+              <HomeFeaturedData featuredData={featuredData} />
+              <MovieRow newData={newData} />
+            </>
+          )}
+          <Footer />
+        </div>
       )}
-      <Footer />
-    </div>
+    </>
   );
 };
 
