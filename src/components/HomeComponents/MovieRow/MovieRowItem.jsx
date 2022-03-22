@@ -1,4 +1,4 @@
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { ArrowForwardIos } from "@mui/icons-material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -73,25 +73,6 @@ const MovieRowItem = ({ title, url }) => {
           ))}
         </div>
         {/*La flêche pour slider vers la gauche ne sera visible que si l'index est supèrieur à 0 "Si la flêche de droite a au moins été cliqué une fois" */}
-        {index > 0 && (
-          <button
-            type="button"
-            aria-label="left slide"
-            className="absolute top-0 bottom-0 flex items-center justify-center text-white hover:scale-125 backdrop-brightness-75 opacity-0 group-hover:opacity-100 transition duration-100 ease-in-out"
-            onClick={() => indexHandler("left")}
-          >
-            <ArrowBackIos style={{ fontSize: "30px" }} />
-          </button>
-        )}
-
-        <button
-          type="button"
-          aria-label="right slide"
-          className="absolute top-0 bottom-0 right-0 flex items-center justify-center text-white hover:scale-125 bg-darknet bg-opacity-60 opacity-0 group-hover:opacity-100 transition duration-100 ease-in-out"
-          onClick={() => indexHandler("right")}
-        >
-          <ArrowForwardIos style={{ fontSize: "30px" }} />
-        </button>
       </div>
     </div>
   );
