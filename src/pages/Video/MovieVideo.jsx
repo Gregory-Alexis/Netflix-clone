@@ -31,27 +31,34 @@ const Video = () => {
 
   return (
     <>
-      {loading && <Loading />}
-      {error && (
-        <p className="text-white flex justify-center items-center">{error}</p>
-      )}
-      {movieData.length === 0 && (
-        <p className="text-white  flex justify-center items-center bg-darknet h-screen text-4xl px-6 text-center">
-          Désolé, nous n'avons pas encore cette vidéo dans notre catalogue.
-        </p>
-      )}
-      <div className="bg-darknet h-screen max-w-96">
-        {movieData.map((el) => (
-          <div className="bg-darknet text-white">
-            <iframe
-              src={`https://www.youtube.com/embed/${el.key}`}
-              title="video"
-              className="absolute left-0 right-0 top-0 bottom-0 w-full h-96 m-auto lg:h-3/4 xl:h-screen"
-              allowFullScreen
-            ></iframe>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          {movieData.length === 0 && (
+            <p className="text-white  flex justify-center items-center bg-darknet h-screen text-4xl px-6 text-center">
+              Désolé, nous n'avons pas encore cette vidéo dans notre catalogue.
+            </p>
+          )}
+          {error && (
+            <p className="text-white flex justify-center items-center">
+              {error}
+            </p>
+          )}
+          <div className="bg-darknet h-screen max-w-96">
+            {movieData.map((el) => (
+              <div className="bg-darknet text-white">
+                <iframe
+                  src={`https://www.youtube.com/embed/${el.key}`}
+                  title="video"
+                  className="absolute left-0 right-0 top-0 bottom-0 w-full h-96 m-auto lg:h-3/4 xl:h-screen"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
     </>
   );
 };
