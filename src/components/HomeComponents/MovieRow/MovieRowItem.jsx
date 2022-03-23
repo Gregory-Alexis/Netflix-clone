@@ -44,7 +44,7 @@ const MovieRowItem = ({ title, url }) => {
           className="flex transition duration-500 ease-in-out pl-3 space-x-2 md:pt-4 md:pl-8 md:space-x-5 lg:space-x-2 xl:space-x-7"
           style={{
             transform: `translateX(${
-              width >= 1280 ? index * -100 : index * -98
+              width >= 1280 ? index * -62 : index * -98
             }vw )`,
           }}
         >
