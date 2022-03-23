@@ -30,7 +30,7 @@ const TvDetails = () => {
         );
 
         setTvDetails(result.data);
-        console.log(result.data);
+
         dispatch(setLoading(false));
       } catch (err) {
         dispatch(setError(err.message));
