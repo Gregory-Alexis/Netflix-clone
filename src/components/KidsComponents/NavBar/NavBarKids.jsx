@@ -91,7 +91,7 @@ const NavBarKids = () => {
                 <Link to="/movie">Movies</Link>
               </li>
               <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
-                <Link to="/latest">New and Popular</Link>
+                <Link to="/latest">New & Popular</Link>
               </li>
 
               <li className="mr-5 text-sm hover:text-gray-300 transition-all duration-200 ease-in-out">
@@ -154,7 +154,7 @@ const NavBarKids = () => {
                       <Link to="/movie">Movies</Link>
                     </li>
                     <li className="pt-2 hover:text-gray-100 hover:underline">
-                      <Link to="/latest">New and Popular</Link>
+                      <Link to="/latest">New & Popular</Link>
                     </li>
                     <li className="pt-2 hover:text-gray-100 hover:underline">
                       <Link to="/kids">Kids</Link>
