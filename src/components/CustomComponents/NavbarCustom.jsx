@@ -229,7 +229,7 @@ const NavBarCustom = ({ active }) => {
               className="absolute  top-0 bottom-0 flex items-center pl-5"
               onClick={() => dispatch(setActive(!isActive))}
             >
-              <img src={Search} alt="search" width="24" />
+              <img src={Search} alt="search" width="24" data-testid="searchInput"/>
             </span>
           </div>
         )}
