@@ -12,7 +12,7 @@ npx create-react-app my-app --template redux
 
 ## Description
 
-Reproduction du site Netflix (https://app.netlify.com/sites/greg-netflix-clone/overview)
+Reproduction du site Netflix (https://greg-netflix-clone.netlify.app/)
 
 ## Information sur le code
 
