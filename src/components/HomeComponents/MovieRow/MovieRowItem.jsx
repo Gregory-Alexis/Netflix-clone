@@ -48,17 +48,23 @@ const MovieRowItem = ({ title, url }) => {
             }vw )`,
           }}
         >
-          {/*Redirige vers les détails du film sélectionné */}
+          {/*Redirige vers les détails du film ou série sélectionné */}
           {url.data.results.map((el) => (
+            /*Ici, les données récupérés sont composé de films et de séries. Afin de pouvoir être redirigé correctement sur la page "Détails"
+            lors d'un clique sur l'un des poster, il fallait une condition. La clé des titres de séries est nommé "name"
+            tandis que celle des films est nommé "title". Donc, si el.name === true, c'est que le poster cliqué est une série sinon ce sera un film.
+             */
             <Link
-              to={`/movie-details/${el.id}`}
+              to={`${
+                el.name ? `/tv-details/${el.id}` : `/movie-details/${el.id}`
+              }`}
               className="relative"
               key={el.id}
             >
               {/*affiche les poster des films */}
               <img
                 src={`https://image.tmdb.org/t/p/w300/${el.poster_path}`}
-                alt={el.poster_path}
+                alt={el.title}
                 className="moviePosterStyle mr-32 lg:mr-48 xl:mr-52 "
                 width="120"
               />
