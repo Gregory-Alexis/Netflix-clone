@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 import Footer from "../../components/Footer/Footer";
 import Loading from "../../components/Loading/Loading";
 import getTvShowsList from "../../dataTvShowsFetch";
 import SuggestionTvShowsPageItem from "./SuggestionTvShowsPageItem";
 import { setError, setLoading } from "../../redux/appSlice/appSlice";
 import SubNavBarTvShowsSuggestion from "../../components/TvShowsComponents/NavBar/SubNavBarTvShowsSuggestion";
+import NavbarTvMovieCustom from "../../components/CustomComponents/NavbarTvMovieCustom";
 
 const SuggestionTvShowsPage = () => {
   const [suggestionTvShowsData, setSuggestionTvShowsData] = useState([]);
@@ -35,7 +35,7 @@ const SuggestionTvShowsPage = () => {
     <div className="bg-darknet min-h-screen">
       {loading && <Loading />}
       {error && <p>{error}</p>}
-      <NavBarCustom active="tv" />
+      <NavbarTvMovieCustom active="tv" />
       <SubNavBarTvShowsSuggestion />
       <div className="pt-20">
         {suggestionTvShowsData.map((el) => (

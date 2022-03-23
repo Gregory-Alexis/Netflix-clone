@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
+import NavbarTvMovieCustom from "../../components/CustomComponents/NavbarTvMovieCustom";
 import Footer from "../../components/Footer/Footer";
 import Loading from "../../components/Loading/Loading";
 import SubNavBarMovieSuggestion from "../../components/MovieComponents/NavBar/SubNavBarMovieSuggestion";
@@ -37,7 +37,7 @@ const SuggestionMoviePage = () => {
       {error && (
         <p className="text-white flex justify-center items-center">{error}</p>
       )}
-      <NavBarCustom active="movie" />
+      <NavbarTvMovieCustom active="movie" />
       <SubNavBarMovieSuggestion suggestion="movie-suggestion" />
       <div className="pt-20">
         {suggestionMovieData.map((el) => (
