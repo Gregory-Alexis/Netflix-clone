@@ -13,7 +13,7 @@ const getHomeList = async () => {
       from: "original",
       title: "Original Netflix",
       items: await fetch(
-        `/discover/tv?&api_key=${process.env.REACT_APP_MOVIE_API}&language=fr-FR`
+        `/discover/tv?&language=fr-FR&api_key=${process.env.REACT_APP_MOVIE_API}`
       ),
     },
     {
