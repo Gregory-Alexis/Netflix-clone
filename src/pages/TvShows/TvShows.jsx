@@ -7,13 +7,13 @@ import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import FeaturedTvShowsData from "../../components/TvShowsComponents/FeaturedData/FeaturedTvShowsData";
-import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 import SubNavBarCustom from "../../components/CustomComponents/SubNavBarCustom";
 import {
   setError,
   setFeaturedData,
   setLoading,
 } from "../../redux/appSlice/appSlice";
+import NavbarTvMovieCustom from "../../components/CustomComponents/NavbarTvMovieCustom";
 
 const TvShows = () => {
   const loading = useSelector((state) => state.appData.loading);
@@ -88,7 +88,7 @@ const TvShows = () => {
               {error}
             </p>
           )}
-          <NavBarCustom active="tv" />
+          <NavbarTvMovieCustom active="tv" />
           <SubNavBarCustom title="TV SHOWS" suggestion="tv-suggestion" />
           {featuredTvShowsData.backdrop_path === null && (
             <p className="text-white flex justify-center p-3 mt-24 text-sm md:text-lg lg:text-2xl xl:mt-54 xl:text-4xl">

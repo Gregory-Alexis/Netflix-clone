@@ -7,13 +7,13 @@ import getMovieList from "../../dataMovieFetch";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import MovieFeaturedData from "../../components/MovieComponents/FeaturedData/MovieFeaturedData";
-import NavBarCustom from "../../components/CustomComponents/NavbarCustom";
 import SubNavBarCustom from "../../components/CustomComponents/SubNavBarCustom";
 import {
   setError,
   setFeaturedData,
   setLoading,
 } from "../../redux/appSlice/appSlice";
+import NavbarTvMovieCustom from "../../components/CustomComponents/NavbarTvMovieCustom";
 
 const Movie = () => {
   const loading = useSelector((state) => state.appData.loading);
@@ -87,7 +87,7 @@ const Movie = () => {
               {error}
             </p>
           )}
-          <NavBarCustom active="movies" />
+          <NavbarTvMovieCustom active="movies" />
           <SubNavBarCustom title="MOVIE" suggestion="movie-suggestion" />
           {!filterMovie ? (
             <ErrorFilterMoviePage search={search} />
