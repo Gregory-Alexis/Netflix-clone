@@ -3,11 +3,7 @@ import Loading from "../../components/Loading/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import axios from "axios";
-import {
-  setError,
-  setFeaturedData,
-  setLoading,
-} from "../../redux/appSlice/appSlice";
+import { setData, setError, setLoading } from "../../redux/appSlice/appSlice";
 
 const TvShowsVideo = () => {
   const { id } = useParams();
@@ -24,7 +20,9 @@ const TvShowsVideo = () => {
         const result = await axios.get(
           `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${process.env.REACT_APP_MOVIE_API}&language=fr-Fr`
         );
-        dispatch(setFeaturedData(result.data.results.slice(0, 1)));
+        dispatch(setData(result.data.results.slice(0, 1)));
+
+        dispatch(setLoading(false));
       } catch (err) {
         dispatch(setError(err.message));
       }
