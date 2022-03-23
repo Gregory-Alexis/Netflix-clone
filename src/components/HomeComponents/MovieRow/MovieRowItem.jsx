@@ -58,7 +58,7 @@ const MovieRowItem = ({ title, url }) => {
               {/*affiche les poster des films */}
               <img
                 src={`https://image.tmdb.org/t/p/w300/${el.poster_path}`}
-                alt={el.title}
+                alt={el.poster_path}
                 className="moviePosterStyle mr-32 lg:mr-48 xl:mr-52 "
                 width="120"
               />
