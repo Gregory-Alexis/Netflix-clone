@@ -53,7 +53,7 @@ const NapRowItem = ({ title, url }) => {
               key={el.id}
             >
               <img
-                src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w300/${el.poster_path}`}
                 alt={el.title}
                 className="moviePosterStyle mr-32 lg:mr-48 xl:mr-52 "
                 width="120"

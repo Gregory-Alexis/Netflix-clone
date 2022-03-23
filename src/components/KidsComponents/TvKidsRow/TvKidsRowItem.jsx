@@ -53,7 +53,7 @@ const TvKidsRowItem = ({ title, url }) => {
             <Link to={`/tv-details/${el.id}`} className="relative" key={el.id}>
               {/*affiche les poster des films */}
               <img
-                src={`https://image.tmdb.org/t/p/original${el.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w300/${el.poster_path}`}
                 alt={el.name}
                 className="moviePosterStyle mr-32 lg:mr-48 xl:mr-52 "
                 key={el.id}

@@ -41,7 +41,7 @@ const ModalMovieInfo = ({ featuredMovieData }) => {
               {/*Composant qui prend en charge le titre est les boutton de la fenêtre modale */}
               <ModalMovieTitle featuredMovieData={featuredMovieData} />
               <img
-                src={`https://image.tmdb.org/t/p/original${featuredMovieData.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/w300/${featuredMovieData.backdrop_path}`}
                 alt={featuredMovieData.title}
                 className="w-full rounded-t-xl xl:w-40"
                 width="400"

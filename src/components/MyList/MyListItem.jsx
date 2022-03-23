@@ -8,7 +8,7 @@ const MyListItem = ({ id, poster, name }) => {
     <div className="mt-5 mr-5">
       <div className="relative">
         <img
-          src={`https://image.tmdb.org/t/p/original${poster}`}
+          src={`https://image.tmdb.org/t/p/w300/${poster}`}
           alt={name}
           className="h-56"
         />

@@ -15,7 +15,7 @@ const InfoMovie = ({ featuredMovieData }) => {
     <div
       className="h-60 relative bg-cover bg-no-repeat flex items-center justify-center md:h-96 lg:h-70 xl:h-90"
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${featuredMovieData.backdrop_path})`,
+        backgroundImage: `url(https://image.tmdb.org/t/p/original/${featuredMovieData.backdrop_path})`,
       }}
     >
       <div

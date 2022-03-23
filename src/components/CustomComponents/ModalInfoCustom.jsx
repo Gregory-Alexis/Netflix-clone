@@ -40,7 +40,7 @@ const ModalInfoCustom = ({ props, link }) => {
               {/*Composant qui prend en charge le titre est les boutton de la fenêtre modale */}
               <ModalTitle props={props} link={link} />
               <img
-                src={`https://image.tmdb.org/t/p/original${props.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/w300/${props.backdrop_path}`}
                 alt={props.name}
                 className="w-full rounded-t-xl xl:w-40"
                 width="400"
