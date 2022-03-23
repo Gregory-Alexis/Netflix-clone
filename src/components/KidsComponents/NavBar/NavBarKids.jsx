@@ -13,7 +13,7 @@ import {
 const NavBarKids = () => {
   const search = useSelector((state) => state.appData.search);
   const isInputActive = useSelector((state) => state.appData.isInputActive);
-  const isHomeScrolled = useSelector((state) => state.appData.isHomeScrolled);
+  const scrolled = useSelector((state) => state.appData.isScrolled);
   const width = useSelector((state) => state.appData.width);
   const quantity = useSelector((state) => state.myListData.quantity);
   const dispatch = useDispatch();
@@ -63,9 +63,7 @@ const NavBarKids = () => {
     /* Sur la page Kids, la navbar de base à un dégradé transparent vers noir. 
        Une fois qu'un scroll aura été effectué vers le bas, elle aura un background noir et sera fixé en haut de la page.
     */
-    <div
-      className={isHomeScrolled ? "navbar scrolledIn" : "navbar scrolledOut"}
-    >
+    <div className={scrolled ? "navbar scrolledIn" : "navbar scrolledOut"}>
       <div className="flex items-center justify-between px-5 md:px-8 xl:px-10">
         <div className="flex items-center relative">
           <Link to="/home">
